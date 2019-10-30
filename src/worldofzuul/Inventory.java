@@ -17,10 +17,17 @@ class Inventory
     {
         
     }
+    
     public void addItem(Item item){
         this.inventoryList.add(item);
     }
-    
+    public void removeItem(Item item){
+        this.inventoryList.remove(item);
+    }
+    public void useItem(){
+        //Write code here
+    }
+
     public int getinventoryListSize (){
         return this.inventoryList.size();
     }
