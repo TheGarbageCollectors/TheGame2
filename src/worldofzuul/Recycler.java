@@ -14,22 +14,24 @@ import java.util.HashMap;
 public class Recycler
 {
 
-    private int sortingDegreeLevel;
+    private int recyclerLevel;
     private int materialSortingLevel;
     private int[] sortingDegreeArray =
     {
         10, 30, 60, 100
     };
     private final int baseValue = 1;
+    private int maxRecyclerLevel;
     private String[] materials;
+    private HashMap<Integer, Integer> sortingProcent = new HashMap<>();
     private HashMap<String, Boolean> canSortMaterial = new HashMap<>();
     private HashMap<String, Integer> materialValues = new HashMap<>();
 
     //construtor gets a hashmap over the games materials and a String array med samme. 
-    Recycler(HashMap<String, Integer> materialMap, String[] materials)
+    Recycler(HashMap<String, Integer> materialMap, String[] materials, int[] sortingProcent)
     {
         //Sets the level of the recylers 2 upgrades to 0 when first initilized
-        this.sortingDegreeLevel = 0;
+        this.recyclerLevel = 0;
         this.materialSortingLevel = 0;
         //assign the hashmap over the materials values to a variable in the recycler class
         this.materialValues = materialMap;
@@ -38,26 +40,37 @@ public class Recycler
         {
             this.canSortMaterial.put(materials[i], false);
         }
+        for (int i = 0; i < sortingProcent.length; i++)
+        {
+            this.sortingProcent.put(i, sortingProcent[i]);
+            maxRecyclerLevel = i; 
+        }
 
     }
 
     //getting the level is used in the upgradestation class to know what level the recycler already is
-    public int getSortingDegreeLevel()
+    public int getRecyclerLevel()
     {
-        return sortingDegreeLevel;
+        return this.recyclerLevel;
     }
 
     //getting the level is used in the upgradestation class to know what level the recycler already is
     public int getMaterialSortingLevel()
     {
-        return materialSortingLevel;
+        return this.materialSortingLevel;
     }
 
     //Setting the level is used in the upgradestation class to change the level of the recycler
-    public void setSortingDegreeLevel(int sortingDegreeLevel)
+    public void setRecyclerLevel(int recyclerLevel)
     {
-        this.sortingDegreeLevel = sortingDegreeLevel;
+        this.recyclerLevel = recyclerLevel;
     }
+
+    public int getMaxRecyclerLevel()
+    {
+        return maxRecyclerLevel;
+    }
+    
 
     public void setItemSortingLevel(int level)
     {
@@ -94,7 +107,7 @@ public class Recycler
         {
             tempTotalValue += materialValueAfterSort(item.getMaterial(i));
         }
-        tempTotalValue = tempTotalValue * sortingDegreeLevel;
+        tempTotalValue = tempTotalValue * recyclerLevel;
         //rememeber to remove the item from the inventorylist
         System.out.print(tempTotalValue);
     }
