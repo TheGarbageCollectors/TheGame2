@@ -11,7 +11,7 @@ import java.util.HashMap;
  *
  * @author GamerQuvang
  */
-public class Town extends Rooms
+public class Town
 {
     private String name;
     private int populationCount; 

@@ -21,6 +21,7 @@ public class Recycler
     private final HashMap<Integer, Double> sortingProcent = new HashMap<>();
     private HashMap<String, Boolean> canSortMaterial = new HashMap<>();
     private HashMap<String, Integer> materialValues = new HashMap<>();
+    private final HashMap<Integer, Integer> recyclerLevelPrice = new HashMap<>();
 
     //construtor gets a hashmap over the games materials and a String array med samme. 
     Recycler(HashMap<String, Integer> materialMap, double[] sortingProcent)
@@ -43,7 +44,22 @@ public class Recycler
             this.sortingProcent.put(i, sortingProcent[i]);
             maxRecyclerLevel = i; 
         }
+        setUpgradePrice();
 
+    }
+    private void setUpgradePrice(){
+        recyclerLevelPrice.put(0, 0);
+        recyclerLevelPrice.put(1, 20);
+        recyclerLevelPrice.put(2, 200);
+        recyclerLevelPrice.put(3, 2000);
+        recyclerLevelPrice.put(4, 200000);
+    }
+    
+    public int getRecyclerUpgradePrice(){
+        return recyclerLevelPrice.get(recyclerLevel);
+    }
+    public int getSortingUpgradePrice(){
+        return recyclerLevelPrice.get(abilityToSortLevel);
     }
 
     //getting the level is used in the upgradestation class to know what level the recycler already is
@@ -59,9 +75,13 @@ public class Recycler
     }
 
     //Setting the level is used in the upgradestation class to change the level of the recycler
-    public void setRecyclerLevel(int recyclerLevel)
+    public void setRecyclerLevel(int level)
     {
-        this.recyclerLevel = recyclerLevel;
+        this.recyclerLevel = level;
+    }
+    public void setAbilityToSortLevel(int level)
+    {
+        this.abilityToSortLevel = level;
     }
 
     public int getMaxRecyclerLevel()
