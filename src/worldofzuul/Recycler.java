@@ -90,7 +90,7 @@ public class Recycler
     {
         //Looping though all the materials in the item by getting the length of the array that holds the strings with materials
         //using the loop to call the method that returns the string based on the index you pass as argument
-        for (int i = 0; item.getMaterialListLength() >= i; i++)
+        for (int i = 0; i < item.getMaterialListLength(); i++)
         {
             totalValue += materialValueAfterSort(item.getMaterial(i));
         }
