@@ -5,7 +5,7 @@
  */
 package worldofzuul;
 
-import java.util.HashMap;
+import java.util.HashMap; 
 
 /**
  *
@@ -30,7 +30,9 @@ public class Recycler
         this.abilityToSortLevel = 0;
         //assign the hashmap over the materials values to a variable in the recycler class
         this.materialValues = materialMap;
-        Object[] tempString = materialMap.keySet().toArray(); 
+        
+        Object[] tempString = materialMap.keySet().toArray();
+        
         //Loops though the game materials and set the the sorting ability to false, because we cant sort anything yet
         for (int i = 0; i < materialMap.size(); i++)
         {
