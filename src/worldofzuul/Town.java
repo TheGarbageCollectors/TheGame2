@@ -24,8 +24,6 @@ public class Town extends Rooms
         this.populationCount = 1;
         this.townLevel = 0;
         setUpgradePrice();
-        super.description = description;
-        exits = new HashMap<String, Room>();
     }
     private void setUpgradePrice(){
         townLevelPrice.put(0, 0);
