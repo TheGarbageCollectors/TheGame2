@@ -23,7 +23,7 @@ public class Game
         Item woodFrame = new Item("WoodFrame", 10, woodFrameMaterials);
         inventory.addItem(woodFrame);
         parser = new Parser();
-        Recycler recycler = new Recycler();
+        Recycler recycler = new Recycler(materialMap, materials);
         System.out.print(inventory.getinventoryListSize());
     }
     

@@ -14,11 +14,6 @@ public class Item
     private final String name;
     private int id;
     private String[] materialList;
-
-    public Item()
-    {
-    }
-
     public Item(String name, int id, String[] materialList)
     {
         this.materialList = materialList;
@@ -38,7 +33,7 @@ public class Item
 
     public String getMaterial(int index)
     {
-        return materialList[index];
+        return this.materialList[index];
     }
     
     public int getMaterialListLength(){
