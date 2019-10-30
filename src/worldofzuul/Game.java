@@ -1,22 +1,42 @@
 package worldofzuul;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Game 
 {
     private Parser parser;
     private Room currentRoom;
-        
+    public final String[] materials = {"paper", "metal", "beton", "plastic"};   
+    private final int[] materialValues = {10, 20, 30, 40}; 
+    public HashMap<String, Integer> materialMap = new HashMap<>();
 
     public Game() 
     {
         createRooms();
+        makeMaterials();
+        Inventory inventory = new Inventory();
+        ArrayList<Material> woodFrameMaterials = new ArrayList<Material>();
+        woodFrameMaterials.add(("Metal", 10));
+        woodFrameMaterials.add(new Material("Wood", 15));
+        Item woodFrame = new Item("WoodFrame", 10, woodFrameMaterials);
+        inventory.addItem(woodFrame);
         parser = new Parser();
+        Recycler recycler = new Recycler();
+        System.out.print(inventory.getinventoryListSize());
+    }
+    
+    private void makeMaterials(){
+        for(int i = 0 ; i < materials.length ; i++){
+            materialMap.put(materials[i], materialValues[i]);
+        }
     }
 
 
     private void createRooms()
     {
         Room outside, theatre, pub, lab, office;
-      
+
         outside = new Room("outside the main entrance of the university");
         theatre = new Room("in a lecture theatre");
         pub = new Room("in the campus pub");
