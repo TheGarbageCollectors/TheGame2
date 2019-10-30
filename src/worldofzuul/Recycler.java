@@ -20,8 +20,6 @@ public class Recycler
     {
         10, 30, 60, 100
     };
-    private int totalValue;
-    private int materialValue;
     private final int baseValue = 1;
     private String[] materials;
     private HashMap<String, Boolean> canSortMaterial = new HashMap<>();
@@ -76,27 +74,29 @@ public class Recycler
         //The statement looks up the value for the material thats passed in as the argument in the method.
         //The value in the hashmap will be true if the recycler is high enough level that it can sort the material
         //Else it will just use the basevalue
+        int tempMaterialValue = 0; 
         if (this.canSortMaterial.get(material))
         {
-            materialValue = materialValues.get(material);
+            tempMaterialValue = materialValues.get(material);
         } else
         {
-            materialValue = baseValue;
+            tempMaterialValue = baseValue;
         }
-        return materialValue;
+        return tempMaterialValue;
     }
 
     public void valueCalculator(Item item)
     {
+        int tempTotalValue = 0; 
         //Looping though all the materials in the item by getting the length of the array that holds the strings with materials
         //using the loop to call the method that returns the string based on the index you pass as argument
         for (int i = 0; i < item.getMaterialListLength(); i++)
         {
-            totalValue += materialValueAfterSort(item.getMaterial(i));
+            tempTotalValue += materialValueAfterSort(item.getMaterial(i));
         }
-        totalValue = materialValue * sortingDegreeLevel;
+        tempTotalValue = tempTotalValue * sortingDegreeLevel;
         //rememeber to remove the item from the inventorylist
-        System.out.print(totalValue);
+        System.out.print(tempTotalValue);
     }
 
 }
