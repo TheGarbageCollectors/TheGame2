@@ -7,12 +7,13 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    public final String[] materials = {"paper", "metal", "beton", "plastic"};   
+    static public final String[] materials = {"paper", "metal", "beton", "plastic"};   
     private final int[] materialValues = {10, 20, 30, 40}; 
-    public HashMap<String, Integer> materialMap = new HashMap<>();
+    static public HashMap<String, Integer> materialMap = new HashMap<>();
 
     public Game() 
     {
+        Item item = new Item();
         createRooms();
         makeMaterials();
         Inventory inventory = new Inventory();

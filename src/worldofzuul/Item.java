@@ -5,23 +5,25 @@
  */
 package worldofzuul;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author GamerQuvang
  */
 public class Item
 {
-    private String name;
+    private final String name;
     private int id;
-    private ArrayList<String> materialList = new ArrayList<String>();
+    private String[] materialList;
 
-    public Item(String name, int id, ArrayList<String> materialList)
+    public Item()
     {
+    }
+
+    public Item(String name, int id, String[] materialList)
+    {
+        this.materialList = materialList;
         this.name = name;
         this.id = id;
-        this.materialList = materialList;
     }
 
     public String getName()
@@ -34,13 +36,13 @@ public class Item
         return id;
     }
 
-    public ArrayList<String> getMaterialList()
+    public String getMaterial(int index)
     {
-        return materialList;
+        return materialList[index];
     }
     
     public int getMaterialListLength(){
-        return this.materialList.size();
+        return this.materialList.length;
     }
     
 }
