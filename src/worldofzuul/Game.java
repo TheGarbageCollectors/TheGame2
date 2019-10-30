@@ -7,7 +7,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    static public final String[] materials = {"Paper", "Metal", "Beton", "Plastic"};   
+    private final String[] materials = {"Paper", "Metal", "Beton", "Plastic"};   
     private final int[] materialValues = {10, 20, 30, 40}; 
     static public HashMap<String, Integer> materialMap = new HashMap<>();
 
@@ -19,16 +19,18 @@ public class Game
         Item doorFrame = new Item("DoorFrame", 10, new String[]{"Metal", "Beton"});
         inventory.addItem(doorFrame);
         parser = new Parser();
-        Recycler recycler = new Recycler(materialMap, materials);
+        
+        Recycler recycler = new Recycler(materialMap, new double[]{0.1, 0.3, 0.6, 1.0});
         
         System.out.print(inventory.getinventoryListSize());
         recycler.valueCalculator(doorFrame);
     }
     
     private void makeMaterials(){
-        for(int i = 0 ; i < materials.length ; i++){
-            materialMap.put(materials[i], materialValues[i]);
-        }
+        materialMap.put("Paper", 10);
+        materialMap.put("Beton", 20);
+        materialMap.put("Metal", 30);
+        materialMap.put("Plastic", 40);
     }
 
 

@@ -14,31 +14,27 @@ import java.util.HashMap;
 public class Recycler
 {
 
-    private int recyclerLevel;
-    private int materialSortingLevel;
-    private int[] sortingDegreeArray =
-    {
-        10, 30, 60, 100
-    };
     private final int baseValue = 1;
+    private int recyclerLevel;
+    private int abilityToSortLevel;
     private int maxRecyclerLevel;
-    private String[] materials;
-    private HashMap<Integer, Integer> sortingProcent = new HashMap<>();
+    private final HashMap<Integer, Double> sortingProcent = new HashMap<>();
     private HashMap<String, Boolean> canSortMaterial = new HashMap<>();
     private HashMap<String, Integer> materialValues = new HashMap<>();
 
     //construtor gets a hashmap over the games materials and a String array med samme. 
-    Recycler(HashMap<String, Integer> materialMap, String[] materials, int[] sortingProcent)
+    Recycler(HashMap<String, Integer> materialMap, double[] sortingProcent)
     {
         //Sets the level of the recylers 2 upgrades to 0 when first initilized
         this.recyclerLevel = 0;
-        this.materialSortingLevel = 0;
+        this.abilityToSortLevel = 0;
         //assign the hashmap over the materials values to a variable in the recycler class
         this.materialValues = materialMap;
+        Object[] tempString = materialMap.keySet().toArray(); 
         //Loops though the game materials and set the the sorting ability to false, because we cant sort anything yet
-        for (int i = 0; i < materials.length; i++)
+        for (int i = 0; i < materialMap.size(); i++)
         {
-            this.canSortMaterial.put(materials[i], false);
+            this.canSortMaterial.put((String)tempString[i], false);
         }
         for (int i = 0; i < sortingProcent.length; i++)
         {
@@ -55,9 +51,9 @@ public class Recycler
     }
 
     //getting the level is used in the upgradestation class to know what level the recycler already is
-    public int getMaterialSortingLevel()
+    public int getAbilityToSortLevel()
     {
-        return this.materialSortingLevel;
+        return this.abilityToSortLevel;
     }
 
     //Setting the level is used in the upgradestation class to change the level of the recycler
@@ -72,14 +68,10 @@ public class Recycler
     }
     
 
-    public void setItemSortingLevel(int level)
+    public void updateAbilityToSortLevel(String material)
     {
-        this.materialSortingLevel = level;
-        //Uses the sorting level to loop though the material lists and sets the value to be true, if the material is unlocked. 
-        for (int i = 0; i < materialSortingLevel; i++)
-        {
-            this.canSortMaterial.replace(materials[i], true);
-        }
+        // need to make it possible for the user to choice what material they want to sort. Then pass that material though here. 
+        this.canSortMaterial.replace(material, true);
     }
 
     public int materialValueAfterSort(String material)
