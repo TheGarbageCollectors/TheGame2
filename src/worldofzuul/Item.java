@@ -12,8 +12,9 @@ package worldofzuul;
 public class Item
 {
     private final String name;
-    private int id;
-    private String[] materialList;
+    private final int id;
+    private final String[] materialList;
+    
     public Item(String name, int id, String[] materialList)
     {
         this.materialList = materialList;
