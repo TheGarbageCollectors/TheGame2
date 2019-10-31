@@ -39,7 +39,7 @@ public class UpgradeStation
 
     public void getBackpackUpgradeName()
     {
-        backpackUpgradeName += ": " + inventory.getBackpackLevel;
+        backpackUpgradeName += ": " + backpack.getBackpackLevel;
     }
 
     public void getRecyclerUpgradeName()
