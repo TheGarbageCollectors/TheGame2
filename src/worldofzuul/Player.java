@@ -19,14 +19,14 @@ public class Player
 
     Player()
     {
-        this.money = 0;
+        this.money = 5;
 
         this.name = namePlayer();
     }
 
     private String namePlayer()
     {
-        String name;
+        String inputName;
         String checkName;
         Scanner scan = new Scanner(System.in);
         do
@@ -34,20 +34,45 @@ public class Player
             System.out.println("What is your name?");
 
             //input name
-            name = scan.nextLine();
+            inputName = scan.nextLine();
 
             //output
-            System.out.println("So your name is: " + name + "? Yes or No");
+            System.out.println("So your name is: " + inputName + "? Yes or No");
 
             //confirmeing name
             checkName = scan.nextLine();
 
             if (checkName.equals("Yes"))
             {
-                System.out.println("Okay nice to meet you " + name);
+                System.out.println("Okay nice to meet you " + inputName);
                 return name;
             }
         } while (checkName.equals("No"));
 
+        return "Player1";
+
+    }
+
+    public boolean enoughMoney(int amount)
+    {
+        int moneyLeft = this.money - amount;
+        if (moneyLeft > 0)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+
+    }
+
+    public int removeMoney(int amount)
+    {
+        return this.money -= amount;
+    }
+
+    public int getMoney()
+    {
+        return this.money;
     }
 }

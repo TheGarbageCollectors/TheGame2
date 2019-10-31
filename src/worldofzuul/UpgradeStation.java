@@ -11,6 +11,7 @@ package worldofzuul;
  */
 public class UpgradeStation
 {
+
     private int[] backpackUpgradePriceArray =
     {
         0, 10, 100
@@ -42,22 +43,36 @@ public class UpgradeStation
                 case "Town":
                     if (obj.getLevel() < townUpgradePriceArray.length)
                     {
+
                         upgradePrice = townUpgradePriceArray[obj.getLevel()];
-                        obj.upgradeLevel();
+                        if (playerObj.enoughMoney(upgradePrice))
+                        {
+                            obj.upgradeLevel();
+                            playerObj.removeMoney(upgradePrice);
+                        }
+
                     }
                     break;
                 case "Recycler":
                     if (obj.getLevel() < recyclerUpgradeArray.length)
                     {
                         upgradePrice = recyclerUpgradeArray[obj.getLevel()];
-                        obj.upgradeLevel();
+                        if (playerObj.enoughMoney(upgradePrice))
+                        {
+                            obj.upgradeLevel();
+                            playerObj.removeMoney(upgradePrice);
+                        }
                     }
                     break;
                 case "Backpack":
                     if (obj.getLevel() < backpackUpgradePriceArray.length)
                     {
                         upgradePrice = backpackUpgradePriceArray[obj.getLevel()];
-                        obj.upgradeLevel();
+                        if (playerObj.enoughMoney(upgradePrice))
+                        {
+                            obj.upgradeLevel();
+                            playerObj.removeMoney(upgradePrice);
+                        }
                     }
                     break;
                 default:

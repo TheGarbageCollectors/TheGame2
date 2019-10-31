@@ -17,6 +17,8 @@ public class Game
         makeMaterials();
         parser = new Parser();
         Player player = new Player();
+        player.removeMoney(10);
+        System.out.println(player.getMoney());
         Item doorFrame = new Item("DoorFrame", 10, new String[]{"Metal", "Beton"});
         Recycler recycler = new Recycler(materialMap);
         recycler.valueCalculator(doorFrame);
