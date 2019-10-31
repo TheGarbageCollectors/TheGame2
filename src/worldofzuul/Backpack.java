@@ -43,7 +43,7 @@ class Backpack implements Upgradeable
         //Write code here
     }
 
-    public int getinventoryListSize (){
-        return this.inventoryList.size();
+    public ArrayList<Item> getItemsInBackpack (){
+        return this.inventoryList;
     }
 }

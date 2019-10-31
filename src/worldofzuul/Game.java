@@ -16,11 +16,11 @@ public class Game
         createRooms();
         makeMaterials();
         parser = new Parser();
-        
+        Player player = new Player();
         Item doorFrame = new Item("DoorFrame", 10, new String[]{"Metal", "Beton"});
         Recycler recycler = new Recycler(materialMap);
-        System.out.print(inventory.getinventoryListSize());
         recycler.valueCalculator(doorFrame);
+        
     }
     
     private void makeMaterials(){

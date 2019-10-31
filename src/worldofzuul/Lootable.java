@@ -13,19 +13,21 @@ import java.util.ArrayList;
  */
 public class Lootable
 {
+    private String name;
     private ArrayList<Item> items;
     private Item item;
     
-    Lootable (Item item){
+    Lootable (Item item, String name){
+        this.name = name;
         this.item = item;
         this.items = new ArrayList<Item>();  
     }
     
-    private void spawnLoot(){
-        
+    private void spawnLoot(GameItems obj){
+        obj.getLootList(name);
     }
-    public ArrayList<Item> getLoot(){
-        spawnLoot();
+    public ArrayList<Item> getLoot(GameItems obj){
+        spawnLoot(obj);
         return items;
     }
 }

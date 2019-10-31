@@ -11,11 +11,6 @@ package worldofzuul;
  */
 public class UpgradeStation
 {
-
-    private String backpackUpgradeName = "Upgrade backpack to level";
-    private String recyclerUpgradeName;
-    private String recyclerSortingUpgradeName;
-    private String townUpgradeName;
     private int[] backpackUpgradePriceArray =
     {
         0, 10, 100
@@ -37,29 +32,9 @@ public class UpgradeStation
     {
     }
 
-    public void getBackpackUpgradeName()
+    public void buyUpgrade(Upgradeable obj, Player playerObj)
     {
-        backpackUpgradeName += ": " + inventory.getBackpackLevel;
-    }
-
-    public void getRecyclerUpgradeName()
-    {
-        recyclerUpgradeName += ": " + recycler.getRecyclerLevel;
-    }
-
-    public void getRecyclerSortingUpgradeName()
-    {
-        recyclerSortingUpgradeName += ": " + inventory.getAbilityToSortLevel;
-    }
-
-    public void getTownUpgradeName()
-    {
-        townUpgradeName += ": " + town.getTownLevel;
-    }
-
-    public void buyUpgrade(Upgradeable obj)
-    {
-        int upgradePrice;
+        int upgradePrice = 0;
         if (null != obj.getName())
         {
             switch (obj.getName())
@@ -89,6 +64,7 @@ public class UpgradeStation
                     break;
             }
         }
+        playerObj.removeMoney(upgradePrice);
         //Remove money from the player account here 
 
     }
