@@ -16,10 +16,11 @@ public class Game
         createRooms();
         makeMaterials();
         parser = new Parser();
+        Backpack backpack = new Backpack();
         
         Item doorFrame = new Item("DoorFrame", 10, new String[]{"Metal", "Beton"});
         Recycler recycler = new Recycler(materialMap);
-        System.out.print(inventory.getinventoryListSize());
+        System.out.print(backpack.getinventoryListSize());
         recycler.valueCalculator(doorFrame);
     }
     
