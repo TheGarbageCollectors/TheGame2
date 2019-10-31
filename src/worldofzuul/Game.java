@@ -15,13 +15,10 @@ public class Game
     {
         createRooms();
         makeMaterials();
-        Inventory inventory = new Inventory();
-        Item doorFrame = new Item("DoorFrame", 10, new String[]{"Metal", "Beton"});
-        inventory.addItem(doorFrame);
         parser = new Parser();
         
-        Recycler recycler = new Recycler(materialMap, new double[]{0.1, 0.3, 0.6, 1.0});
-        
+        Item doorFrame = new Item("DoorFrame", 10, new String[]{"Metal", "Beton"});
+        Recycler recycler = new Recycler(materialMap);
         System.out.print(inventory.getinventoryListSize());
         recycler.valueCalculator(doorFrame);
     }

@@ -17,12 +17,12 @@ public class Recycler implements Upgradeable
     private final int baseValue = 1;
     private int level;
     private int maxRecyclerLevel;
-    private final HashMap<Integer, Double> sortingProcent = new HashMap<>();
     private HashMap<String, Boolean> canSortMaterial = new HashMap<>();
     private HashMap<String, Integer> materialValues = new HashMap<>();
+    private double[] recyclingProcent ={0.1, 0.3, 0.6, 1.0};
 
     //construtor gets a hashmap over the games materials and a String array med samme. 
-    Recycler(HashMap<String, Integer> materialMap, double[] sortingProcent)
+    Recycler(HashMap<String, Integer> materialMap)
     {
         //Sets the level of the recylers 2 upgrades to 0 when first initilized
         this.level = 0;
@@ -35,11 +35,6 @@ public class Recycler implements Upgradeable
         for (int i = 0; i < materialMap.size(); i++)
         {
             this.canSortMaterial.put((String)tempString[i], false);
-        }
-        for (int i = 0; i < sortingProcent.length; i++)
-        {
-            this.sortingProcent.put(i, sortingProcent[i]);
-            maxRecyclerLevel = i; 
         }
 
     }
@@ -59,28 +54,8 @@ public class Recycler implements Upgradeable
     public void upgradeLevel(){
         this.level++;
     }
-
-    //getting the level is used in the upgradestation class to know what level the recycler already is
-    public int getAbilityToSortLevel()
-    {
-        return this.abilityToSortLevel;
-    }
-
-    //Setting the level is used in the upgradestation class to change the level of the recycler
-    public void setLevel(int level)
-    {
-        this.level = level;
-    }
-    public void setAbilityToSortLevel(int level)
-    {
-        this.abilityToSortLevel = level;
-    }
-
-    public int getMaxRecyclerLevel()
-    {
-        return maxRecyclerLevel;
-    }
     
+    //Setting the level is used in the upgradestation class to change the level of the recycler
 
     public void updateAbilityToSortLevel(String material)
     {
@@ -88,12 +63,12 @@ public class Recycler implements Upgradeable
         this.canSortMaterial.replace(material, true);
     }
 
-    public int materialValueAfterSort(String material)
+    public double materialValueAfterSort(String material)
     {
         //The statement looks up the value for the material thats passed in as the argument in the method.
         //The value in the hashmap will be true if the recycler is high enough level that it can sort the material
         //Else it will just use the basevalue
-        int tempMaterialValue = 0; 
+        double tempMaterialValue = 0; 
         if (this.canSortMaterial.get(material))
         {
             tempMaterialValue = materialValues.get(material);
@@ -106,14 +81,14 @@ public class Recycler implements Upgradeable
 
     public void valueCalculator(Item item)
     {
-        int tempTotalValue = 0; 
+        double tempTotalValue = 0; 
         //Looping though all the materials in the item by getting the length of the array that holds the strings with materials
         //using the loop to call the method that returns the string based on the index you pass as argument
         for (int i = 0; i < item.getMaterialListLength(); i++)
         {
             tempTotalValue += materialValueAfterSort(item.getMaterial(i));
         }
-        tempTotalValue = tempTotalValue * level;
+        tempTotalValue = tempTotalValue * recyclingProcent[level];
         //rememeber to remove the item from the inventorylist
         System.out.print(tempTotalValue);
     }
