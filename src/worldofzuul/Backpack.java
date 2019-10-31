@@ -9,13 +9,28 @@ import java.util.ArrayList;
  *
  * @author GamerQuvang
  */
-class Inventory
+class Backpack implements Upgradeable
 {
+    private String name = "Backpack";
+    private int level;
     private ArrayList<Item> inventoryList = new ArrayList<Item>();
 
-    public Inventory()
+    public Backpack()
     {
         
+    }
+    @Override
+    public int getLevel()
+    {
+        return this.level;
+    }
+    @Override
+    public String getName(){
+        return this.name;
+    }
+    @Override
+    public void upgradeLevel(){
+        this.level++;
     }
     
     public void addItem(Item item){

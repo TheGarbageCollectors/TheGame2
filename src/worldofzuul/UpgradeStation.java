@@ -59,27 +59,34 @@ public class UpgradeStation
 
     public void buyUpgrade(Upgradeable obj)
     {
-        int tempPrice;
-        if (obj.getName() == "Town")
+        int upgradePrice;
+        if (null != obj.getName())
         {
-            if (obj.getLevel() < townUpgradePriceArray.length)
+            switch (obj.getName())
             {
-                tempPrice = townUpgradePriceArray[obj.getLevel()];
-                obj.upgradeLevel();
-            }
-        } else if (obj.getName() == "Recycler")
-        {
-            if (obj.getLevel() < recyclerUpgradeArray.length)
-            {
-                tempPrice = recyclerUpgradeArray[obj.getLevel()];
-                obj.upgradeLevel();
-            }
-        } else if (obj.getName() == "Backpack")
-        {
-            if (obj.getLevel() < backpackUpgradePriceArray.length)
-            {
-                tempPrice = backpackUpgradePriceArray[obj.getLevel()];
-                obj.upgradeLevel();
+                case "Town":
+                    if (obj.getLevel() < townUpgradePriceArray.length)
+                    {
+                        upgradePrice = townUpgradePriceArray[obj.getLevel()];
+                        obj.upgradeLevel();
+                    }
+                    break;
+                case "Recycler":
+                    if (obj.getLevel() < recyclerUpgradeArray.length)
+                    {
+                        upgradePrice = recyclerUpgradeArray[obj.getLevel()];
+                        obj.upgradeLevel();
+                    }
+                    break;
+                case "Backpack":
+                    if (obj.getLevel() < backpackUpgradePriceArray.length)
+                    {
+                        upgradePrice = backpackUpgradePriceArray[obj.getLevel()];
+                        obj.upgradeLevel();
+                    }
+                    break;
+                default:
+                    break;
             }
         }
         //Remove money from the player account here 

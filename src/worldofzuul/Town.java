@@ -15,19 +15,18 @@ public class Town implements Upgradeable
 {
     private String name = "Town";
     private int populationCount; 
-    private int townLevel;
+    private int level;
 
-    public Town(String name)
+    public Town()
     {
-        this.name = name;
         this.populationCount = 1;
-        this.townLevel = 0;
+        this.level = 0;
     }
     
     @Override
     public int getLevel()
     {
-        return this.townLevel;
+        return this.level;
     }
     @Override
     public String getName(){
@@ -35,7 +34,7 @@ public class Town implements Upgradeable
     }
     @Override
     public void upgradeLevel(){
-        this.townLevel++;
+        this.level++;
     }
     
     public void updatePopulationCount(int amount){
@@ -44,6 +43,6 @@ public class Town implements Upgradeable
     
     public double makeMoney(){
         //Will get called in game so it makes money everytime the game loop. 
-        return 0.1 * populationCount * townLevel;
+        return 0.1 * populationCount * level;
     }
 }

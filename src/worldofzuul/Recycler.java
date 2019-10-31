@@ -15,7 +15,7 @@ public class Recycler implements Upgradeable
 {
     private final String name = "Recycler";
     private final int baseValue = 1;
-    private int recyclerLevel;
+    private int level;
     private int maxRecyclerLevel;
     private final HashMap<Integer, Double> sortingProcent = new HashMap<>();
     private HashMap<String, Boolean> canSortMaterial = new HashMap<>();
@@ -25,7 +25,7 @@ public class Recycler implements Upgradeable
     Recycler(HashMap<String, Integer> materialMap, double[] sortingProcent)
     {
         //Sets the level of the recylers 2 upgrades to 0 when first initilized
-        this.recyclerLevel = 0;
+        this.level = 0;
         //assign the hashmap over the materials values to a variable in the recycler class
         this.materialValues = materialMap;
         
@@ -49,7 +49,7 @@ public class Recycler implements Upgradeable
     @Override
     public int getLevel()
     {
-        return this.recyclerLevel;
+        return this.level;
     }
     @Override
     public String getName(){
@@ -57,7 +57,7 @@ public class Recycler implements Upgradeable
     }
     @Override
     public void upgradeLevel(){
-        this.recyclerLevel++;
+        this.level++;
     }
 
     //getting the level is used in the upgradestation class to know what level the recycler already is
@@ -67,9 +67,9 @@ public class Recycler implements Upgradeable
     }
 
     //Setting the level is used in the upgradestation class to change the level of the recycler
-    public void setRecyclerLevel(int level)
+    public void setLevel(int level)
     {
-        this.recyclerLevel = level;
+        this.level = level;
     }
     public void setAbilityToSortLevel(int level)
     {
@@ -113,7 +113,7 @@ public class Recycler implements Upgradeable
         {
             tempTotalValue += materialValueAfterSort(item.getMaterial(i));
         }
-        tempTotalValue = tempTotalValue * recyclerLevel;
+        tempTotalValue = tempTotalValue * level;
         //rememeber to remove the item from the inventorylist
         System.out.print(tempTotalValue);
     }
