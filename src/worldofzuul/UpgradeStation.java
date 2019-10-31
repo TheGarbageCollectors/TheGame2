@@ -49,7 +49,7 @@ public class UpgradeStation
 
     public void getRecyclerSortingUpgradeName()
     {
-        recyclerSortingUpgradeName += ": " + inventory.getAbilityToSortLevel;
+        recyclerSortingUpgradeName += ": " + backpack.getAbilityToSortLevel;
     }
 
     public void getTownUpgradeName()
