@@ -13,22 +13,19 @@ import java.util.HashMap;
  */
 public class Recycler implements Upgradeable
 {
-
+    private final String name = "Recycler";
     private final int baseValue = 1;
     private int recyclerLevel;
-    private int abilityToSortLevel;
     private int maxRecyclerLevel;
     private final HashMap<Integer, Double> sortingProcent = new HashMap<>();
     private HashMap<String, Boolean> canSortMaterial = new HashMap<>();
     private HashMap<String, Integer> materialValues = new HashMap<>();
-    private final HashMap<Integer, Integer> recyclerLevelPrice = new HashMap<>();
 
     //construtor gets a hashmap over the games materials and a String array med samme. 
     Recycler(HashMap<String, Integer> materialMap, double[] sortingProcent)
     {
         //Sets the level of the recylers 2 upgrades to 0 when first initilized
         this.recyclerLevel = 0;
-        this.abilityToSortLevel = 0;
         //assign the hashmap over the materials values to a variable in the recycler class
         this.materialValues = materialMap;
         
@@ -44,28 +41,23 @@ public class Recycler implements Upgradeable
             this.sortingProcent.put(i, sortingProcent[i]);
             maxRecyclerLevel = i; 
         }
-        setUpgradePrice();
 
-    }
-    private void setUpgradePrice(){
-        recyclerLevelPrice.put(0, 0);
-        recyclerLevelPrice.put(1, 20);
-        recyclerLevelPrice.put(2, 200);
-        recyclerLevelPrice.put(3, 2000);
-        recyclerLevelPrice.put(4, 200000);
     }
     
-    public int getRecyclerUpgradePrice(){
-        return recyclerLevelPrice.get(recyclerLevel);
-    }
-    public int getSortingUpgradePrice(){
-        return recyclerLevelPrice.get(abilityToSortLevel);
-    }
 
     //getting the level is used in the upgradestation class to know what level the recycler already is
-    public int getRecyclerLevel()
+    @Override
+    public int getLevel()
     {
         return this.recyclerLevel;
+    }
+    @Override
+    public String getName(){
+        return this.name;
+    }
+    @Override
+    public void upgradeLevel(){
+        this.recyclerLevel++;
     }
 
     //getting the level is used in the upgradestation class to know what level the recycler already is

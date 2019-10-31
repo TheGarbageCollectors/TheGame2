@@ -13,4 +13,5 @@ public interface Upgradeable
 {
     public String getName();
     public int getLevel();
+    public void upgradeLevel();
 }

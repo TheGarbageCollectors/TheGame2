@@ -13,38 +13,31 @@ import java.util.HashMap;
  */
 public class Town implements Upgradeable
 {
-    private String name;
+    private String name = "Town";
     private int populationCount; 
     private int townLevel;
-    private HashMap<Integer, Integer> townLevelPrice = new HashMap<>();
 
     public Town(String name)
     {
         this.name = name;
         this.populationCount = 1;
         this.townLevel = 0;
-        setUpgradePrice();
     }
-    private void setUpgradePrice(){
-        townLevelPrice.put(0, 0);
-        townLevelPrice.put(1, 100);
-        townLevelPrice.put(2, 1000);
-        townLevelPrice.put(3, 10000);
-        townLevelPrice.put(4, 1000000);
-    }
-
-    public int getTownLevel()
+    
+    @Override
+    public int getLevel()
     {
-        return townLevel;
+        return this.townLevel;
+    }
+    @Override
+    public String getName(){
+        return this.name;
+    }
+    @Override
+    public void upgradeLevel(){
+        this.townLevel++;
     }
     
-    public int getUpgradePrice(){
-        return townLevelPrice.get(townLevel);
-    }
-    
-    public void updateLevel(int level){
-        this.townLevel = level;
-    }
     public void updatePopulationCount(int amount){
         this.populationCount = amount;
     }
