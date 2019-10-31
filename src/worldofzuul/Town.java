@@ -11,7 +11,7 @@ import java.util.HashMap;
  *
  * @author GamerQuvang
  */
-public class Town
+public class Town implements Upgradeable
 {
     private String name;
     private int populationCount; 
@@ -32,6 +32,12 @@ public class Town
         townLevelPrice.put(3, 10000);
         townLevelPrice.put(4, 1000000);
     }
+
+    public int getTownLevel()
+    {
+        return townLevel;
+    }
+    
     public int getUpgradePrice(){
         return townLevelPrice.get(townLevel);
     }

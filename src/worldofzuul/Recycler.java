@@ -11,7 +11,7 @@ import java.util.HashMap;
  *
  * @author GamerQuvang
  */
-public class Recycler
+public class Recycler implements Upgradeable
 {
 
     private final int baseValue = 1;
