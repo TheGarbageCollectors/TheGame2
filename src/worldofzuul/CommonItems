@@ -1,51 +1,37 @@
-
 package worldofzuul;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  *
  * @author Daniel Tran
  */
-public class AbandonedVillage extends CommonItems {
-     private ArrayList<Item> commonList;
-    private ArrayList<Item> fullItemList;
-    private ArrayList<Item> finalList;
+public class CommonItems {
     
-    private void makeFullList() {
-      makeCommonList(); //makes the commonList from the CommonItems class
-        commonList = getList(); //gets the list from the CommonItems class and sets it as a atribute in this class
+    private ArrayList<Item> commonList;
+    
+    
+    protected void makeCommonList() {
+        commonList = new ArrayList<Item>(); //makes an ArrayList to store common Items
         
-        //makes Items specific for this class
-        Item doorFrame = new Item("DoorFrame", new String[]{"Metal", "Beton"});
-        Item bricks = new Item("Bricks", new String[]{"Paper", "Plastic", "Metal", "Rubber"});
-        Item pipes = new Item("Rusty Pipes", new String[]{"Metal"});
-    
-        //adds the Items to the List
-       commonList.add(doorFrame);
-       commonList.add(bricks);
-       commonList.add(pipes);
-       
-       fullItemList = commonList; //after adding all the Items, sets the commonList as the fullItemList
-    }
-    
-     public void makeFinalList() {
-        makeFullList(); //makes a list with all the Items
-        finalList = new ArrayList<Item>();
-        int numOfItems =((int)(Math.random() * 4)+1); //Makes random int variable to decide the amount of Items in the finalList(max 4)
-       
-        for (int i = 0; i < numOfItems ; i++) { //for-loop to move Items from fullItemList to finalList
-            Random rNum = new Random();
-            Item tempItem = fullItemList.remove(rNum.nextInt(fullItemList.size())); //Makes variable to store the removed Item temporarily.
-            //(Removed by the index number, which was randomly generated depending on the size of the array)
-            
-            finalList.add(tempItem); //adds the removed item to the finalList
-            
-        }
+        //initializes/makes a lot of Items
+        Item plasticBottle = new Item("Plastic bottle", new String[]{"Plastic", "Beton"});
+        Item cardBoard = new Item("cardBoarde", new String[]{"Pap"});
+        Item battery = new Item("battery", new String[]{"Metal"});
+        Item can = new Item("Can", new String[]{"Metal"});
+        Item staw = new Item ("Staw", new String[] {"Plastic"});
+        
+        //adds the Items to the commonList Array
+         commonList.add(plasticBottle);
+         commonList.add(cardBoard);
+         commonList.add(battery);
+         commonList.add(can);
+         commonList.add(staw);
+         
+         
      }
-    
-     public ArrayList<Item> getAbandonedVillageList(){
-         return this.finalList;
+     
+     public ArrayList<Item> getList(){
+         return this.commonList;
      }
 }
