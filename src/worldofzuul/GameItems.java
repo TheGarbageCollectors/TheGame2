@@ -24,16 +24,16 @@ public final class GameItems
         
         switch(name){
                 case "Vej":
-                    items.add(plasticBottle
+                    items.add(plasticBottle);
                     items.add(cardBoard);
                     break;
                 case "Strand":
                     items.add(plasticBottle);
                      break;
-                case "Skov:
+                case "Skov":
                        items.add(plasticBottle);
                        break;
-                case "Forladt by
+            case "Forladt by":
                        items.add(concrete);
                        break;
         }
