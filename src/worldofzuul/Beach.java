@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Beach extends Lootable{
 
-    
+    private String description; 
 
     public Beach(String name){
         super(name);
