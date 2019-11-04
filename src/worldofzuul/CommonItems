@@ -28,7 +28,6 @@ public class CommonItems {
          commonList.add(can);
          commonList.add(staw);
          
-         
      }
      
      public ArrayList<Item> getList(){
