@@ -1,0 +1,36 @@
+package worldofzuul;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Daniel Tran
+ */
+public class CommonItems {
+    
+    private ArrayList<Item> commonList;
+    
+    
+    protected void makeCommonList() {
+        commonList = new ArrayList<Item>(); //makes an ArrayList to store common Items
+        
+        //initializes/makes a lot of Items
+        Item plasticBottle = new Item("Plastic bottle", new String[]{"Plastic", "Beton"});
+        Item cardBoard = new Item("cardBoarde", new String[]{"Pap"});
+        Item battery = new Item("battery", new String[]{"Metal"});
+        Item can = new Item("Can", new String[]{"Metal"});
+        Item staw = new Item ("Staw", new String[] {"Plastic"});
+        
+        //adds the Items to the commonList Array
+         commonList.add(plasticBottle);
+         commonList.add(cardBoard);
+         commonList.add(battery);
+         commonList.add(can);
+         commonList.add(staw);
+         
+     }
+     
+     public ArrayList<Item> getList(){
+         return this.commonList;
+     }
+}
