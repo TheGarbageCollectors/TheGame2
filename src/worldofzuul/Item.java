@@ -12,7 +12,6 @@ package worldofzuul;
 public class Item
 {
     private final String name;
-    private final int id;
     private final String[] materialList;
     
     public Item(String name, String[] materialList)

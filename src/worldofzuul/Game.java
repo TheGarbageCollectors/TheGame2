@@ -16,12 +16,17 @@ public class Game
         createRooms();
         makeMaterials();
         parser = new Parser();
-        Player player = new Player();
-        player.removeMoney(10);
-        System.out.println(player.getMoney());
-        Item doorFrame = new Item("DoorFrame", 10, new String[]{"Metal", "Beton"});
+
         Recycler recycler = new Recycler(materialMap);
-        recycler.valueCalculator(doorFrame);
+        
+        Beach beach = new Beach("Beach");
+        Forrest forrest = new Forrest("Forrest");
+        for(int i = 0; i < beach.getItemsInThisRoom().size(); i++){
+            System.out.println(beach.getItemsInThisRoom().get(i).getName());
+        }
+        for(int i = 0; i < forrest.getItemsInThisRoom().size(); i++){
+            System.out.println(forrest.getItemsInThisRoom().get(i).getName());
+        }
         
     }
     
