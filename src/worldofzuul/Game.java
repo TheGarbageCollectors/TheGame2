@@ -16,12 +16,13 @@ public class Game
         createRooms();
         makeMaterials();
         parser = new Parser();
-        Backpack backpack = new Backpack();
-        
+        Player player = new Player();
+        player.removeMoney(10);
+        System.out.println(player.getMoney());
         Item doorFrame = new Item("DoorFrame", 10, new String[]{"Metal", "Beton"});
         Recycler recycler = new Recycler(materialMap);
-        System.out.print(backpack.getinventoryListSize());
         recycler.valueCalculator(doorFrame);
+        
     }
     
     private void makeMaterials(){

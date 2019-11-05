@@ -12,10 +12,6 @@ package worldofzuul;
 public class UpgradeStation
 {
 
-    private String backpackUpgradeName = "Upgrade backpack to level";
-    private String recyclerUpgradeName;
-    private String recyclerSortingUpgradeName;
-    private String townUpgradeName;
     private int[] backpackUpgradePriceArray =
     {
         0, 10, 100
@@ -37,29 +33,9 @@ public class UpgradeStation
     {
     }
 
-    public void getBackpackUpgradeName()
+    public void buyUpgrade(Upgradeable obj, Player playerObj)
     {
-        backpackUpgradeName += ": " + backpack.getBackpackLevel;
-    }
-
-    public void getRecyclerUpgradeName()
-    {
-        recyclerUpgradeName += ": " + recycler.getRecyclerLevel;
-    }
-
-    public void getRecyclerSortingUpgradeName()
-    {
-        recyclerSortingUpgradeName += ": " + backpack.getAbilityToSortLevel;
-    }
-
-    public void getTownUpgradeName()
-    {
-        townUpgradeName += ": " + town.getTownLevel;
-    }
-
-    public void buyUpgrade(Upgradeable obj)
-    {
-        int upgradePrice;
+        int upgradePrice = 0;
         if (null != obj.getName())
         {
             switch (obj.getName())
@@ -67,28 +43,43 @@ public class UpgradeStation
                 case "Town":
                     if (obj.getLevel() < townUpgradePriceArray.length)
                     {
+
                         upgradePrice = townUpgradePriceArray[obj.getLevel()];
-                        obj.upgradeLevel();
+                        if (playerObj.enoughMoney(upgradePrice))
+                        {
+                            obj.upgradeLevel();
+                            playerObj.removeMoney(upgradePrice);
+                        }
+
                     }
                     break;
                 case "Recycler":
                     if (obj.getLevel() < recyclerUpgradeArray.length)
                     {
                         upgradePrice = recyclerUpgradeArray[obj.getLevel()];
-                        obj.upgradeLevel();
+                        if (playerObj.enoughMoney(upgradePrice))
+                        {
+                            obj.upgradeLevel();
+                            playerObj.removeMoney(upgradePrice);
+                        }
                     }
                     break;
                 case "Backpack":
                     if (obj.getLevel() < backpackUpgradePriceArray.length)
                     {
                         upgradePrice = backpackUpgradePriceArray[obj.getLevel()];
-                        obj.upgradeLevel();
+                        if (playerObj.enoughMoney(upgradePrice))
+                        {
+                            obj.upgradeLevel();
+                            playerObj.removeMoney(upgradePrice);
+                        }
                     }
                     break;
                 default:
                     break;
             }
         }
+        playerObj.removeMoney(upgradePrice);
         //Remove money from the player account here 
 
     }
