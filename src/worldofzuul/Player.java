@@ -14,13 +14,14 @@ import java.util.Scanner;
 public class Player
 {
 
-    private String name;
+    private final String name;
     private int money;
+    private Backpack backpack = new Backpack(); 
 
     Player()
     {
         this.money = 5;
-
+        
         this.name = namePlayer();
     }
 
@@ -64,6 +65,10 @@ public class Player
             return false;
         }
 
+    }
+    
+    public Backpack getBackpackObj (){
+        return this.backpack; 
     }
 
     public int removeMoney(int amount)

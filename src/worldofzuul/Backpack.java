@@ -13,7 +13,7 @@ class Backpack implements Upgradeable
 {
     private String name = "Backpack";
     private int level;
-    private ArrayList<Item> inventoryList = new ArrayList<Item>();
+    private ArrayList<Item> inventoryList = new ArrayList<>();
 
     public Backpack()
     {
@@ -35,6 +35,7 @@ class Backpack implements Upgradeable
     
     public void addItem(Item item){
         this.inventoryList.add(item);
+        System.out.println(" Added " + item.getName());
     }
     public void removeItem(Item item){
         this.inventoryList.remove(item);

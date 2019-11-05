@@ -16,7 +16,6 @@ public class Recycler extends Room implements Upgradeable
     private final String name;
     private final int baseValue = 1;
     private int level;
-    private int maxRecyclerLevel;
     private HashMap<String, Boolean> canSortMaterial = new HashMap<>();
     private HashMap<String, Integer> materialValues = new HashMap<>();
     private double[] recyclingProcent ={0.1, 0.3, 0.6, 1.0};
@@ -59,40 +58,35 @@ public class Recycler extends Room implements Upgradeable
     
     //Setting the level is used in the upgradestation class to change the level of the recycler
 
-    public void updateAbilityToSortLevel(String material)
-    {
-        // need to make it possible for the user to choice what material they want to sort. Then pass that material though here. 
-        this.canSortMaterial.replace(material, true);
-    }
 
-    public double materialValueAfterSort(String material)
+    private double materialValueAfterSort(String material)
     {
         //The statement looks up the value for the material thats passed in as the argument in the method.
         //The value in the hashmap will be true if the recycler is high enough level that it can sort the material
         //Else it will just use the basevalue
-        double tempMaterialValue = 0; 
+        int tempMaterialValue = 0; 
         if (this.canSortMaterial.get(material))
         {
-            tempMaterialValue = materialValues.get(material);
+            tempMaterialValue = this.materialValues.get(material);
         } else
         {
-            tempMaterialValue = baseValue;
+            tempMaterialValue = this.baseValue;
         }
         return tempMaterialValue;
     }
 
-    public void valueCalculator(Item item)
+    public int valueCalculator(Item item)
     {
-        double tempTotalValue = 0; 
+        int tempTotalValue = 0; 
         //Looping though all the materials in the item by getting the length of the array that holds the strings with materials
         //using the loop to call the method that returns the string based on the index you pass as argument
         for (int i = 0; i < item.getMaterialListLength(); i++)
         {
             tempTotalValue += materialValueAfterSort(item.getMaterial(i));
         }
-        tempTotalValue = tempTotalValue * recyclingProcent[level];
+        tempTotalValue = (int) (tempTotalValue * this.recyclingProcent[this.level]);
         //rememeber to remove the item from the inventorylist
-        System.out.print(tempTotalValue);
+        return tempTotalValue;
     }
 
 }
