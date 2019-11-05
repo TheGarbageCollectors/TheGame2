@@ -64,6 +64,7 @@ public class Recycler extends Room implements Upgradeable
         //The statement looks up the value for the material thats passed in as the argument in the method.
         //The value in the hashmap will be true if the recycler is high enough level that it can sort the material
         //Else it will just use the basevalue
+        System.out.println(material);
         int tempMaterialValue = 0; 
         if (this.canSortMaterial.get(material))
         {
@@ -72,6 +73,7 @@ public class Recycler extends Room implements Upgradeable
         {
             tempMaterialValue = this.baseValue;
         }
+        
         return tempMaterialValue;
     }
 
@@ -82,6 +84,7 @@ public class Recycler extends Room implements Upgradeable
         //using the loop to call the method that returns the string based on the index you pass as argument
         for (int i = 0; i < item.getMaterialListLength(); i++)
         {
+            System.out.println(item.getMaterial(i));
             tempTotalValue += materialValueAfterSort(item.getMaterial(i));
         }
         tempTotalValue = (int) (tempTotalValue * this.recyclingProcent[this.level]);

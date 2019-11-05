@@ -21,8 +21,8 @@ public class Game
 
     public Game()
     {
-        createRooms();
         makeMaterials();
+        createRooms();
         parser = new Parser();
 
     }
@@ -151,7 +151,7 @@ public class Game
             {
                 if (itemToBeRecycled.equals(itemsInBag.get(i).getName()))
                 {
-                    ((Recycler) currentRoom).valueCalculator(itemsInBag.get(i));
+                    System.out.println(((Recycler) currentRoom).valueCalculator(itemsInBag.get(i)));
                 }
             }
         }
