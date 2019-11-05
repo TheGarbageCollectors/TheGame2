@@ -139,7 +139,7 @@ public class GameItems
         }
     }
 
-    public ArrayList getLootList(String name)
+    public ArrayList<Item> getLootList(String name)
     {
         makeLootlists(name);
         return this.items;

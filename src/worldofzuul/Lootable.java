@@ -46,5 +46,10 @@ public class Lootable extends Room
     {
         return itemsInThisRoom;
     }
+
+    public String getName() {
+        return name;
+    }
+    
     
 }

@@ -3,42 +3,39 @@ package worldofzuul;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Game 
-{
+public class Game {
+
     private Parser parser;
     private Room currentRoom;
-    private final String[] materials = {"Paper", "Metal", "Beton", "Plastic"};   
-    private final int[] materialValues = {10, 20, 30, 40}; 
+    private final String[] materials = {"Paper", "Metal", "Beton", "Plastic"};
+    private final int[] materialValues = {10, 20, 30, 40};
     static public HashMap<String, Integer> materialMap = new HashMap<>();
 
-    public Game() 
-    {
+    public Game() {
         createRooms();
         makeMaterials();
         parser = new Parser();
-        
+
     }
-    
-    private void makeMaterials(){
+
+    private void makeMaterials() {
         materialMap.put("Paper", 10);
         materialMap.put("Beton", 20);
         materialMap.put("Metal", 30);
         materialMap.put("Plastic", 40);
     }
 
-
-    private void createRooms()
-    {
+    private void createRooms() {
         Room town, theatre, pub, lab, office;
 
-        Room abandonedVillage = new Lootable("outside the main entrance of the university", "Abandoned Village");
-        Room  upgradeStation = new UpgradeStation("in a lecture theatre", "Upgrade Station");
-        Room recycler = new Recycler("in the campus pub", "Recycler", materialMap);
-        Room Town = new Town("in a computing lab", "Town");
-        Room road = new Lootable("in the computing admin office", "Road");
-        Room beach = new Lootable("Yes","Beach");
-        Room forrest = new Lootable("This is a forrest", "Forrest");
-        
+        Room abandonedVillage = new Lootable("an abandoned villiage", "Abandoned Village");
+        Room upgradeStation = new UpgradeStation("an upgradestation", "Upgrade Station");
+        Room recycler = new Recycler("a recycler", "Recycler", materialMap);
+        Room Town = new Town("the lovely town", "Town");
+        Room road = new Lootable("a long road", "Road");
+        Room beach = new Lootable("a beach", "Beach");
+        Room forrest = new Lootable("lots of trees", "Forrest");
+
         Town.setExit("east", road);
         Town.setExit("south", beach);
         Town.setExit("west", upgradeStation);
@@ -56,21 +53,18 @@ public class Game
         currentRoom = Town;
     }
 
-    public void play() 
-    {            
+    public void play() {
         printWelcome();
 
-                
         boolean finished = false;
-        while (! finished) {
+        while (!finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
 
-    private void printWelcome()
-    {
+    private void printWelcome() {
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
@@ -79,31 +73,29 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command) 
-    {
+    private boolean processCommand(Command command) {
         boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
 
-        if(commandWord == CommandWord.UNKNOWN) {
+        if (commandWord == CommandWord.UNKNOWN) {
             System.out.println("I don't know what you mean...");
             return false;
         }
 
         if (commandWord == CommandWord.HELP) {
             printHelp();
-        }
-        else if (commandWord == CommandWord.GO) {
+        } else if (commandWord == CommandWord.GO) {
             goRoom(command);
-        }
-        else if (commandWord == CommandWord.QUIT) {
+        } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
+        } else if (commandWord == CommandWord.PICKUP) {
+            pickupItems(command);
         }
         return wantToQuit;
     }
 
-    private void printHelp() 
-    {
+    private void printHelp() {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.");
         System.out.println();
@@ -111,9 +103,8 @@ public class Game
         parser.showCommands();
     }
 
-    private void goRoom(Command command) 
-    {
-        if(!command.hasSecondWord()) {
+    private void goRoom(Command command) {
+        if (!command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
         }
@@ -124,20 +115,49 @@ public class Game
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
-        }
-        else {
+        } else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            if (nextRoom instanceof Lootable) {
+                System.out.print("You see ");
+                var items = ((Lootable) nextRoom).getLoot();
+                for (int i = 0; i < items.size(); i++) {
+                    System.out.print(items.get(i).getName());
+                    if ((i + 1) != items.size()) {
+                        System.out.print(", ");
+                    }
+                }
+            } else if (nextRoom instanceof Town) {
+                System.out.println("You have " + ((Town) nextRoom).getPopulationCount() + " slaves");
+            } else if (nextRoom instanceof UpgradeStation) {
+                System.out.println("You are in upgrade station");
+            } else if (nextRoom instanceof Recycler) {
+                System.out.print("You can recycle your stuff here");
+            }
+
         }
     }
 
-    private boolean quit(Command command) 
-    {
-        if(command.hasSecondWord()) {
+    private void pickupItems(Command command) {
+        if (command.hasSecondWord()) {
+            GameItems gameitems = new GameItems();
+            var items = gameitems.getLootList(((Lootable) currentRoom).getName());
+            for(int i = 0; i < items.size() ; i++){
+                if(items.get(i).getName().equals(command.getSecondWord())){
+                    System.out.print("You picked up " + items.get(i).getName());
+                }
+            }
+            
+        } else {
+            System.out.println("Pick up what?");
+        }
+    }
+
+    private boolean quit(Command command) {
+        if (command.hasSecondWord()) {
             System.out.println("Quit what?");
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }

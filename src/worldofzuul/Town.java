@@ -47,4 +47,9 @@ public class Town extends Room implements Upgradeable
         //Will get called in game so it makes money everytime the game loop. 
         return 0.1 * populationCount * level;
     }
+
+    public int getPopulationCount() {
+        return populationCount;
+    }
+    
 }
