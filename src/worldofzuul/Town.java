@@ -11,14 +11,16 @@ import java.util.HashMap;
  *
  * @author GamerQuvang
  */
-public class Town implements Upgradeable
+public class Town extends Room implements Upgradeable
 {
-    private String name = "Town";
+    private String name;
     private int populationCount; 
     private int level;
 
-    public Town()
+    public Town(String dir, String name)
     {
+        super(dir);
+        this.name = name;
         this.populationCount = 1;
         this.level = 0;
     }

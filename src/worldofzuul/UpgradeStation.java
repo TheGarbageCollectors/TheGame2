@@ -9,8 +9,9 @@ package worldofzuul;
  *
  * @author GamerQuvang
  */
-public class UpgradeStation
+public class UpgradeStation extends Room
 {
+    private String name;
 
     private int[] backpackUpgradePriceArray =
     {
@@ -29,8 +30,11 @@ public class UpgradeStation
         0, 30, 300
     };
 
-    public UpgradeStation()
+    public UpgradeStation(String dir, String name)
     {
+        super(dir);
+        this.name = name;
+        
     }
 
     public void buyUpgrade(Upgradeable obj, Player playerObj)

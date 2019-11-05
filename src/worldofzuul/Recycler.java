@@ -11,9 +11,9 @@ import java.util.HashMap;
  *
  * @author GamerQuvang
  */
-public class Recycler implements Upgradeable
+public class Recycler extends Room implements Upgradeable
 {
-    private final String name = "Recycler";
+    private final String name;
     private final int baseValue = 1;
     private int level;
     private int maxRecyclerLevel;
@@ -22,8 +22,10 @@ public class Recycler implements Upgradeable
     private double[] recyclingProcent ={0.1, 0.3, 0.6, 1.0};
 
     //construtor gets a hashmap over the games materials and a String array med samme. 
-    Recycler(HashMap<String, Integer> materialMap)
+    Recycler(String dir, String name, HashMap<String, Integer> materialMap)
     {
+        super(dir);
+        this.name = name;
         //Sets the level of the recylers 2 upgrades to 0 when first initilized
         this.level = 0;
         //assign the hashmap over the materials values to a variable in the recycler class

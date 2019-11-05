@@ -16,12 +16,6 @@ public class Game
         createRooms();
         makeMaterials();
         parser = new Parser();
-        Player player = new Player();
-        player.removeMoney(10);
-        System.out.println(player.getMoney());
-        Item doorFrame = new Item("DoorFrame", 10, new String[]{"Metal", "Beton"});
-        Recycler recycler = new Recycler(materialMap);
-        recycler.valueCalculator(doorFrame);
         
     }
     
@@ -35,28 +29,31 @@ public class Game
 
     private void createRooms()
     {
-        Room outside, theatre, pub, lab, office;
+        Room town, theatre, pub, lab, office;
 
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        Room abandonedVillage = new Lootable("outside the main entrance of the university", "Abandoned Village");
+        Room  upgradeStation = new UpgradeStation("in a lecture theatre", "Upgrade Station");
+        Room recycler = new Recycler("in the campus pub", "Recycler", materialMap);
+        Room Town = new Town("in a computing lab", "Town");
+        Room road = new Lootable("in the computing admin office", "Road");
+        Room beach = new Lootable("Yes","Beach");
+        Room forrest = new Lootable("This is a forrest", "Forrest");
         
-        outside.setExit("east", theatre);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
+        Town.setExit("east", road);
+        Town.setExit("south", beach);
+        Town.setExit("west", upgradeStation);
 
-        theatre.setExit("west", outside);
+        road.setExit("west", recycler);
+        road.setExit("East", forrest);
 
-        pub.setExit("east", outside);
+        recycler.setExit("east", road);
 
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
+        beach.setExit("north", Town);
+        upgradeStation.setExit("east", Town);
 
-        office.setExit("west", lab);
+        forrest.setExit("west", road);
 
-        currentRoom = outside;
+        currentRoom = Town;
     }
 
     public void play() 
