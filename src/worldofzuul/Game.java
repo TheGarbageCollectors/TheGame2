@@ -133,7 +133,9 @@ public class Game
             {
                 if (itemToBeRecycled.equals(itemsInBag.get(i).getName()))
                 {
-                    System.out.println(((Recycler) currentRoom).valueCalculator(itemsInBag.get(i)));
+                    var money = ((Recycler) currentRoom).valueCalculator(itemsInBag.get(i));
+                    System.out.println(money);
+                    player1.addMoney(money);
                 }
             }
         }
@@ -198,13 +200,16 @@ public class Game
                         System.out.print(", ");
                     }
                 }
-            } else if (nextRoom instanceof Town)
+            } 
+            else if (nextRoom instanceof Town)
             {
                 System.out.println("You have " + ((Town) nextRoom).getPopulationCount() + " slaves");
-            } else if (nextRoom instanceof UpgradeStation)
+            } 
+            else if (nextRoom instanceof UpgradeStation)
             {
                 ((UpgradeStation) upgradeStation).welcomeMessage(player1.getBackpackObj(), town, recycler);
-            } else if (nextRoom instanceof Recycler)
+            } 
+            else if (nextRoom instanceof Recycler)
             {
                 System.out.print("You can recycle your stuff here");
             }
