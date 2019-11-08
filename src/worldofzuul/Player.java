@@ -73,6 +73,8 @@ public class Player
 
     public int removeMoney(int amount)
     {
+        System.out.println("You bought something. " + amount + "removed from your balance." );
+        System.out.println("You now have " + (money - amount) + " left");
         return this.money -= amount;
     }
 
