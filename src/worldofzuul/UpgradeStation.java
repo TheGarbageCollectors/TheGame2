@@ -37,6 +37,16 @@ public class UpgradeStation extends Room
         this.name = name;
 
     }
+    public void welcomeMessage(Object backpack, Object town, Object recycler){
+                int backpackLevel = ((Upgradeable) backpack).getLevel();
+                int townLevel = ((Upgradeable) town).getLevel();
+                int recyclerLevel = ((Upgradeable) recycler).getLevel();
+                System.out.println("You are in upgrade station");
+                System.out.println("You can buy upgrades for Backpack, Town and Recycler");
+                System.out.println("Next upgrade for Backpack is: " + (backpackLevel + 1) + ". level that costs: " + backpackUpgradePriceArray[backpackLevel]);
+                System.out.println("Next upgrade for Town is: " + (townLevel + 1) + ". level that costs: " + townUpgradePriceArray[backpackLevel]);
+                System.out.println("Next upgrade for Recycler is: " + (recyclerLevel + 1)  + ". level that costs: " + recyclerUpgradeArray[backpackLevel]);
+    }
 
     public void buyUpgrade(Object obj, Player playerObj)
     {

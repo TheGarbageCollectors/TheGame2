@@ -203,7 +203,7 @@ public class Game
                 System.out.println("You have " + ((Town) nextRoom).getPopulationCount() + " slaves");
             } else if (nextRoom instanceof UpgradeStation)
             {
-                System.out.println("You are in upgrade station");
+                ((UpgradeStation) upgradeStation).welcomeMessage(player1.getBackpackObj(), town, recycler);
             } else if (nextRoom instanceof Recycler)
             {
                 System.out.print("You can recycle your stuff here");
