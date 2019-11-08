@@ -82,4 +82,9 @@ public class Player
     {
         return this.money;
     }
+    public void addMoney(int amount){
+        System.out.println("You got money. " + amount + " added to your balance" );
+        System.out.println("You now have " + (money + amount) + " on your balance");
+        this.money += amount;
+    }
 }
