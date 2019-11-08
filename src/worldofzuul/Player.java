@@ -20,7 +20,7 @@ public class Player
 
     Player()
     {
-        this.money = 5;
+        this.money = 500;
         
         this.name = namePlayer();
     }
@@ -38,19 +38,19 @@ public class Player
             inputName = scan.nextLine();
 
             //output
-            System.out.println("So your name is: " + inputName + "? Yes or No");
+            System.out.println("So your name is: " + inputName + "? yes or no");
 
             //confirmeing name
             checkName = scan.nextLine();
 
-            if (checkName.equals("Yes"))
+            if (checkName.equals("yes"))
             {
                 System.out.println("Okay nice to meet you " + inputName);
                 return name;
             }
-        } while (checkName.equals("No"));
+        } while (checkName.equals("no"));
 
-        return "Player1";
+        return name;
 
     }
 

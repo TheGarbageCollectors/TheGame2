@@ -22,7 +22,7 @@ public class Town extends Room implements Upgradeable
         super(dir);
         this.name = name;
         this.populationCount = 1;
-        this.level = 0;
+        this.level = 1;
     }
     
     @Override
@@ -36,6 +36,7 @@ public class Town extends Room implements Upgradeable
     }
     @Override
     public void upgradeLevel(){
+        System.out.println("You are in upgradelevel method");
         this.level++;
     }
     

@@ -10,15 +10,31 @@ package worldofzuul;
  * @author GamerQuvang
  */
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GameItems
 {
 
     private ArrayList<Item> items = new ArrayList<>();
-
+    static private HashMap<String, Integer> materialMap = new HashMap<>();
+    private final String[] materials =
+    {
+        "Paper", "Metal", "Beton", "Plastic"
+    };
+    
     public GameItems()
     {
+        materialMap.put("Paper", 10);
+        materialMap.put("Beton", 20);
+        materialMap.put("Metal", 30);
+        materialMap.put("Plastic", 40);
     }
+
+    public static HashMap<String, Integer> getMaterialMap()
+    {
+        return materialMap;
+    }
+    
 
     private void makeLootlists(String name)
     {
@@ -31,7 +47,7 @@ public class GameItems
         });
         Item cardBoard = new Item("Box", new String[]
         {
-            "Cardboard"
+            "Paper"
         });
         Item battery = new Item("Battery", new String[]
         {
@@ -63,7 +79,7 @@ public class GameItems
                 });
                 Item trashbag = new Item("Trash", new String[]
                 {
-                    "Paper", "Plastic", "Metal", "Rubber"
+                    "Paper", "Plastic", "Metal"
                 });
                 Item Chipsbag = new Item("Bag", new String[]
                 {
@@ -84,7 +100,7 @@ public class GameItems
                 });
                 Item juicecarton = new Item("Carton", new String[]
                 {
-                    "Cardboard"
+                    "Paper"
                 });
                 Item Gumpaper = new Item("GumPaper", new String[]
                 {

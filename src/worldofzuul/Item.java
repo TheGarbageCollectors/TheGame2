@@ -33,5 +33,10 @@ public class Item
     public int getMaterialListLength(){
         return this.materialList.length;
     }
+
+    public String[] getMaterialList()
+    {
+        return materialList;
+    }
     
 }

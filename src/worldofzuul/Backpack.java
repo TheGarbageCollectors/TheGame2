@@ -17,7 +17,7 @@ class Backpack implements Upgradeable
 
     public Backpack()
     {
-        
+        this.level = 1;
     }
     @Override
     public int getLevel()
@@ -30,6 +30,7 @@ class Backpack implements Upgradeable
     }
     @Override
     public void upgradeLevel(){
+ 
         this.level++;
     }
     

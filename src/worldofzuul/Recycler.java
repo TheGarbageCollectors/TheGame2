@@ -21,19 +21,19 @@ public class Recycler extends Room implements Upgradeable
     private double[] recyclingProcent ={0.1, 0.3, 0.6, 1.0};
 
     //construtor gets a hashmap over the games materials and a String array med samme. 
-    Recycler(String dir, String name, HashMap<String, Integer> materialMap)
+    Recycler(String dir, String name)
     {
         super(dir);
         this.name = name;
         //Sets the level of the recylers 2 upgrades to 0 when first initilized
-        this.level = 0;
+        this.level = 1;
         //assign the hashmap over the materials values to a variable in the recycler class
-        this.materialValues = materialMap;
+        this.materialValues = GameItems.getMaterialMap();
         
-        Object[] tempString = materialMap.keySet().toArray();
+        Object[] tempString = materialValues.keySet().toArray();
         
         //Loops though the game materials and set the the sorting ability to false, because we cant sort anything yet
-        for (int i = 0; i < materialMap.size(); i++)
+        for (int i = 0; i < materialValues.size(); i++)
         {
             this.canSortMaterial.put((String)tempString[i], false);
         }
@@ -64,8 +64,7 @@ public class Recycler extends Room implements Upgradeable
         //The statement looks up the value for the material thats passed in as the argument in the method.
         //The value in the hashmap will be true if the recycler is high enough level that it can sort the material
         //Else it will just use the basevalue
-        System.out.println(material);
-        int tempMaterialValue = 0; 
+        int tempMaterialValue; 
         if (this.canSortMaterial.get(material))
         {
             tempMaterialValue = this.materialValues.get(material);
@@ -80,12 +79,12 @@ public class Recycler extends Room implements Upgradeable
     public int valueCalculator(Item item)
     {
         int tempTotalValue = 0; 
+        String[] tempStringArray = item.getMaterialList();
         //Looping though all the materials in the item by getting the length of the array that holds the strings with materials
         //using the loop to call the method that returns the string based on the index you pass as argument
-        for (int i = 0; i < item.getMaterialListLength(); i++)
+        for (int i = 0; i < tempStringArray.length ; i++)
         {
-            System.out.println(item.getMaterial(i));
-            tempTotalValue += materialValueAfterSort(item.getMaterial(i));
+            tempTotalValue += materialValueAfterSort(tempStringArray[i]);
         }
         tempTotalValue = (int) (tempTotalValue * this.recyclingProcent[this.level]);
         //rememeber to remove the item from the inventorylist

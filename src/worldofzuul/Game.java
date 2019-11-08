@@ -7,60 +7,48 @@ public class Game
 {
 
     private Parser parser;
-    private Room currentRoom;
-    private final String[] materials =
-    {
-        "Paper", "Metal", "Beton", "Plastic"
-    };
-    private final int[] materialValues =
-    {
-        10, 20, 30, 40
-    };
-    static public HashMap<String, Integer> materialMap = new HashMap<>();
+    private Room currentRoom, town, recycler, upgradeStation;
+
     private Player player1 = new Player();
 
     public Game()
     {
-        makeMaterials();
         createRooms();
         parser = new Parser();
 
     }
 
-    private void makeMaterials()
-    {
-        materialMap.put("Paper", 10);
-        materialMap.put("Beton", 20);
-        materialMap.put("Metal", 30);
-        materialMap.put("Plastic", 40);
-    }
-
     private void createRooms()
     {
-
         Room abandonedVillage = new Lootable("an abandoned villiage", "Abandoned Village");
-        Room upgradeStation = new UpgradeStation("an upgradestation", "Upgrade Station");
-        Room recycler = new Recycler("a recycler", "Recycler", materialMap);
-        Room Town = new Town("the lovely town", "Town");
         Room road = new Lootable("a long road", "Road");
         Room beach = new Lootable("a beach", "Beach");
         Room forrest = new Lootable("lots of trees", "Forrest");
+        
+        recycler = new Recycler("a recycler", "Recycler");
+        town = new Town("the lovely town", "Town");
+        upgradeStation = new UpgradeStation("an upgradestation", "Upgrade Station");
 
-        Town.setExit("east", road);
-        Town.setExit("south", beach);
-        Town.setExit("west", upgradeStation);
+        town.setExit("road", road);
+        town.setExit("recycler", recycler);
+        town.setExit("upgradestation", upgradeStation);
 
-        road.setExit("west", recycler);
-        road.setExit("East", forrest);
+        road.setExit("beach", beach);
+        road.setExit("forrest", forrest);
+        road.setExit("abandonedVillage", abandonedVillage);
+        road.setExit("town", town);
 
-        recycler.setExit("east", road);
+        recycler.setExit("town", town);
 
-        beach.setExit("north", Town);
-        upgradeStation.setExit("east", Town);
+        beach.setExit("road", road);
 
-        forrest.setExit("west", road);
+        upgradeStation.setExit("town", town);
 
-        currentRoom = Town;
+        forrest.setExit("road", road);
+
+        road.setExit("road", road);
+
+        currentRoom = town;
     }
 
     public void play()
@@ -112,7 +100,7 @@ public class Game
             pickupItems(command);
         } else if (commandWord == CommandWord.UPGRADE)
         {
-            upgrade(command);
+            upgradeItems(command);
         } else if (commandWord == CommandWord.RECYCLE)
         {
             recycleItems(command);
@@ -130,12 +118,6 @@ public class Game
         parser.showCommands();
 
     }
-
-    private void upgrade(Command command)
-    {
-
-    }
-
     private void recycleItems(Command command)
     {
         if (!command.hasSecondWord())
@@ -154,6 +136,33 @@ public class Game
                     System.out.println(((Recycler) currentRoom).valueCalculator(itemsInBag.get(i)));
                 }
             }
+        }
+
+    }
+
+    private void upgradeItems(Command command)
+    {
+        if (!command.hasSecondWord())
+        {
+            System.out.println("Upgrade what?");
+            return;
+        }
+        if (currentRoom instanceof UpgradeStation)
+        {
+            String thingToUpgrade = command.getSecondWord();
+            switch (thingToUpgrade)
+            {
+                case "town":
+                    ((UpgradeStation)upgradeStation).buyUpgrade(town, player1);
+                    break;
+                case "recycler":
+                    ((UpgradeStation)upgradeStation).buyUpgrade(recycler, player1);
+                    break;
+                case "backpack":
+                    ((UpgradeStation)upgradeStation).buyUpgrade(player1.getBackpackObj(), player1);
+                    break;
+            }
+            System.out.println(((Upgradeable)town).getLevel());
         }
 
     }
