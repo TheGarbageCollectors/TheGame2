@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 
-public class Room 
+public class Room
 {
     private String description;
     private HashMap<String, Room> exits;
@@ -44,6 +44,8 @@ public class Room
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    
     }
+
 }
 

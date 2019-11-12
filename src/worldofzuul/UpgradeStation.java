@@ -9,13 +9,11 @@ package worldofzuul;
  *
  * @author GamerQuvang
  */
-public class UpgradeStation
+public class UpgradeStation extends Room
 {
 
-    private String backpackUpgradeName = "Upgrade backpack to level";
-    private String recyclerUpgradeName;
-    private String recyclerSortingUpgradeName;
-    private String townUpgradeName;
+    private String name;
+
     private int[] backpackUpgradePriceArray =
     {
         0, 10, 100
@@ -33,62 +31,85 @@ public class UpgradeStation
         0, 30, 300
     };
 
-    public UpgradeStation()
+    public UpgradeStation(String dir, String name)
     {
+        super(dir);
+        this.name = name;
+
+    }
+    public void welcomeMessage(Object backpack, Object town, Object recycler){
+                int backpackLevel = ((Upgradeable) backpack).getLevel();
+                int townLevel = ((Upgradeable) town).getLevel();
+                int recyclerLevel = ((Upgradeable) recycler).getLevel();
+                System.out.println("You are in upgrade station");
+                System.out.println("You can buy upgrades for Backpack, Town and Recycler");
+                System.out.println("Next upgrade for Backpack is: " + (backpackLevel + 1) + ". level that costs: " + backpackUpgradePriceArray[backpackLevel]);
+                System.out.println("Next upgrade for Town is: " + (townLevel + 1) + ". level that costs: " + townUpgradePriceArray[backpackLevel]);
+                System.out.println("Next upgrade for Recycler is: " + (recyclerLevel + 1)  + ". level that costs: " + recyclerUpgradeArray[backpackLevel]);
     }
 
-    public void getBackpackUpgradeName()
+    public void buyUpgrade(Object obj, Player playerObj)
     {
-        backpackUpgradeName += ": " + inventory.getBackpackLevel;
-    }
-
-    public void getRecyclerUpgradeName()
-    {
-        recyclerUpgradeName += ": " + recycler.getRecyclerLevel;
-    }
-
-    public void getRecyclerSortingUpgradeName()
-    {
-        recyclerSortingUpgradeName += ": " + inventory.getAbilityToSortLevel;
-    }
-
-    public void getTownUpgradeName()
-    {
-        townUpgradeName += ": " + town.getTownLevel;
-    }
-
-    public void buyUpgrade(Upgradeable obj)
-    {
-        int upgradePrice;
-        if (null != obj.getName())
+        int upgradePrice = 0;
+        if (!(obj instanceof Upgradeable))
         {
-            switch (obj.getName())
+            return;
+        }
+        //Der er m[ske en bedre m[de at g're det p[. Jeg t;nker at vi evt kan bruge en array i en array og s[ et nested for loop for at tjekke hvad der bliver upgraderet.
+        // hvis det er 0 der bliver upgraderet s[ tilg[r den arrayet p[ index 0. 
+        if (null != ((Upgradeable) obj).getName())
+        {
+            switch (((Upgradeable) obj).getName())
             {
-                case "Town":
-                    if (obj.getLevel() < townUpgradePriceArray.length)
+                case "Town Hall":
+                    if (((Upgradeable) obj).getLevel() < townUpgradePriceArray.length)
                     {
-                        upgradePrice = townUpgradePriceArray[obj.getLevel()];
-                        obj.upgradeLevel();
+
+                        upgradePrice = townUpgradePriceArray[((Upgradeable) obj).getLevel()];
+                        if (playerObj.enoughMoney(upgradePrice))
+                        {
+                            ((Upgradeable) obj).upgradeLevel();
+                            playerObj.removeMoney(upgradePrice);
+                        } else
+                        {
+                            System.out.println("You do not have enough money for this upgrade");
+                        }
+
                     }
                     break;
                 case "Recycler":
-                    if (obj.getLevel() < recyclerUpgradeArray.length)
+                    if (((Upgradeable) obj).getLevel() < recyclerUpgradeArray.length)
                     {
-                        upgradePrice = recyclerUpgradeArray[obj.getLevel()];
-                        obj.upgradeLevel();
+                        upgradePrice = recyclerUpgradeArray[((Upgradeable) obj).getLevel()];
+                        if (playerObj.enoughMoney(upgradePrice))
+                        {
+                            ((Upgradeable) obj).upgradeLevel();
+                            playerObj.removeMoney(upgradePrice);
+                        } else
+                        {
+                            System.out.println("You do not have enough money for this upgrade");
+                        }
                     }
                     break;
                 case "Backpack":
-                    if (obj.getLevel() < backpackUpgradePriceArray.length)
+                    if (((Upgradeable) obj).getLevel() < backpackUpgradePriceArray.length)
                     {
-                        upgradePrice = backpackUpgradePriceArray[obj.getLevel()];
-                        obj.upgradeLevel();
+                        upgradePrice = backpackUpgradePriceArray[((Upgradeable) obj).getLevel()];
+                        if (playerObj.enoughMoney(upgradePrice))
+                        {
+                            ((Upgradeable) obj).upgradeLevel();
+                            playerObj.removeMoney(upgradePrice);
+                        } else
+                        {
+                            System.out.println("You do not have enough money for this upgrade");
+                        }
                     }
                     break;
                 default:
                     break;
             }
         }
+        //playerObj.removeMoney(upgradePrice);
         //Remove money from the player account here 
 
     }

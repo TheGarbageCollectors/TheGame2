@@ -11,16 +11,18 @@ import java.util.HashMap;
  *
  * @author GamerQuvang
  */
-public class Town implements Upgradeable
+public class Town extends Room implements Upgradeable
 {
-    private String name = "Town";
+    private String name;
     private int populationCount; 
     private int level;
 
-    public Town()
+    public Town(String dir, String name)
     {
+        super(dir);
+        this.name = name;
         this.populationCount = 1;
-        this.level = 0;
+        this.level = 1;
     }
     
     @Override
@@ -34,6 +36,7 @@ public class Town implements Upgradeable
     }
     @Override
     public void upgradeLevel(){
+        System.out.println("You are in upgradelevel method");
         this.level++;
     }
     
@@ -45,4 +48,9 @@ public class Town implements Upgradeable
         //Will get called in game so it makes money everytime the game loop. 
         return 0.1 * populationCount * level;
     }
+
+    public int getPopulationCount() {
+        return populationCount;
+    }
+    
 }
