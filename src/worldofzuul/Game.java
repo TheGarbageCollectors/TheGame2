@@ -29,24 +29,24 @@ public class Game
         town = new Town("by the Town Hall", "Town Hall");
         upgradeStation = new UpgradeStation("an upgradestation", "Upgrade Station");
 
-        town.setExit("road", road);
-        town.setExit("recycler", recycler);
-        town.setExit("upgradestation", upgradeStation);
+        town.setExit("Road", road);
+        town.setExit("Recycler", recycler);
+        town.setExit("Upgradestation", upgradeStation);
 
-        road.setExit("beach", beach);
-        road.setExit("forrest", forrest);
-        road.setExit("abandonedVillage", abandonedVillage);
-        road.setExit("town", town);
+        road.setExit("Beach", beach);
+        road.setExit("Forrest", forrest);
+        road.setExit("Abandoned_Village", abandonedVillage);
+        road.setExit("Town_Hall", town);
 
-        recycler.setExit("town", town);
+        recycler.setExit("Town", town);
 
-        beach.setExit("road", road);
+        beach.setExit("Road", road);
 
-        upgradeStation.setExit("town", town);
+        upgradeStation.setExit("Town Hall", town);
 
-        forrest.setExit("road", road);
+        forrest.setExit("Road", road);
 
-        abandonedVillage.setExit("road", road);
+        abandonedVillage.setExit("Road", road);
         //road.setExit("road", road);
 
         currentRoom = town;
@@ -108,6 +108,10 @@ public class Game
         } else if (commandWord == CommandWord.RECYCLE)
         {
             recycleItems(command);
+        }
+        else if (commandWord == CommandWord.INVENTORY)
+        {
+            openInventory(command);
         }
 
         return wantToQuit;
@@ -243,6 +247,18 @@ public class Game
         {
             System.out.println("Pick up what?");
         }
+    }
+    
+    private void openInventory(Command command) {
+        ArrayList<Item> temp = player1.getBackpackObj().getItemsInBackpack();
+        System.out.print("Your inventory contains: ");
+        for (int i = 0; i < temp.size() ; i++) {
+            System.out.print(temp.get(i).getName());
+            if (i+1 != temp.size()) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("");
     }
 
     private boolean quit(Command command)
