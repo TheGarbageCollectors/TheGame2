@@ -14,22 +14,22 @@ import java.util.Scanner;
 public class Player
 {
 
-    private final String name;
+    private String name;
     private int money;
     private Backpack backpack = new Backpack(); 
 
     Player()
     {
         this.money = 500;
-        
-        this.name = namePlayer();
+        namePlayer();
     }
 
-    private String namePlayer()
+    private void namePlayer()
     {
         String inputName;
         String checkName;
         Scanner scan = new Scanner(System.in);
+        
         do
         {
             System.out.println("What is your name?");
@@ -43,17 +43,15 @@ public class Player
             
             System.out.print("> ");
             //confirmeing name
-            checkName = scan.nextLine();
+            checkName = scan.nextLine().toLowerCase();
 
             if (checkName.equals("yes"))
             {
                 System.out.println("Okay nice to meet you " + inputName);
-                return name;
+                this.name = inputName;
+                return;
             }
-        } while (checkName.equals("no"));
-
-        return name;
-
+        } while (name == null);
     }
 
     public boolean enoughMoney(int amount)
