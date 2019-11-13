@@ -113,15 +113,15 @@ public class GameItems
                 break;
             case "Forrest":
                 //makes Items specific for this class
-                Item bicycle = new Item("rusty bicycle", new String[]
+                Item bicycle = new Item("Bicycle", new String[]
                 {
                     "Metal", "Plastic"
                 });
-                Item toiletpaper = new Item("toiletpaper", new String[]
+                Item toiletpaper = new Item("Toiletpaper", new String[]
                 {
                     "Paper"
                 });
-                Item lighter = new Item("lighter", new String[]
+                Item lighter = new Item("Lighter", new String[]
                 {
                     "Metal", "Plastic"
                 });
