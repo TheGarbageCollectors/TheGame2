@@ -111,24 +111,189 @@ public class Game {
 
     }
 
-    private void recycleItems(Command command) {
+   private void recycleItems(Command command) {
         if (!command.hasSecondWord()) {
             System.out.println("Recycle what?");
             return;
         }
         if (currentRoom instanceof Recycler) {
+            int recyclerLevel = ((Upgradeable) recycler).getLevel();
+            Scanner reader = new Scanner(System.in);
             String itemToBeRecycled = command.getSecondWord();
-            var itemsInBag = player1.getBackpackObj().getItemsInBackpack();
-            for (int i = 0; i < itemsInBag.size(); i++) {
-                if (itemToBeRecycled.equals(itemsInBag.get(i).getName())) {
-                    var money = ((Recycler) currentRoom).valueCalculator(itemsInBag.get(i));
-                    player1.addMoney(money);
-                }
+            System.out.print("How do you wish to recycle your item? ");
+            switch (recyclerLevel) {
+                case 1: 
+                    System.out.println("Metal, Plastic, Trash");
+                    break;
+                case 2:
+                    System.out.println("Metal, Plastic, Trash, Paper, Concrete");
+                    break;
+                case 3:
+                    System.out.println("Metal, Plastic, Trash, Paper, Concrete, Battery, Hazardous");
+                    break;
             }
-        }else{
-            System.out.println("You are not at a recycler");
-            }
-
+                    String input = reader.nextLine();
+                    if (input.equals("Metal")) {
+                        switch (itemToBeRecycled) {
+                            case "Can":
+                            case "Wheel":
+                            case "Bicycle":
+                            case "Pipes":
+                            case "Door":
+                                 for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
+                                
+                                if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
+                                    {
+                                        var money = ((Recycler) currentRoom).valueCalculator(player1.getBackpackObj().getItemsInBackpack().get(i));
+                                        player1.addMoney(money);
+                                        
+                                    }
+                                 }
+                                removeItemWhenRecycled(command);
+                                System.out.println("This item does belong here points awarded (:");
+                                break;
+                            default:
+                                removeItemWhenRecycled(command);
+                                //Method for removing recycler HP
+                                System.out.println("This item doesn't belong here, it has been wasted");
+                                break;
+                        } 
+                    } else if (input.equals("Plastic")) {
+                                switch (itemToBeRecycled) {
+                            case "Bottle":
+                            case "Straw":
+                            case "Bag":
+                            case "Beachball":
+                            case "Gumpaper":
+                                 for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
+                                
+                                if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
+                                    {
+                                        var money = ((Recycler) currentRoom).valueCalculator(player1.getBackpackObj().getItemsInBackpack().get(i));
+                                        player1.addMoney(money);
+                                        
+                                    }
+                                 }
+                                removeItemWhenRecycled(command);
+                                System.out.println("This item does belong here points awarded (:");
+                                break;
+                            default:
+                                removeItemWhenRecycled(command);
+                                //Method for removing recycler HP
+                                System.out.println("This item doesn't belong here, it has been wasted");
+                                break;
+                        } 
+                    } else if (input.equals("Garbage")) {
+                                switch (itemToBeRecycled) {
+                            case "Trash":
+                                 for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
+                                
+                                if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
+                                    {
+                                        var money = ((Recycler) currentRoom).valueCalculator(player1.getBackpackObj().getItemsInBackpack().get(i));
+                                        player1.addMoney(money);
+                                        
+                                    }
+                                 }
+                                removeItemWhenRecycled(command);
+                                System.out.println("This item does belong here points awarded (:");
+                                break;
+                            default:
+                                removeItemWhenRecycled(command);
+                                //Method for removing recycler HP
+                                System.out.println("This item doesn't belong here, it has been wasted");
+                                break;
+                        } 
+                    } else if (input.equals("Paper") && recyclerLevel > 1) {
+                                switch (itemToBeRecycled) {
+                            case "Box":
+                            case "Carton":
+                            case "Toiletpaper":
+                                 for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
+                                
+                                if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
+                                    {
+                                        var money = ((Recycler) currentRoom).valueCalculator(player1.getBackpackObj().getItemsInBackpack().get(i));
+                                        player1.addMoney(money);
+                                        
+                                    }
+                                 }
+                                removeItemWhenRecycled(command);
+                                System.out.println("This item does belong here points awarded (:");
+                                break;
+                            default:
+                                removeItemWhenRecycled(command);
+                                //Method for removing recycler HP
+                                System.out.println("This item doesn't belong here, it has been wasted");
+                                break;
+                        } 
+                    } else if (input.equals("Concrete") && recyclerLevel > 1) {
+                                switch (itemToBeRecycled) {
+                            case "Bricks":
+                                 for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
+                                
+                                if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
+                                    {
+                                        var money = ((Recycler) currentRoom).valueCalculator(player1.getBackpackObj().getItemsInBackpack().get(i));
+                                        player1.addMoney(money);
+                                        
+                                    }
+                                 }
+                                removeItemWhenRecycled(command);
+                                System.out.println("This item does belong here points awarded (:");
+                                break;
+                            default:
+                                removeItemWhenRecycled(command);
+                                //Method for removing recycler HP
+                                System.out.println("This item doesn't belong here, it has been wasted");
+                                break;
+                        } 
+                    } else if (input.equals("Battery") && recyclerLevel > 2) {
+                                switch (itemToBeRecycled) {
+                            case "Battery":
+                                 for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
+                                
+                                if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
+                                    {
+                                        var money = ((Recycler) currentRoom).valueCalculator(player1.getBackpackObj().getItemsInBackpack().get(i));
+                                        player1.addMoney(money);
+                                        
+                                    }
+                                 }
+                                removeItemWhenRecycled(command);
+                                System.out.println("This item does belong here points awarded (:");
+                                break;
+                            default:
+                                removeItemWhenRecycled(command);
+                                //Method for removing recycler HP
+                                System.out.println("This item doesn't belong here, it has been wasted");
+                                break;
+                        } 
+                    } else if (input.equals("Hazardous") && recyclerLevel > 2) {
+                                switch (itemToBeRecycled) {
+                            case "Lighter":
+                                 for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
+                                
+                                if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
+                                    {
+                                        var money = ((Recycler) currentRoom).valueCalculator(player1.getBackpackObj().getItemsInBackpack().get(i));
+                                        player1.addMoney(money);
+                                        
+                                    }
+                                 }
+                                removeItemWhenRecycled(command);
+                                System.out.println("This item does belong here points awarded (:");
+                                break;
+                            default:
+                                removeItemWhenRecycled(command);
+                                //Method for removing recycler HP
+                                System.out.println("This item doesn't belong here, it has been wasted");
+                                break;
+                        } 
+                    } else {
+                        System.out.println("This container does not exist. ");
+                    }
+        }
     }
 
     private void upgradeItems(Command command) {
@@ -236,5 +401,31 @@ public class Game {
         } else {
             return true;
         }
+    }
+    
+    public void removeItemWhenRecycled(Command command) 
+    {
+        ArrayList<Item> temp = player1.getBackpackObj().getItemsInBackpack();
+        for( Item e : temp) 
+        {
+            System.out.print(e.getName() + " ");
+        }
+                                
+        
+        for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
+            
+            if (player1.getBackpackObj().getItemsInBackpack().get(i).getName().equals(command.getSecondWord())) {
+                player1.getBackpackObj().removeItem(player1.getBackpackObj().getItemsInBackpack().get(i));
+                i = player1.getBackpackObj().getItemsInBackpack().size()+1;
+            } else {
+                System.out.println("This item is not in your backpack");
+            }
+        }
+        System.out.println();
+        for( Item e : temp) 
+        {
+            System.out.print(e.getName() + " ");
+        }
+        System.out.println(" ");
     }
 }
