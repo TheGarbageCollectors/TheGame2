@@ -44,7 +44,7 @@ public class UpgradeStation extends Room
                 System.out.println("You are in upgrade station");
                 System.out.println("You can buy upgrades for Backpack, Town and Recycler");
                 System.out.println("Next upgrade for Backpack is: " + (backpackLevel + 1) + ". level that costs: " + backpackUpgradePriceArray[backpackLevel]);
-                System.out.println("Next upgrade for Town is: " + (townLevel + 1) + ". level that costs: " + townUpgradePriceArray[backpackLevel]);
+                System.out.println("Next upgrade for Town_Hall is: " + (townLevel + 1) + ". level that costs: " + townUpgradePriceArray[backpackLevel]);
                 System.out.println("Next upgrade for Recycler is: " + (recyclerLevel + 1)  + ". level that costs: " + recyclerUpgradeArray[backpackLevel]);
     }
 
@@ -61,7 +61,7 @@ public class UpgradeStation extends Room
         {
             switch (((Upgradeable) obj).getName())
             {
-                case "Town Hall":
+                case "town_hall":
                     if (((Upgradeable) obj).getLevel() < townUpgradePriceArray.length)
                     {
 
@@ -77,7 +77,7 @@ public class UpgradeStation extends Room
 
                     }
                     break;
-                case "Recycler":
+                case "recycler":
                     if (((Upgradeable) obj).getLevel() < recyclerUpgradeArray.length)
                     {
                         upgradePrice = recyclerUpgradeArray[((Upgradeable) obj).getLevel()];
@@ -91,7 +91,7 @@ public class UpgradeStation extends Room
                         }
                     }
                     break;
-                case "Backpack":
+                case "backpack":
                     if (((Upgradeable) obj).getLevel() < backpackUpgradePriceArray.length)
                     {
                         upgradePrice = backpackUpgradePriceArray[((Upgradeable) obj).getLevel()];
@@ -106,7 +106,7 @@ public class UpgradeStation extends Room
                     }
                     break;
                 default:
-                    System.out.println("No noooooooo");
+                    System.out.println("Invalid: Error");
                     break;
             }
         }
