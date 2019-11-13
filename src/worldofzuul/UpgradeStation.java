@@ -53,7 +53,7 @@ public class UpgradeStation extends Room
         int upgradePrice = 0;
         if (!(obj instanceof Upgradeable))
         {
-            return;
+            System.out.println("No");
         }
         //Der er m[ske en bedre m[de at g're det p[. Jeg t;nker at vi evt kan bruge en array i en array og s[ et nested for loop for at tjekke hvad der bliver upgraderet.
         // hvis det er 0 der bliver upgraderet s[ tilg[r den arrayet p[ index 0. 
@@ -106,6 +106,7 @@ public class UpgradeStation extends Room
                     }
                     break;
                 default:
+                    System.out.println("No noooooooo");
                     break;
             }
         }
