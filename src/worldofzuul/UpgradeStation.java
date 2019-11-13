@@ -28,7 +28,7 @@ public class UpgradeStation extends Room
     };
     private int[] townUpgradePriceArray =
     {
-        0, 30, 300
+        0, 30, 100, 200, 300, 400, 500, 750, 1000, 1000000
     };
 
     public UpgradeStation(String dir, String name)
