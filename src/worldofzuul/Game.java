@@ -7,6 +7,7 @@ public class Game {
 
     private Parser parser;
     private Room currentRoom, town, recycler, upgradeStation;
+    private ArrayList<Item> itemsInRoom; 
 
     private Player player1 = new Player();
 
@@ -124,7 +125,9 @@ public class Game {
                     player1.addMoney(money);
                 }
             }
-        }
+        }else{
+            System.out.println("You are not at a recycler");
+            }
 
     }
 
@@ -150,7 +153,9 @@ public class Game {
                     break;
             }
 
-        }
+        }else{
+            System.out.println("You are not at upgrade station");
+            }
 
     }
 
@@ -171,10 +176,10 @@ public class Game {
             System.out.println(currentRoom.getLongDescription());
             if (nextRoom instanceof Lootable) {
                 System.out.print("You see ");
-                var items = ((Lootable) nextRoom).getLoot();
-                for (int i = 0; i < items.size(); i++) {
-                    System.out.print(items.get(i).getName());
-                    if ((i + 1) != items.size()) {
+                this.itemsInRoom = ((Lootable) nextRoom).getLoot();
+                for (int i = 0; i < this.itemsInRoom.size(); i++) {
+                    System.out.print(this.itemsInRoom.get(i).getName());
+                    if ((i + 1) != this.itemsInRoom.size()) {
                         System.out.print(", ");
                     }
                 }
@@ -194,10 +199,10 @@ public class Game {
         if (command.hasSecondWord()) {
             if (currentRoom instanceof Lootable) {
                 GameItems gameitems = new GameItems();
-                var items = gameitems.getLootList(((Lootable) currentRoom).getName());
-                for (int i = 0; i < items.size(); i++) {
+                this.itemsInRoom = gameitems.getLootList(((Lootable) currentRoom).getName());
+                for (int i = 0; i < this.itemsInRoom.size(); i++) {
                     //System.out.print(items.get(i).getName().equals(command.getSecondWord()));
-                    if (items.get(i).getName().equals(command.getSecondWord())) {
+                    if (this.itemsInRoom.get(i).getName().equals(command.getSecondWord())) {
                         player1.getBackpackObj().addItem(items.get(i));
                     }
                 }
