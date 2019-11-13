@@ -319,7 +319,7 @@ public class Game {
                 case "town_hall":
                     ((UpgradeStation) upgradeStation).buyUpgrade(town, player1);
                     System.out.println("Town Hall level is now: " + ((Upgradeable) town).getLevel());
-                    town.increaseHappiness(25);
+                    town.increaseHappiness((town.getLevel() * 10) - town.getHappiness());
                     System.out.println("Your town's happiness is now: " + town.getHappiness());
                     break;
                 case "recycler":
