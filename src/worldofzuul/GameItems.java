@@ -92,7 +92,6 @@ public class GameItems
                 items.add(Chipsbag);
                 break;
             case "Beach":
-                items.add(plasticBottle);
                 //makes Items specific for this class
                 Item beachball = new Item("Beachball", new String[]
                 {
