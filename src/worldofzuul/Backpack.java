@@ -41,8 +41,8 @@ class Backpack implements Upgradeable
             this.inventoryList.add(item);
             System.out.println(" Added " + item.getName());
         } else {
-            System.out.println("Your inventory is FULL!");
-            System.out.println("You cannot PICKUP anymore items.");
+            System.out.println("Your inventory is FULL! You cannot PICKUP anymore items.");
+            System.out.println("Go to the recycler and recycle your items.");
         }
     }
     public void removeItem(Item item){
@@ -56,4 +56,3 @@ class Backpack implements Upgradeable
         return this.inventoryList;
     }
 }
-
