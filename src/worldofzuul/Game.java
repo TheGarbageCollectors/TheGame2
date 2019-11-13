@@ -120,7 +120,7 @@ public class Game {
         if (currentRoom instanceof Recycler) {
             int recyclerLevel = ((Upgradeable) recycler).getLevel();
             Scanner reader = new Scanner(System.in);
-            String itemToBeRecycled = command.getSecondWord();
+            String itemToBeRecycled = command.getSecondWord().toLowerCase();
             System.out.print("How do you wish to recycle your item? ");
             switch (recyclerLevel) {
                 case 1: 
@@ -133,14 +133,14 @@ public class Game {
                     System.out.println("Metal, Plastic, Trash, Paper, Concrete, Battery, Hazardous");
                     break;
             }
-                    String input = reader.nextLine();
-                    if (input.equalsIgnoreCase("Metal")) {
+                    String input = reader.nextLine().toLowerCase();
+                    if (input.equalsIgnoreCase("metal")) {
                         switch (itemToBeRecycled) {
-                            case "Can":
-                            case "Wheel":
-                            case "Bicycle":
-                            case "Pipes":
-                            case "Door":
+                            case "can":
+                            case "wheel":
+                            case "bicycle":
+                            case "pipes":
+                            case "door":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
                                 
                                 if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
@@ -159,13 +159,13 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equalsIgnoreCase("Plastic")) {
+                    } else if (input.equalsIgnoreCase("plastic")) {
                                 switch (itemToBeRecycled) {
-                            case "Bottle":
-                            case "Straw":
-                            case "Bag":
-                            case "Beachball":
-                            case "Gumpaper":
+                            case "bottle":
+                            case "straw":
+                            case "bag":
+                            case "beachball":
+                            case "gumpaper":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
                                 
                                 if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
@@ -184,9 +184,9 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equalsIgnoreCase("Garbage")) {
+                    } else if (input.equalsIgnoreCase("garbage")) {
                                 switch (itemToBeRecycled) {
-                            case "Trash":
+                            case "trash":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
                                 
                                 if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
@@ -207,9 +207,9 @@ public class Game {
                         } 
                     } else if (input.equalsIgnoreCase("Paper") && recyclerLevel > 1) {
                                 switch (itemToBeRecycled) {
-                            case "Box":
-                            case "Carton":
-                            case "Toiletpaper":
+                            case "box":
+                            case "carton":
+                            case "toiletpaper":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
                                 
                                 if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
@@ -228,9 +228,9 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equalsIgnoreCase("Concrete") && recyclerLevel > 1) {
+                    } else if (input.equalsIgnoreCase("concrete") && recyclerLevel > 1) {
                                 switch (itemToBeRecycled) {
-                            case "Bricks":
+                            case "bricks":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
                                 
                                 if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
@@ -249,9 +249,9 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equalsIgnoreCase("Battery") && recyclerLevel > 2) {
+                    } else if (input.equalsIgnoreCase("battery") && recyclerLevel > 2) {
                                 switch (itemToBeRecycled) {
-                            case "Battery":
+                            case "battery":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
                                 
                                 if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
@@ -270,9 +270,9 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equalsIgnoreCase("Hazardous") && recyclerLevel > 2) {
+                    } else if (input.equalsIgnoreCase("hazardous") && recyclerLevel > 2) {
                                 switch (itemToBeRecycled) {
-                            case "Lighter":
+                            case "lighter":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
                                 
                                 if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName())) 
