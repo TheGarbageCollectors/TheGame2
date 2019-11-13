@@ -334,7 +334,7 @@ public class Game {
             }
 
         }else{
-            System.out.println("You are not at upgrade station");
+            System.out.println("You are not at the upgrade station");
             }
 
     }
@@ -369,7 +369,7 @@ public class Game {
             } else if (nextRoom instanceof UpgradeStation) {
                 ((UpgradeStation) upgradeStation).welcomeMessage(player1.getBackpackObj(), town, recycler);
             } else if (nextRoom instanceof Recycler) {
-                System.out.println("You can recycle your stuff here");
+                System.out.println("You can recycle your trash here");
             }
 
         }
