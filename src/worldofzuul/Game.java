@@ -315,6 +315,7 @@ public class Game {
                 case "backpack":
                     ((UpgradeStation) upgradeStation).buyUpgrade(player1.getBackpackObj(), player1);
                     System.out.println("Backpack level is now: " + ((Upgradeable) player1.getBackpackObj()).getLevel());
+                    System.out.println("Your inventory size is now: " + player1.getBackpackObj().getMaxSize());
                     break;
             }
 
