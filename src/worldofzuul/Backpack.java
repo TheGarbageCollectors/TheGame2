@@ -14,10 +14,12 @@ class Backpack implements Upgradeable
     private String name = "Backpack";
     private int level;
     private ArrayList<Item> inventoryList = new ArrayList<>();
+    private int maxSize;
 
     public Backpack()
     {
         this.level = 1;
+        this.maxSize = 2;
     }
     @Override
     public int getLevel()
@@ -30,13 +32,18 @@ class Backpack implements Upgradeable
     }
     @Override
     public void upgradeLevel(){
- 
         this.level++;
+        this.maxSize *= 2;
     }
     
-    public void addItem(Item item){
-        this.inventoryList.add(item);
-        System.out.println(" Added " + item.getName());
+    public void addItem(Item item) {
+        if (this.inventoryList.size() < this.maxSize) {
+            this.inventoryList.add(item);
+            System.out.println(" Added " + item.getName());
+        } else {
+            System.out.println("Your inventory is FULL!");
+            System.out.println("You cannot PICKUP anymore items.");
+        }
     }
     public void removeItem(Item item){
         this.inventoryList.remove(item);
@@ -49,3 +56,4 @@ class Backpack implements Upgradeable
         return this.inventoryList;
     }
 }
+
