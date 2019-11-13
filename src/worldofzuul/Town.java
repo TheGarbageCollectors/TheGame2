@@ -36,7 +36,6 @@ public class Town extends Room implements Upgradeable
     }
     @Override
     public void upgradeLevel(){
-        System.out.println("You are in upgradelevel method");
         this.level++;
     }
     
