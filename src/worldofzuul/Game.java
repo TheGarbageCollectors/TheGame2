@@ -202,6 +202,8 @@ public class Game {
                     //System.out.print(items.get(i).getName().equals(command.getSecondWord()));
                     if (this.itemsInRoom.get(i).getName().equalsIgnoreCase(command.getSecondWord())) {
                         player1.getBackpackObj().addItem(this.itemsInRoom.get(i));
+                    }else{
+                        System.out.println("There is no " + command.getSecondWord());
                     }
                 }
             }else{
