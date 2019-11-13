@@ -84,20 +84,30 @@ public class Game {
             return false;
         }
 
-        if (commandWord == CommandWord.HELP) {
-            printHelp();
-        } else if (commandWord == CommandWord.GO) {
-            goRoom(command);
-        } else if (commandWord == CommandWord.QUIT) {
-            wantToQuit = quit(command);
-        } else if (commandWord == CommandWord.PICKUP) {
-            pickupItems(command);
-        } else if (commandWord == CommandWord.UPGRADE) {
-            upgradeItems(command);
-        } else if (commandWord == CommandWord.RECYCLE) {
-            recycleItems(command);
-        } else if (commandWord == CommandWord.INVENTORY) {
-            openInventory(command);
+        if (null != commandWord) switch (commandWord) {
+            case HELP:
+                printHelp();
+                break;
+            case GO:
+                goRoom(command);
+                break;
+            case QUIT:
+                wantToQuit = quit(command);
+                break;
+            case PICKUP:
+                pickupItems(command);
+                break;
+            case UPGRADE:
+                upgradeItems(command);
+                break;
+            case RECYCLE:
+                recycleItems(command);
+                break;
+            case INVENTORY:
+                openInventory(command);
+                break;
+            default:
+                break;
         }
 
         return wantToQuit;
@@ -352,7 +362,7 @@ public class Game {
                 }
                 System.out.println();
             } else if (nextRoom instanceof Town) {
-                System.out.println("The Town's happiness level: " + ((Town) nextRoom).getPopulationCount());
+                System.out.println("The Town's happiness level: " + ((Town) nextRoom).getHappiness());
             } else if (nextRoom instanceof UpgradeStation) {
                 ((UpgradeStation) upgradeStation).welcomeMessage(player1.getBackpackObj(), town, recycler);
             } else if (nextRoom instanceof Recycler) {
