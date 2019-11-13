@@ -203,7 +203,7 @@ public class Game {
                 for (int i = 0; i < this.itemsInRoom.size(); i++) {
                     //System.out.print(items.get(i).getName().equals(command.getSecondWord()));
                     if (this.itemsInRoom.get(i).getName().equals(command.getSecondWord())) {
-                        player1.getBackpackObj().addItem(items.get(i));
+                        player1.getBackpackObj().addItem(this.itemsInRoom.get(i));
                     }
                 }
             }else{
