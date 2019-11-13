@@ -20,14 +20,14 @@ public class Game
 
     private void createRooms()
     {
-        Room abandonedVillage = new Lootable("in an abandoned villiage", "Abandoned Village");
-        Room road = new Lootable("on a long road", "Road");
-        Room beach = new Lootable("on a beach", "Beach");
-        Room forrest = new Lootable("in a forrest", "Forrest");
+        Room abandonedVillage = new Lootable("in an abandoned villiage", "abandoned village");
+        Room road = new Lootable("on a long road", "road");
+        Room beach = new Lootable("on a beach", "beach");
+        Room forrest = new Lootable("in a forrest", "forrest");
         
-        recycler = new Recycler("at the recycler", "Recycler");
-        town = new Town("by the Town Hall", "Town Hall");
-        upgradeStation = new UpgradeStation("an upgradestation", "Upgrade Station");
+        recycler = new Recycler("at the recycler", "recycler");
+        town = new Town("by the Town Hall", "town hall");
+        upgradeStation = new UpgradeStation("an upgradestation", "upgrade station");
 
         town.setExit("Road", road);
         town.setExit("Recycler", recycler);
