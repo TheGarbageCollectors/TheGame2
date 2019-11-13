@@ -19,15 +19,15 @@ public class GameItems
     static private HashMap<String, Integer> materialMap = new HashMap<>();
     private final String[] materials =
     {
-        "Paper", "Metal", "Beton", "Plastic"
+        "paper", "metal", "beton", "plastic"
     };
     
     public GameItems()
     {
-        materialMap.put("Paper", 10);
-        materialMap.put("Beton", 20);
-        materialMap.put("Metal", 30);
-        materialMap.put("Plastic", 40);
+        materialMap.put("paper", 10);
+        materialMap.put("beton", 20);
+        materialMap.put("metal", 30);
+        materialMap.put("plastic", 40);
     }
 
     public static HashMap<String, Integer> getMaterialMap()
@@ -41,25 +41,25 @@ public class GameItems
         //Using clear to remove everything from the arraylist if there is anything. 
 
         //initializes/makes a lot of Items
-        Item plasticBottle = new Item("Bottle", new String[]
+        Item plasticBottle = new Item("bottle", new String[]
         {
-            "Plastic"
+            "plastic"
         });
-        Item cardBoard = new Item("Box", new String[]
+        Item cardBoard = new Item("box", new String[]
         {
-            "Paper"
+            "paper"
         });
-        Item battery = new Item("Battery", new String[]
+        Item battery = new Item("battery", new String[]
         {
-            "Metal"
+            "metal"
         });
-        Item can = new Item("Can", new String[]
+        Item can = new Item("can", new String[]
         {
-            "Metal"
+            "metal"
         });
-        Item staw = new Item("Straw", new String[]
+        Item staw = new Item("straw", new String[]
         {
-            "Plastic"
+            "plastic"
         });
 
         //adds the Items to the commonList Array
@@ -73,17 +73,17 @@ public class GameItems
         {
             case "Road":
                 //makes Items specific for this class
-                Item wheel = new Item("Wheel", new String[]
+                Item wheel = new Item("wheel", new String[]
                 {
-                    "Metal", "Plastic"
+                    "metal", "plastic"
                 });
-                Item trashbag = new Item("Trash", new String[]
+                Item trashbag = new Item("trash", new String[]
                 {
-                    "Paper", "Plastic", "Metal"
+                    "paper", "plastic", "metal"
                 });
-                Item Chipsbag = new Item("Bag", new String[]
+                Item Chipsbag = new Item("bag", new String[]
                 {
-                    "Plastic"
+                    "plastic"
                 });
 
                 //adds the Items to the List
@@ -93,17 +93,17 @@ public class GameItems
                 break;
             case "Beach":
                 //makes Items specific for this class
-                Item beachball = new Item("Beachball", new String[]
+                Item beachball = new Item("beachball", new String[]
                 {
-                    "Plastic"
+                    "plastic"
                 });
-                Item juicecarton = new Item("Carton", new String[]
+                Item juicecarton = new Item("carton", new String[]
                 {
-                    "Paper"
+                    "paper"
                 });
-                Item Gumpaper = new Item("GumPaper", new String[]
+                Item Gumpaper = new Item("gumpaper", new String[]
                 {
-                    "Plastic"
+                    "plastic"
                 });
 
                 //adds the Items to the List
@@ -113,17 +113,17 @@ public class GameItems
                 break;
             case "Forrest":
                 //makes Items specific for this class
-                Item bicycle = new Item("Bicycle", new String[]
+                Item bicycle = new Item("bicycle", new String[]
                 {
-                    "Metal", "Plastic"
+                    "metal", "plastic"
                 });
-                Item toiletpaper = new Item("Toiletpaper", new String[]
+                Item toiletpaper = new Item("toiletpaper", new String[]
                 {
-                    "Paper"
+                    "paper"
                 });
-                Item lighter = new Item("Lighter", new String[]
+                Item lighter = new Item("lighter", new String[]
                 {
-                    "Metal", "Plastic"
+                    "metal", "plastic"
                 });
 
                 //adds the Items to the List
@@ -133,17 +133,17 @@ public class GameItems
                 break;
             case "Abandoned Village":
                 //makes Items specific for this class
-                Item doorFrame = new Item("Door", new String[]
+                Item doorFrame = new Item("door", new String[]
                 {
-                    "Metal", "Beton"
+                    "metal", "beton"
                 });
-                Item bricks = new Item("Bricks", new String[]
+                Item bricks = new Item("bricks", new String[]
                 {
-                    "Concrete"
+                    "concrete"
                 });
-                Item pipes = new Item("Pipes", new String[]
+                Item pipes = new Item("pipes", new String[]
                 {
-                    "Metal"
+                    "metal"
                 });
 
                 //adds the Items to the List
