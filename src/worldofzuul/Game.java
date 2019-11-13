@@ -27,7 +27,7 @@ public class Game {
 
         recycler = new Recycler("at the recycler", "recycler");
         town = new Town("by the Town Hall", "town_hall");
-        upgradeStation = new UpgradeStation("an upgradestation", "upgrade station");
+        upgradeStation = new UpgradeStation("in the upgradestation", "upgrade station");
 
         town.setExit("road", road);
         town.setExit("recycler", recycler);
@@ -398,6 +398,7 @@ public class Game {
     }
 
 private void openInventory(Command command) {
+        System.out.println("Coins: " + player1.getMoney());
         ArrayList<Item> temp = player1.getBackpackObj().getItemsInBackpack();
         if (temp.size() == 0) {
             System.out.println("Your backpack is currently empty");
