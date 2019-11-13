@@ -40,7 +40,7 @@ public class Town extends Room implements Upgradeable
     }
     
     public void increaseHappiness(int amount){
-        this.Happiness =+ amount;
+        this.Happiness += amount;
     }
 
     public int getHappiness() {
