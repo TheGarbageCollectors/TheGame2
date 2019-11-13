@@ -17,14 +17,14 @@ public class Game {
 
     }
 
-    private void createRooms() {
+ private void createRooms() {
         Room abandonedVillage = new Lootable("in an abandoned villiage", "abandoned village");
         Room road = new Lootable("on a long road", "road");
         Room beach = new Lootable("on a beach", "beach");
         Room forrest = new Lootable("in a forrest", "forrest");
 
         recycler = new Recycler("at the recycler", "recycler");
-        town = new Town("by the Town Hall", "town hall");
+        town = new Town("by the Town Hall", "town_hall");
         upgradeStation = new UpgradeStation("an upgradestation", "upgrade station");
 
         town.setExit("road", road);
@@ -33,14 +33,14 @@ public class Game {
 
         road.setExit("beach", beach);
         road.setExit("forrest", forrest);
-        road.setExit("abandoned_Village", abandonedVillage);
-        road.setExit("town_Hall", town);
+        road.setExit("abandoned_village", abandonedVillage);
+        road.setExit("town_hall", town);
 
-        recycler.setExit("town_Hall", town);
+        recycler.setExit("town_hall", town);
 
         beach.setExit("road", road);
 
-        upgradeStation.setExit("town_Hall", town);
+        upgradeStation.setExit("town_hall", town);
 
         forrest.setExit("road", road);
 
