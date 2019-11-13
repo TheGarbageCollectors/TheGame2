@@ -198,8 +198,6 @@ public class Game {
     private void pickupItems(Command command) {
         if (command.hasSecondWord()) {
             if (currentRoom instanceof Lootable) {
-                GameItems gameitems = new GameItems();
-                this.itemsInRoom = gameitems.getLootList(((Lootable) currentRoom).getName());
                 for (int i = 0; i < this.itemsInRoom.size(); i++) {
                     //System.out.print(items.get(i).getName().equals(command.getSecondWord()));
                     if (this.itemsInRoom.get(i).getName().equalsIgnoreCase(command.getSecondWord())) {
