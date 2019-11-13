@@ -394,9 +394,14 @@ public class Game {
         }
     }
 
-    private void openInventory(Command command) {
+private void openInventory(Command command) {
         ArrayList<Item> temp = player1.getBackpackObj().getItemsInBackpack();
+        if (temp.size() == 0) {
+            System.out.println("Your backpack is currently empty");
+        }
+        else {
         System.out.print("Your inventory contains: ");
+        }
         for (int i = 0; i < temp.size(); i++) {
             System.out.print(temp.get(i).getName());
             if (i + 1 != temp.size()) {
