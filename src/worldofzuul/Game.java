@@ -202,7 +202,7 @@ public class Game {
                 this.itemsInRoom = gameitems.getLootList(((Lootable) currentRoom).getName());
                 for (int i = 0; i < this.itemsInRoom.size(); i++) {
                     //System.out.print(items.get(i).getName().equals(command.getSecondWord()));
-                    if (this.itemsInRoom.get(i).getName().toLowerCase().equals(command.getSecondWord())) {
+                    if (this.itemsInRoom.get(i).getName().equalsIgnoreCase(command.getSecondWord())) {
                         player1.getBackpackObj().addItem(this.itemsInRoom.get(i));
                     }
                 }
