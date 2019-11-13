@@ -28,23 +28,23 @@ public class Game {
         upgradeStation = new UpgradeStation("an upgradestation", "upgrade station");
 
         town.setExit("road", road);
-        town.setExit("Recycler", recycler);
-        town.setExit("Upgradestation", upgradeStation);
+        town.setExit("recycler", recycler);
+        town.setExit("upgradestation", upgradeStation);
 
-        road.setExit("Beach", beach);
-        road.setExit("Forrest", forrest);
-        road.setExit("Abandoned_Village", abandonedVillage);
-        road.setExit("Town_Hall", town);
+        road.setExit("beach", beach);
+        road.setExit("forrest", forrest);
+        road.setExit("abandoned_Village", abandonedVillage);
+        road.setExit("town_Hall", town);
 
-        recycler.setExit("Town_Hall", town);
+        recycler.setExit("town_Hall", town);
 
-        beach.setExit("Road", road);
+        beach.setExit("road", road);
 
-        upgradeStation.setExit("Town_Hall", town);
+        upgradeStation.setExit("town_Hall", town);
 
-        forrest.setExit("Road", road);
+        forrest.setExit("road", road);
 
-        abandonedVillage.setExit("Road", road);
+        abandonedVillage.setExit("road", road);
         //road.setExit("road", road);
 
         currentRoom = town;
