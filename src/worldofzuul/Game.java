@@ -158,7 +158,7 @@ public class Game
         }
         if (currentRoom instanceof UpgradeStation)
         {
-            String thingToUpgrade = command.getSecondWord();
+            String thingToUpgrade = command.getSecondWord().toLowerCase();
             switch (thingToUpgrade)
             {
                 case "town":
