@@ -14,14 +14,14 @@ import java.util.HashMap;
 public class Town extends Room implements Upgradeable
 {
     private String name;
-    private int populationCount; 
+    private int Happiness; 
     private int level;
 
     public Town(String dir, String name)
     {
         super(dir);
         this.name = name;
-        this.populationCount = 1;
+        this.Happiness = 0;
         this.level = 1;
     }
     
@@ -39,17 +39,12 @@ public class Town extends Room implements Upgradeable
         this.level++;
     }
     
-    public void updatePopulationCount(int amount){
-        this.populationCount = amount;
-    }
-    
-    public double makeMoney(){
-        //Will get called in game so it makes money everytime the game loop. 
-        return 0.1 * populationCount * level;
+    public void increaseHappiness(int amount){
+        this.Happiness =+ amount;
     }
 
-    public int getPopulationCount() {
-        return populationCount;
+    public int getHappiness() {
+        return Happiness;
     }
     
 }
