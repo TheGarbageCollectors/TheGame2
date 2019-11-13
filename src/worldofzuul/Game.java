@@ -26,7 +26,7 @@ public class Game {
         town = new Town("by the Town Hall", "town hall");
         upgradeStation = new UpgradeStation("an upgradestation", "upgrade station");
 
-        town.setExit("Road", road);
+        town.setExit("road", road);
         town.setExit("Recycler", recycler);
         town.setExit("Upgradestation", upgradeStation);
 

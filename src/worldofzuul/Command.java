@@ -37,7 +37,7 @@ public class Command
 
     public String getSecondWord()
     {
-        return secondWord;
+        return secondWord.toLowerCase();
     }
 
     public boolean isUnknown()
