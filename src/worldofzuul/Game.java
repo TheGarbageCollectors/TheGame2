@@ -38,11 +38,11 @@ public class Game
         road.setExit("Abandoned_Village", abandonedVillage);
         road.setExit("Town_Hall", town);
 
-        recycler.setExit("Town", town);
+        recycler.setExit("Town_Hall", town);
 
         beach.setExit("Road", road);
 
-        upgradeStation.setExit("Town Hall", town);
+        upgradeStation.setExit("Town_Hall", town);
 
         forrest.setExit("Road", road);
 
