@@ -13,7 +13,7 @@ public enum CommandWord
     
     public String toString()
     {
-        return commandString;
+        return commandString.toLowerCase();
     }
 }
 
