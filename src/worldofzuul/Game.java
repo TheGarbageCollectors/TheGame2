@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class Game {
 
     private Parser parser;
-    private Room currentRoom, town, recycler, upgradeStation;
+    private Room currentRoom, recycler, upgradeStation;
+    private Town town;
     private ArrayList<Item> itemsInRoom; 
 
     private Player player1 = new Player();
@@ -315,9 +316,11 @@ public class Game {
         if (currentRoom instanceof UpgradeStation) {
             String thingToUpgrade = command.getSecondWord();
             switch (thingToUpgrade) {
-                case "town":
+                case "town_hall":
                     ((UpgradeStation) upgradeStation).buyUpgrade(town, player1);
                     System.out.println("Town Hall level is now: " + ((Upgradeable) town).getLevel());
+                    town.increaseHappiness(25);
+                    System.out.println("Your town's happiness is now: " + town.getHappiness());
                     break;
                 case "recycler":
                     ((UpgradeStation) upgradeStation).buyUpgrade(recycler, player1);
