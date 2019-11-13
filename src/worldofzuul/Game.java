@@ -418,7 +418,7 @@ public class Game {
             
             if (player1.getBackpackObj().getItemsInBackpack().get(i).getName().equals(command.getSecondWord())) {
                 player1.getBackpackObj().removeItem(player1.getBackpackObj().getItemsInBackpack().get(i));
-                i = player1.getBackpackObj().getItemsInBackpack().size()+1;
+                break;
             } else {
                 System.out.println("This item is not in your backpack");
             }
