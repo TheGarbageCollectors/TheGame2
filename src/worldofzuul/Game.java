@@ -202,8 +202,10 @@ public class Game {
                     //System.out.print(items.get(i).getName().equals(command.getSecondWord()));
                     if (this.itemsInRoom.get(i).getName().equalsIgnoreCase(command.getSecondWord())) {
                         player1.getBackpackObj().addItem(this.itemsInRoom.get(i));
-                    }else{
-                        System.out.println("There is no " + command.getSecondWord());
+                        break; // breaks out of the loop if it finds a mathcing item
+                    }else if(i == (this.itemsInRoom.size())-1){
+                        //If there is no macthing item on the last run of the loop, then say there is no match
+                        System.out.println("There is no " + command.getSecondWord());   
                     }
                 }
             }else{
