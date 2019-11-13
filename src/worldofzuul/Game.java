@@ -2,6 +2,7 @@ package worldofzuul;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Game {
 
@@ -133,7 +134,7 @@ public class Game {
                     break;
             }
                     String input = reader.nextLine();
-                    if (input.equals("Metal")) {
+                    if (input.equalsIgnoreCase("Metal")) {
                         switch (itemToBeRecycled) {
                             case "Can":
                             case "Wheel":
@@ -158,7 +159,7 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equals("Plastic")) {
+                    } else if (input.equalsIgnoreCase("Plastic")) {
                                 switch (itemToBeRecycled) {
                             case "Bottle":
                             case "Straw":
@@ -183,7 +184,7 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equals("Garbage")) {
+                    } else if (input.equalsIgnoreCase("Garbage")) {
                                 switch (itemToBeRecycled) {
                             case "Trash":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
@@ -204,7 +205,7 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equals("Paper") && recyclerLevel > 1) {
+                    } else if (input.equalsIgnoreCase("Paper") && recyclerLevel > 1) {
                                 switch (itemToBeRecycled) {
                             case "Box":
                             case "Carton":
@@ -227,7 +228,7 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equals("Concrete") && recyclerLevel > 1) {
+                    } else if (input.equalsIgnoreCase("Concrete") && recyclerLevel > 1) {
                                 switch (itemToBeRecycled) {
                             case "Bricks":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
@@ -248,7 +249,7 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equals("Battery") && recyclerLevel > 2) {
+                    } else if (input.equalsIgnoreCase("Battery") && recyclerLevel > 2) {
                                 switch (itemToBeRecycled) {
                             case "Battery":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
@@ -269,7 +270,7 @@ public class Game {
                                 System.out.println("This item doesn't belong here, it has been wasted");
                                 break;
                         } 
-                    } else if (input.equals("Hazardous") && recyclerLevel > 2) {
+                    } else if (input.equalsIgnoreCase("Hazardous") && recyclerLevel > 2) {
                                 switch (itemToBeRecycled) {
                             case "Lighter":
                                  for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++) {
