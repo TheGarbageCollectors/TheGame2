@@ -16,11 +16,11 @@ public class UpgradeStation extends Room
 
     private int[] backpackUpgradePriceArray =
     {
-        0, 10, 100
+        50, 300, 500
     };
     private int[] recyclerUpgradeArray =
     {
-        0, 20, 200
+        100, 200, 300
     };
     private int[] recyclerSortingUpgradeArray =
     {
@@ -28,7 +28,7 @@ public class UpgradeStation extends Room
     };
     private int[] townUpgradePriceArray =
     {
-        0, 30, 100, 200, 300, 400, 500, 750, 1000, 1000000
+        150, 300, 500, 750, 1000, 1500, 2000, 2500, 5000, 1000000
     };
 
     public UpgradeStation(String dir, String name)
@@ -42,9 +42,9 @@ public class UpgradeStation extends Room
                 int townLevel = ((Upgradeable) town).getLevel();
                 int recyclerLevel = ((Upgradeable) recycler).getLevel();
                 System.out.println("You can buy upgrades for Backpack, Town and Recycler");
-               System.out.println("Next upgrade for Backpack is: " + (backpackLevel + 1) + ". level that costs: " + backpackUpgradePriceArray[backpackLevel]);
-                System.out.println("Next upgrade for Town_Hall is: " + (townLevel + 1) + ". level that costs: " + townUpgradePriceArray[townLevel]);
-                System.out.println("Next upgrade for Recycler is: " + (recyclerLevel + 1)  + ". level that costs: " + recyclerUpgradeArray[recyclerLevel]);
+                System.out.println("Next upgrade for Backpack is: " + (backpackLevel + 1) + ". level that costs: " + backpackUpgradePriceArray[backpackLevel - 1]);
+                System.out.println("Next upgrade for Town_Hall is: " + (townLevel + 1) + ". level that costs: " + townUpgradePriceArray[townLevel - 1]);
+                System.out.println("Next upgrade for Recycler is: " + (recyclerLevel + 1)  + ". level that costs: " + recyclerUpgradeArray[recyclerLevel - 1]);
     }
 
     public void buyUpgrade(Object obj, Player playerObj)
@@ -64,7 +64,7 @@ public class UpgradeStation extends Room
                     if (((Upgradeable) obj).getLevel() < townUpgradePriceArray.length)
                     {
 
-                        upgradePrice = townUpgradePriceArray[((Upgradeable) obj).getLevel()];
+                        upgradePrice = townUpgradePriceArray[(((Upgradeable) obj).getLevel()) - 1];
                         if (playerObj.enoughMoney(upgradePrice))
                         {
                             ((Upgradeable) obj).upgradeLevel();
@@ -79,7 +79,7 @@ public class UpgradeStation extends Room
                 case "recycler":
                     if (((Upgradeable) obj).getLevel() < recyclerUpgradeArray.length)
                     {
-                        upgradePrice = recyclerUpgradeArray[((Upgradeable) obj).getLevel()];
+                        upgradePrice = recyclerUpgradeArray[(((Upgradeable) obj).getLevel() - 1)];
                         if (playerObj.enoughMoney(upgradePrice))
                         {
                             ((Upgradeable) obj).upgradeLevel();
@@ -93,7 +93,7 @@ public class UpgradeStation extends Room
                 case "Backpack":
                     if (((Upgradeable) obj).getLevel() < backpackUpgradePriceArray.length)
                     {
-                        upgradePrice = backpackUpgradePriceArray[((Upgradeable) obj).getLevel()];
+                        upgradePrice = backpackUpgradePriceArray[(((Upgradeable) obj).getLevel() - 1)];
                         if (playerObj.enoughMoney(upgradePrice))
                         {
                             ((Upgradeable) obj).upgradeLevel();
