@@ -1,6 +1,7 @@
 package worldofzuul;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -149,124 +150,67 @@ public class Game
             Scanner reader = new Scanner(System.in);
             String itemToBeRecycled = command.getSecondWord().toLowerCase();
             System.out.print("How do you wish to recycle your item? ");
+            ArrayList<ArrayList<String>> materialsThatCanSortes = new ArrayList<ArrayList<String>>();
+            ArrayList<String> a1 = new ArrayList<String>(Arrays.asList("metal", "plastic", "trash"));
+            ArrayList<String> a2 = new ArrayList<String>(Arrays.asList("metal", "plastic", "trash", "paper", "concrete"));
+            ArrayList<String> a3 = new ArrayList<String>(Arrays.asList("metal", "plastic", "trash", "paper", "concrete", "battery", "hazardous"));
+
+
+            materialsThatCanSortes.add(a1);
+            materialsThatCanSortes.add(a2);
+            materialsThatCanSortes.add(a3);
+
             switch (recyclerLevel)
             {
                 case 1:
-                    System.out.println("Metal, Plastic, Trash");
+                    printOutMaterials(0, materialsThatCanSortes);
                     break;
                 case 2:
-                    System.out.println("Metal, Plastic, Trash, Paper, Concrete");
+                    printOutMaterials(1, materialsThatCanSortes);
                     break;
                 case 3:
-                    System.out.println("Metal, Plastic, Trash, Paper, Concrete, Battery, Hazardous");
+                    printOutMaterials(2, materialsThatCanSortes);
                     break;
             }
             String input = reader.nextLine().toLowerCase();
-            if (input.equalsIgnoreCase("metal"))
+            String[] itemMaterial;
+            var itemsInBag = player1.getBackpackObj().getItemsInBackpack();
+            for (int i = 0; i < itemsInBag.size(); i++)
             {
-                switch (itemToBeRecycled)
+                if (itemsInBag.get(i).getName().equalsIgnoreCase(itemToBeRecycled))
                 {
-                    case "can":
-                    case "wheel":
-                    case "bicycle":
-                    case "pipes":
-                    case "door":
-                        recycleItem(itemToBeRecycled, command);
-                        break;
-                    default:
-                        removeItemWhenRecycled(command);
-                        //Method for removing recycler HP
-                        System.out.println("This item doesn't belong here, it has been wasted");
-                        break;
+                    //Looper igennem backpack for at finde det item object som skal recycles
+                    itemMaterial = itemsInBag.get(i).getMaterialList();
+                    for (int j = 0; j < itemMaterial.length; j++)
+                    {
+
+                        //looper igennem materiallisten på det object som skal recycles.
+                        if (input.equalsIgnoreCase(itemMaterial[j]) && materialsThatCanSortes.get(recyclerLevel).contains(input))
+                        {
+                            recycleItem(itemToBeRecycled, command);
+                        } else if (input.equalsIgnoreCase("trash"))
+                        {
+                            recycleItem(itemToBeRecycled, command);
+                        } else if (i == (itemMaterial.length - 1))
+                        {
+                            removeItemWhenRecycled(command);
+                            //Method for removing recycler HP
+                            System.out.println("This item doesn't belong here, it has been wasted");
+
+                        }
+                    }
                 }
-            } else if (input.equalsIgnoreCase("plastic"))
-            {
-                switch (itemToBeRecycled)
-                {
-                    case "bottle":
-                    case "straw":
-                    case "bag":
-                    case "beachball":
-                    case "gumpaper":
-                        recycleItem(itemToBeRecycled, command);
-                        break;
-                    default:
-                        removeItemWhenRecycled(command);
-                        //Method for removing recycler HP
-                        System.out.println("This item doesn't belong here, it has been wasted");
-                        break;
-                }
-            } else if (input.equalsIgnoreCase("garbage"))
-            {
-                switch (itemToBeRecycled)
-                {
-                    case "trash":
-                        recycleItem(itemToBeRecycled, command);
-                        break;
-                    default:
-                        removeItemWhenRecycled(command);
-                        //Method for removing recycler HP
-                        System.out.println("This item doesn't belong here, it has been wasted");
-                        break;
-                }
-            } else if (input.equalsIgnoreCase("Paper") && recyclerLevel > 1)
-            {
-                switch (itemToBeRecycled)
-                {
-                    case "box":
-                    case "carton":
-                    case "toiletpaper":
-                        recycleItem(itemToBeRecycled, command);
-                        break;
-                    default:
-                        removeItemWhenRecycled(command);
-                        //Method for removing recycler HP
-                        System.out.println("This item doesn't belong here, it has been wasted");
-                        break;
-                }
-            } else if (input.equalsIgnoreCase("concrete") && recyclerLevel > 1)
-            {
-                switch (itemToBeRecycled)
-                {
-                    case "bricks":
-                        recycleItem(itemToBeRecycled, command);
-                        break;
-                    default:
-                        removeItemWhenRecycled(command);
-                        //Method for removing recycler HP
-                        System.out.println("This item doesn't belong here, it has been wasted");
-                        break;
-                }
-            } else if (input.equalsIgnoreCase("battery") && recyclerLevel > 2)
-            {
-                switch (itemToBeRecycled)
-                {
-                    case "battery":
-                        recycleItem(itemToBeRecycled, command);
-                        break;
-                    default:
-                        removeItemWhenRecycled(command);
-                        //Method for removing recycler HP
-                        System.out.println("This item doesn't belong here, it has been wasted");
-                        break;
-                }
-            } else if (input.equalsIgnoreCase("hazardous") && recyclerLevel > 2)
-            {
-                switch (itemToBeRecycled)
-                {
-                    case "lighter":
-                        recycleItem(itemToBeRecycled, command);
-                        break;
-                    default:
-                        removeItemWhenRecycled(command);
-                        //Method for removing recycler HP
-                        System.out.println("This item doesn't belong here, it has been wasted");
-                        break;
-                }
-            } else
-            {
-                System.out.println("This container does not exist. ");
             }
+
+        }
+    }
+
+    private void printOutMaterials(int level, ArrayList<ArrayList<String>> materialsThatCanSortes)
+    {
+        System.out.println("");
+        for (String i : materialsThatCanSortes.get(level))
+        {
+            System.out.print(i + " ");
         }
     }
 
@@ -279,7 +223,7 @@ public class Game
             {
                 var money = ((Recycler) currentRoom).valueCalculator(player1.getBackpackObj().getItemsInBackpack().get(i));
                 player1.addMoney(money);
-
+                break;
             }
         }
         removeItemWhenRecycled(command);
