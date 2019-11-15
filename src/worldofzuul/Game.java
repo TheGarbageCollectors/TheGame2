@@ -209,11 +209,12 @@ public class Game
 
     private void recycleItem(String itemToBeRecycled, Command command)
     {
+        // looping though the backpack to check if the item that the player wants to recycle is in the backpack. 
         for(int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++)
         {
-
             if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName()))
             {
+                //Calculating the amount of money that the player gets for recycling the item. 
                 var money = ((Recycler) currentRoom).valueCalculator(player1.getBackpackObj().getItemsInBackpack().get(i));
                 player1.addMoney(money);
                 break;
@@ -233,6 +234,7 @@ public class Game
         if (currentRoom instanceof UpgradeStation)
         {
             String thingToUpgrade = command.getSecondWord();
+            //Using a switch statement to figure out what the user wants to upgrade. 
             switch (thingToUpgrade)
             {
                 case "town_hall":
@@ -309,19 +311,22 @@ public class Game
     {
         if (command.hasSecondWord())
         {
+            //checking if the player is in fact in a room that can be looted by using the lootable class and instanceof 
             if (currentRoom instanceof Lootable)
             {
+                //Looping though all the items in room.
                 for (int i = 0; i < this.itemsInRoom.size(); i++)
                 {
-                    //System.out.print(items.get(i).getName().equals(command.getSecondWord()));
+                    //Checking that the item the player wants to pickup is in the room. 
                     if (this.itemsInRoom.get(i).getName().equalsIgnoreCase(command.getSecondWord()))
                     {
+                        //Adds the item obj to the backpack
                         player1.getBackpackObj().addItem(this.itemsInRoom.get(i));
                         break; // breaks out of the loop if it finds a mathcing item
                     } else if (i == (this.itemsInRoom.size()) - 1)
                     {
                         //If there is no macthing item on the last run of the loop, then say there is no match
-                        System.out.println("There is no " + command.getSecondWord());
+                        System.out.println("There is no " + command.getSecondWord() + " in this room");
                     }
                 }
             } else
