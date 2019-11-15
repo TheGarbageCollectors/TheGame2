@@ -150,28 +150,19 @@ public class Game
             Scanner reader = new Scanner(System.in);
             String itemToBeRecycled = command.getSecondWord().toLowerCase();
             System.out.print("How do you wish to recycle your item? ");
+            //Makeing an arraylist with arraylists that stores all the containers we can put stuff in
             ArrayList<ArrayList<String>> materialsThatCanSortes = new ArrayList<ArrayList<String>>();
             ArrayList<String> a1 = new ArrayList<String>(Arrays.asList("metal", "plastic", "trash"));
             ArrayList<String> a2 = new ArrayList<String>(Arrays.asList("metal", "plastic", "trash", "paper", "concrete"));
             ArrayList<String> a3 = new ArrayList<String>(Arrays.asList("metal", "plastic", "trash", "paper", "concrete", "battery", "hazardous"));
 
-
             materialsThatCanSortes.add(a1);
             materialsThatCanSortes.add(a2);
             materialsThatCanSortes.add(a3);
 
-            switch (recyclerLevel)
-            {
-                case 1:
-                    printOutMaterials(0, materialsThatCanSortes);
-                    break;
-                case 2:
-                    printOutMaterials(1, materialsThatCanSortes);
-                    break;
-                case 3:
-                    printOutMaterials(2, materialsThatCanSortes);
-                    break;
-            }
+            //prints out the containers that the user can recycle with. 
+            printOutMaterials((recyclerLevel-1), materialsThatCanSortes);
+
             String input = reader.nextLine().toLowerCase();
             String[] itemMaterial;
             var itemsInBag = player1.getBackpackObj().getItemsInBackpack();
@@ -181,18 +172,20 @@ public class Game
                 {
                     //Looper igennem backpack for at finde det item object som skal recycles
                     itemMaterial = itemsInBag.get(i).getMaterialList();
-                    for (int j = 0; j < itemMaterial.length; j++)
+                    for(int j = 0; j < itemMaterial.length; j++)
                     {
 
                         //looper igennem materiallisten på det object som skal recycles.
                         if (input.equalsIgnoreCase(itemMaterial[j]) && materialsThatCanSortes.get(recyclerLevel).contains(input))
                         {
                             recycleItem(itemToBeRecycled, command);
-                        } else if (input.equalsIgnoreCase("trash"))
+                        } else if (input.equalsIgnoreCase("trash") && i == (itemMaterial.length - 1))
                         {
+                            //if its the last run of the loop and it hasnt matched anything else then we check if the user wrote trash. 
                             recycleItem(itemToBeRecycled, command);
                         } else if (i == (itemMaterial.length - 1))
                         {
+                            //if this is the last loop and input hasnt matched anything else, this is the default
                             removeItemWhenRecycled(command);
                             //Method for removing recycler HP
                             System.out.println("This item doesn't belong here, it has been wasted");
@@ -208,7 +201,7 @@ public class Game
     private void printOutMaterials(int level, ArrayList<ArrayList<String>> materialsThatCanSortes)
     {
         System.out.println("");
-        for (String i : materialsThatCanSortes.get(level))
+        for(String i : materialsThatCanSortes.get(level))
         {
             System.out.print(i + " ");
         }
@@ -216,7 +209,7 @@ public class Game
 
     private void recycleItem(String itemToBeRecycled, Command command)
     {
-        for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++)
+        for(int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++)
         {
 
             if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName()))
