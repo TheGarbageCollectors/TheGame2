@@ -69,6 +69,14 @@ public class UpgradeStation extends Room
                         {
                             ((Upgradeable) obj).upgradeLevel();
                             playerObj.removeMoney(upgradePrice);
+                            if (((Town) obj).getHappiness()>= 100 )
+                            {
+                                System.out.println("Congratulations!");
+                                System.out.println("Your town has reached maximum happiness.");
+                                System.out.println("There is no more trash in the town to collect");
+                                System.out.println("You have won the game (:");
+                                System.exit(0);
+                            }
                         } else
                         {
                             System.out.println("You do not have enough money for this upgrade");
@@ -112,5 +120,36 @@ public class UpgradeStation extends Room
         //playerObj.removeMoney(upgradePrice);
         //Remove money from the player account here 
 
+    }
+    
+    public void upgradeObject(Command command, Room upgradeStation, Town town, Room recycler, Player player1) {
+    String thingToUpgrade = command.getSecondWord();
+            //Using a switch statement to figure out what the user wants to upgrade. 
+            switch (thingToUpgrade)
+            {
+                case "town_hall":
+                    ((UpgradeStation) upgradeStation).buyUpgrade(town, player1);
+                    System.out.println("Town Hall level is now: " + ((Upgradeable) town).getLevel());
+                    town.increaseHappiness((town.getLevel() * 10) - town.getHappiness());
+                    if ( town.getHappiness() >= 100 ){
+                        System.out.println("You have won the game");
+                        System.exit(0);
+                    } else {
+                    System.out.println("Your town's happiness is now: " + town.getHappiness());
+                    break;
+                    }
+                case "recycler":
+                    ((UpgradeStation) upgradeStation).buyUpgrade(recycler, player1);
+                    System.out.println("Recycler level is now: " + ((Upgradeable) recycler).getLevel());
+                    break;
+                case "backpack":
+                    ((UpgradeStation) upgradeStation).buyUpgrade(player1.getBackpackObj(), player1);
+                    System.out.println("Backpack level is now: " + ((Upgradeable) player1.getBackpackObj()).getLevel());
+                    System.out.println("Your inventory size is now: " + player1.getBackpackObj().getMaxSize());
+                    break;
+            }
+
+        
+       
     }
 }
