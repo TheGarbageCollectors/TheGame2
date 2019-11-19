@@ -158,35 +158,16 @@ public class Game
 
     private void upgradeItems(Command command)
     {
-        if (!command.hasSecondWord())
-        {
-            System.out.println("Upgrade what?");
-            return;
-        }
+        
         if (currentRoom instanceof UpgradeStation)
         {
-            String thingToUpgrade = command.getSecondWord();
-            //Using a switch statement to figure out what the user wants to upgrade. 
-            switch (thingToUpgrade)
+            if (!command.hasSecondWord())
             {
-                case "town_hall":
-                    ((UpgradeStation) upgradeStation).buyUpgrade(town, player1);
-                    System.out.println("Town Hall level is now: " + ((Upgradeable) town).getLevel());
-                    town.increaseHappiness((town.getLevel() * 10) - town.getHappiness());
-                    System.out.println("Your town's happiness is now: " + town.getHappiness());
-                    break;
-                case "recycler":
-                    ((UpgradeStation) upgradeStation).buyUpgrade(recycler, player1);
-                    System.out.println("Recycler level is now: " + ((Upgradeable) recycler).getLevel());
-                    break;
-                case "backpack":
-                    ((UpgradeStation) upgradeStation).buyUpgrade(player1.getBackpackObj(), player1);
-                    System.out.println("Backpack level is now: " + ((Upgradeable) player1.getBackpackObj()).getLevel());
-                    System.out.println("Your inventory size is now: " + player1.getBackpackObj().getMaxSize());
-                    break;
-            }
-
-        } else
+            System.out.println("Upgrade what?");
+            return;
+            }  
+            ((UpgradeStation) currentRoom).upgradeObject(command, currentRoom, town, recycler, player1);
+        } else 
         {
             System.out.println("You are not at the upgrade station");
         }
