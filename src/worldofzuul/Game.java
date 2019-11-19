@@ -1,13 +1,17 @@
 package worldofzuul;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Game
 {
 
     private Parser parser;
-    private Room currentRoom, town, recycler, upgradeStation;
+    private Room currentRoom, recycler, upgradeStation;
+    private Town town;
+    private ArrayList<Item> itemsInRoom;
 
     private Player player1 = new Player();
 
@@ -20,14 +24,14 @@ public class Game
 
     private void createRooms()
     {
-        Room abandonedVillage = new Lootable("an abandoned villiage", "Abandoned Village");
-        Room road = new Lootable("a long road", "Road");
-        Room beach = new Lootable("a beach", "Beach");
-        Room forrest = new Lootable("lots of trees", "Forrest");
-        
-        recycler = new Recycler("a recycler", "Recycler");
-        town = new Town("the lovely town", "Town");
-        upgradeStation = new UpgradeStation("an upgradestation", "Upgrade Station");
+        Room abandonedVillage = new Lootable("in an abandoned villiage", "abandoned village");
+        Room road = new Lootable("on a long road", "road");
+        Room beach = new Lootable("on a beach", "beach");
+        Room forrest = new Lootable("in a forrest", "forrest");
+
+        recycler = new Recycler("at the recycler", "recycler");
+        town = new Town("by the Town Hall", "town_hall");
+        upgradeStation = new UpgradeStation("in the upgradestation", "upgrade station");
 
         town.setExit("road", road);
         town.setExit("recycler", recycler);
@@ -35,18 +39,19 @@ public class Game
 
         road.setExit("beach", beach);
         road.setExit("forrest", forrest);
-        road.setExit("abandonedVillage", abandonedVillage);
-        road.setExit("town", town);
+        road.setExit("abandoned_village", abandonedVillage);
+        road.setExit("town_hall", town);
 
-        recycler.setExit("town", town);
+        recycler.setExit("town_hall", town);
 
         beach.setExit("road", road);
 
-        upgradeStation.setExit("town", town);
+        upgradeStation.setExit("town_hall", town);
 
         forrest.setExit("road", road);
 
-        road.setExit("road", road);
+        abandonedVillage.setExit("road", road);
+        //road.setExit("road", road);
 
         currentRoom = town;
     }
@@ -67,8 +72,11 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Welcome to the Garbage Collectors!");
+        System.out.println("This is a game about collecting different sorts of garbage and learning how to sort it properly.");
+        System.out.println("The goal of the game is to raise your populations happiness-level");
+        System.out.println("The local area is littered with garbage");
+        System.out.println("It's your job as the mayor to make the town happy, by keeping the streets clean");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -86,24 +94,34 @@ public class Game
             return false;
         }
 
-        if (commandWord == CommandWord.HELP)
+        if (null != commandWord)
         {
-            printHelp();
-        } else if (commandWord == CommandWord.GO)
-        {
-            goRoom(command);
-        } else if (commandWord == CommandWord.QUIT)
-        {
-            wantToQuit = quit(command);
-        } else if (commandWord == CommandWord.PICKUP)
-        {
-            pickupItems(command);
-        } else if (commandWord == CommandWord.UPGRADE)
-        {
-            upgradeItems(command);
-        } else if (commandWord == CommandWord.RECYCLE)
-        {
-            recycleItems(command);
+            switch (commandWord)
+            {
+                case HELP:
+                    printHelp();
+                    break;
+                case GO:
+                    goRoom(command);
+                    break;
+                case QUIT:
+                    wantToQuit = quit(command);
+                    break;
+                case PICKUP:
+                    pickupItems(command);
+                    break;
+                case UPGRADE:
+                    upgradeItems(command);
+                    break;
+                case RECYCLE:
+                    recycleItems(command);
+                    break;
+                case INVENTORY:
+                    openInventory(command);
+                    break;
+                default:
+                    break;
+            }
         }
 
         return wantToQuit;
@@ -112,12 +130,13 @@ public class Game
     private void printHelp()
     {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("around the Town.");
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
 
     }
+
     private void recycleItems(Command command)
     {
         if (!command.hasSecondWord())
@@ -127,19 +146,82 @@ public class Game
         }
         if (currentRoom instanceof Recycler)
         {
-            String itemToBeRecycled = command.getSecondWord();
+            int recyclerLevel = ((Upgradeable) recycler).getLevel();
+            Scanner reader = new Scanner(System.in);
+            String itemToBeRecycled = command.getSecondWord().toLowerCase();
+            System.out.print("How do you wish to recycle your item? ");
+            //Makeing an arraylist with arraylists that stores all the containers we can put stuff in
+            ArrayList<ArrayList<String>> materialsThatCanSortes = new ArrayList<ArrayList<String>>();
+            ArrayList<String> a1 = new ArrayList<String>(Arrays.asList("metal", "plastic", "trash"));
+            ArrayList<String> a2 = new ArrayList<String>(Arrays.asList("metal", "plastic", "trash", "paper", "concrete"));
+            ArrayList<String> a3 = new ArrayList<String>(Arrays.asList("metal", "plastic", "trash", "paper", "concrete", "battery", "hazardous"));
+
+            materialsThatCanSortes.add(a1);
+            materialsThatCanSortes.add(a2);
+            materialsThatCanSortes.add(a3);
+
+            //prints out the containers that the user can recycle with. 
+            printOutMaterials((recyclerLevel-1), materialsThatCanSortes);
+
+            String input = reader.nextLine().toLowerCase();
+            String[] itemMaterial;
             var itemsInBag = player1.getBackpackObj().getItemsInBackpack();
             for (int i = 0; i < itemsInBag.size(); i++)
             {
-                if (itemToBeRecycled.equals(itemsInBag.get(i).getName()))
+                if (itemsInBag.get(i).getName().equalsIgnoreCase(itemToBeRecycled))
                 {
-                    var money = ((Recycler) currentRoom).valueCalculator(itemsInBag.get(i));
-                    System.out.println(money);
-                    player1.addMoney(money);
+                    //Looper igennem backpack for at finde det item object som skal recycles
+                    itemMaterial = itemsInBag.get(i).getMaterialList();
+                    for(int j = 0; j < itemMaterial.length; j++)
+                    {
+
+                        //looper igennem materiallisten på det object som skal recycles.
+                        if (input.equalsIgnoreCase(itemMaterial[j]) && materialsThatCanSortes.get(recyclerLevel).contains(input))
+                        {
+                            recycleItem(itemToBeRecycled, command);
+                        } else if (input.equalsIgnoreCase("trash") && i == (itemMaterial.length - 1))
+                        {
+                            //if its the last run of the loop and it hasnt matched anything else then we check if the user wrote trash. 
+                            recycleItem(itemToBeRecycled, command);
+                        } else if (i == (itemMaterial.length - 1))
+                        {
+                            //if this is the last loop and input hasnt matched anything else, this is the default
+                            removeItemWhenRecycled(command);
+                            //Method for removing recycler HP
+                            System.out.println("This item doesn't belong here, it has been wasted");
+
+                        }
+                    }
                 }
             }
-        }
 
+        }
+    }
+
+    private void printOutMaterials(int level, ArrayList<ArrayList<String>> materialsThatCanSortes)
+    {
+        System.out.println("");
+        for(String i : materialsThatCanSortes.get(level))
+        {
+            System.out.print(i + " ");
+        }
+    }
+
+    private void recycleItem(String itemToBeRecycled, Command command)
+    {
+        // looping though the backpack to check if the item that the player wants to recycle is in the backpack. 
+        for(int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++)
+        {
+            if (itemToBeRecycled.equals(player1.getBackpackObj().getItemsInBackpack().get(i).getName()))
+            {
+                //Calculating the amount of money that the player gets for recycling the item. 
+                var money = ((Recycler) currentRoom).valueCalculator(player1.getBackpackObj().getItemsInBackpack().get(i));
+                player1.addMoney(money);
+                break;
+            }
+        }
+        removeItemWhenRecycled(command);
+        System.out.println("This item does belong here points awarded (:");
     }
 
     private void upgradeItems(Command command)
@@ -152,19 +234,29 @@ public class Game
         if (currentRoom instanceof UpgradeStation)
         {
             String thingToUpgrade = command.getSecondWord();
+            //Using a switch statement to figure out what the user wants to upgrade. 
             switch (thingToUpgrade)
             {
-                case "town":
-                    ((UpgradeStation)upgradeStation).buyUpgrade(town, player1);
+                case "town_hall":
+                    ((UpgradeStation) upgradeStation).buyUpgrade(town, player1);
+                    System.out.println("Town Hall level is now: " + ((Upgradeable) town).getLevel());
+                    town.increaseHappiness((town.getLevel() * 10) - town.getHappiness());
+                    System.out.println("Your town's happiness is now: " + town.getHappiness());
                     break;
                 case "recycler":
-                    ((UpgradeStation)upgradeStation).buyUpgrade(recycler, player1);
+                    ((UpgradeStation) upgradeStation).buyUpgrade(recycler, player1);
+                    System.out.println("Recycler level is now: " + ((Upgradeable) recycler).getLevel());
                     break;
                 case "backpack":
-                    ((UpgradeStation)upgradeStation).buyUpgrade(player1.getBackpackObj(), player1);
+                    ((UpgradeStation) upgradeStation).buyUpgrade(player1.getBackpackObj(), player1);
+                    System.out.println("Backpack level is now: " + ((Upgradeable) player1.getBackpackObj()).getLevel());
+                    System.out.println("Your inventory size is now: " + player1.getBackpackObj().getMaxSize());
                     break;
             }
-            System.out.println(((Upgradeable)town).getLevel());
+
+        } else
+        {
+            System.out.println("You are not at the upgrade station");
         }
 
     }
@@ -191,27 +283,25 @@ public class Game
             if (nextRoom instanceof Lootable)
             {
                 System.out.print("You see ");
-                var items = ((Lootable) nextRoom).getLoot();
-                for (int i = 0; i < items.size(); i++)
+                this.itemsInRoom = ((Lootable) nextRoom).getLoot();
+                for (int i = 0; i < this.itemsInRoom.size(); i++)
                 {
-                    System.out.print(items.get(i).getName());
-                    if ((i + 1) != items.size())
+                    System.out.print(this.itemsInRoom.get(i).getName());
+                    if ((i + 1) != this.itemsInRoom.size())
                     {
                         System.out.print(", ");
                     }
                 }
-            } 
-            else if (nextRoom instanceof Town)
+                System.out.println();
+            } else if (nextRoom instanceof Town)
             {
-                System.out.println("You have " + ((Town) nextRoom).getPopulationCount() + " slaves");
-            } 
-            else if (nextRoom instanceof UpgradeStation)
+                System.out.println("The Town's happiness level: " + ((Town) nextRoom).getHappiness());
+            } else if (nextRoom instanceof UpgradeStation)
             {
                 ((UpgradeStation) upgradeStation).welcomeMessage(player1.getBackpackObj(), town, recycler);
-            } 
-            else if (nextRoom instanceof Recycler)
+            } else if (nextRoom instanceof Recycler)
             {
-                System.out.print("You can recycle your stuff here");
+                System.out.println("You can recycle your trash here");
             }
 
         }
@@ -221,21 +311,55 @@ public class Game
     {
         if (command.hasSecondWord())
         {
-            GameItems gameitems = new GameItems();
-            var items = gameitems.getLootList(((Lootable) currentRoom).getName());
-            for (int i = 0; i < items.size(); i++)
+            //checking if the player is in fact in a room that can be looted by using the lootable class and instanceof 
+            if (currentRoom instanceof Lootable)
             {
-                System.out.print(items.get(i).getName().equals(command.getSecondWord()));
-                if (items.get(i).getName().equals(command.getSecondWord()))
+                //Looping though all the items in room.
+                for (int i = 0; i < this.itemsInRoom.size(); i++)
                 {
-                    player1.getBackpackObj().addItem(items.get(i));
+                    //Checking that the item the player wants to pickup is in the room. 
+                    if (this.itemsInRoom.get(i).getName().equalsIgnoreCase(command.getSecondWord()))
+                    {
+                        //Adds the item obj to the backpack
+                        player1.getBackpackObj().addItem(this.itemsInRoom.get(i));
+                        break; // breaks out of the loop if it finds a mathcing item
+                    } else if (i == (this.itemsInRoom.size()) - 1)
+                    {
+                        //If there is no macthing item on the last run of the loop, then say there is no match
+                        System.out.println("There is no " + command.getSecondWord() + " in this room");
+                    }
                 }
+            } else
+            {
+                System.out.println("You are not in a room where you can pick anything up");
             }
 
         } else
         {
             System.out.println("Pick up what?");
         }
+    }
+
+    private void openInventory(Command command)
+    {
+        System.out.println("Coins: " + player1.getMoney());
+        ArrayList<Item> temp = player1.getBackpackObj().getItemsInBackpack();
+        if (temp.size() == 0)
+        {
+            System.out.println("Your backpack is currently empty");
+        } else
+        {
+            System.out.print("Your inventory contains: ");
+        }
+        for (int i = 0; i < temp.size(); i++)
+        {
+            System.out.print(temp.get(i).getName());
+            if (i + 1 != temp.size())
+            {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("");
     }
 
     private boolean quit(Command command)
@@ -248,5 +372,33 @@ public class Game
         {
             return true;
         }
+    }
+
+    public void removeItemWhenRecycled(Command command)
+    {
+        ArrayList<Item> temp = player1.getBackpackObj().getItemsInBackpack();
+        for (Item e : temp)
+        {
+            System.out.print(e.getName() + " ");
+        }
+
+        for (int i = 0; i < player1.getBackpackObj().getItemsInBackpack().size(); i++)
+        {
+
+            if (player1.getBackpackObj().getItemsInBackpack().get(i).getName().equals(command.getSecondWord()))
+            {
+                player1.getBackpackObj().removeItem(player1.getBackpackObj().getItemsInBackpack().get(i));
+                break;
+            } else
+            {
+                System.out.println("This item is not in your backpack");
+            }
+        }
+        System.out.println();
+        for (Item e : temp)
+        {
+            System.out.print(e.getName() + " ");
+        }
+        System.out.println(" ");
     }
 }
