@@ -16,18 +16,9 @@ public class GameItems
 {
 
     private ArrayList<Item> items = new ArrayList<>();
-    static private HashMap<String, Integer> materialMap = new HashMap<>();
-    private final String[] materials =
-    {
-        "paper", "metal", "beton", "plastic"
-    };
     
     public GameItems()
     {
-        materialMap.put("paper", 10);
-        materialMap.put("beton", 20);
-        materialMap.put("metal", 30);
-        materialMap.put("plastic", 40);
     }
 
     public static HashMap<String, Integer> getMaterialMap()

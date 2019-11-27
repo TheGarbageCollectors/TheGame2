@@ -5,6 +5,8 @@
  */
 package worldofzuul.domain;
 
+import worldofzuul.presentation.Command;
+
 /**
  *
  * @author GamerQuvang

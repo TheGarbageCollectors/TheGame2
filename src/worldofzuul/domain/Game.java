@@ -1,5 +1,6 @@
 package worldofzuul.domain;
 
+import worldofzuul.presentation.Command;
 import worldofzuul.presentation.Parser;
 import java.util.ArrayList;
 import java.util.Arrays;
