@@ -72,7 +72,7 @@ public class Game
 
             } else
             {
-                ((Recycler) currentRoom).reycleItem(command, recycler, player1);
+                ((Recycler) currentRoom).reycleItems(command, player1);
                 tempString = ("Recycled " + command.getSecondWord());
             }
 

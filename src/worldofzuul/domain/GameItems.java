@@ -21,12 +21,6 @@ public class GameItems
     {
     }
 
-    public static HashMap<String, Integer> getMaterialMap()
-    {
-        return materialMap;
-    }
-    
-
     private void makeLootlists(String name)
     {
         //Using clear to remove everything from the arraylist if there is anything. 

@@ -5,7 +5,6 @@
  */
 package worldofzuul.presentation;
 
-import worldofzuul.domain.Command;
 import worldofzuul.domain.Game;
 
 /**

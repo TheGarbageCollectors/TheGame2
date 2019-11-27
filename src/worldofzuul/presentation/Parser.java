@@ -2,7 +2,6 @@ package worldofzuul.presentation;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;
-import worldofzuul.domain.Command;
 
 public class Parser 
 {
