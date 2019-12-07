@@ -15,20 +15,21 @@ public class UserGUI
 {
 
     private Game game;
-    private Parser parser;
+    //private Parser parser;
 
-    public void play()
+    public void play(String playerName)
     {
         
-        parser = new Parser();
-        game = new Game();
+        //parser = new Parser();
+        game = new Game(playerName);
         printWelcome();
         boolean finished = false;
-        while (!finished)
+        /*while (!finished)
         {
-            Command command = parser.getCommand();
-            finished = processCommand(command);
-        }
+            
+            //Command command = parser.getCommand();
+            //finished = processCommand(command);
+        }*/
         System.out.println("Thank you for playing.  Good bye.");
     }
 
@@ -40,7 +41,7 @@ public class UserGUI
         System.out.println("The goal of the game is to raise your populations happiness-level");
         System.out.println("The local area is littered with garbage");
         System.out.println("It's your job as the mayor to make the town happy, by keeping the streets clean");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("Type " + " if you need help.");
         System.out.println();
         System.out.println(game.getCurrentRoom().getLongDescription());
     }
@@ -96,7 +97,7 @@ public class UserGUI
         System.out.println("around the Town.");
         System.out.println();
         System.out.println("Your command words are:");
-        parser.showCommands();
+        //parser.showCommands();
 
     }
 

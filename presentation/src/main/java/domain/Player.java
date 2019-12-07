@@ -5,6 +5,7 @@
  */
 package domain;
 
+
 import java.util.Scanner;
 
 /**
@@ -18,13 +19,13 @@ public class Player
     private int money;
     private Backpack backpack = new Backpack(); 
 
-    Player()
+    Player(String playerName)
     {
         this.money = 500;
-        namePlayer();
+        this.name = playerName;
     }
 
-    private void namePlayer()
+    /*private void namePlayer(String playerName)
     {
         String inputName;
         String checkName;
@@ -36,14 +37,14 @@ public class Player
             
             System.out.print("> ");
             //input name
-            inputName = scan.nextLine();
+            inputName = playerName;
 
             //output
             System.out.println("So your name is: " + inputName + "? yes or no");
             
             System.out.print("> ");
             //confirmeing name
-            checkName = scan.nextLine().toLowerCase();
+            checkName = scan.nextLine();
 
             if (checkName.equals("yes"))
             {
@@ -51,8 +52,8 @@ public class Player
                 this.name = inputName;
                 return;
             }
-        } while (name == null);
-    }
+        } while (name == null); 
+    }*/
 
     public boolean enoughMoney(int amount)
     {

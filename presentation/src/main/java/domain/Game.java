@@ -5,7 +5,8 @@ import trashmaster.presentation.Parser;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Scanner;
+//import java.util.Scanner;
+import javafx.scene.control.Button;
 
 public class Game
 {
@@ -13,12 +14,14 @@ public class Game
     private Room currentRoom, recycler, upgradeStation;
     private Town town;
     private ArrayList<Item> itemsInRoom;
+    private Player player1;
 
-    private Player player1 = new Player();
+    
 
-    public Game()
+    public Game(String playerName)
     {
         createRooms();
+        player1 = new Player(playerName);
     }
 
     public Room getCurrentRoom()
