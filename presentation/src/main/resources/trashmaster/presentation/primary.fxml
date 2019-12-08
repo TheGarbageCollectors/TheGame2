@@ -19,30 +19,30 @@
                   <Image url="@../../Title%20background.png" />
                </image>
             </ImageView>
-            <Label fx:id="nameQuestion" layoutX="417.0" layoutY="425.0" prefHeight="38.0" prefWidth="254.0" text="What is your name?">
+            <Label fx:id="nameQuestion" alignment="CENTER" layoutX="397.0" layoutY="425.0" prefHeight="38.0" prefWidth="254.0" text="What is your name?">
                <font>
                   <Font size="26.0" />
                </font></Label>
-            <TextField fx:id="input" layoutX="392.0" layoutY="488.0" onAction="#namePlayer" prefHeight="50.0" prefWidth="286.0" />
-            <Button fx:id="confirmBtn" layoutX="476.0" layoutY="567.0" mnemonicParsing="false" onAction="#namePlayer" prefHeight="51.0" prefWidth="143.0" text="Confirm">
+            <TextField fx:id="input" alignment="CENTER" layoutX="381.0" layoutY="488.0" onAction="#namePlayer" prefHeight="50.0" prefWidth="286.0" />
+            <Button fx:id="confirmBtn" alignment="CENTER" layoutX="453.0" layoutY="564.0" mnemonicParsing="false" onAction="#namePlayer" prefHeight="51.0" prefWidth="143.0" text="Confirm">
                <font>
                   <Font size="26.0" />
                </font></Button>
-            <Button fx:id="yes" disable="true" layoutX="417.0" layoutY="569.0" mnemonicParsing="false" onAction="#nameConfirmYes" text="Yes" visible="false">
+            <Button fx:id="yes" disable="true" layoutX="405.0" layoutY="570.0" mnemonicParsing="false" onAction="#nameConfirmYes" text="Yes" visible="false">
                <font>
                   <Font size="26.0" />
                </font></Button>
-            <Label fx:id="confirmNameText" layoutX="444.0" layoutY="429.0" text="Is your name?" visible="false">
+            <Label fx:id="confirmNameText" alignment="CENTER" contentDisplay="CENTER" layoutX="444.0" layoutY="425.0" text="Is your name?" visible="false">
                <font>
                   <Font size="26.0" />
                </font>
             </Label>
-            <Label fx:id="confirmName" alignment="CENTER" layoutX="394.0" layoutY="474.0" prefHeight="38.0" prefWidth="286.0">
+            <Label fx:id="confirmName" alignment="CENTER" layoutX="381.0" layoutY="488.0" prefHeight="38.0" prefWidth="286.0" visible="false">
                <font>
                   <Font size="26.0" />
                </font>
             </Label>
-            <Button fx:id="no" disable="true" layoutX="583.0" layoutY="570.0" mnemonicParsing="false" onAction="#nameConfirmNo" text="No" visible="false">
+            <Button fx:id="no" disable="true" layoutX="569.0" layoutY="570.0" mnemonicParsing="false" onAction="#nameConfirmNo" text="No" visible="false">
                <font>
                   <Font size="26.0" />
                </font>
