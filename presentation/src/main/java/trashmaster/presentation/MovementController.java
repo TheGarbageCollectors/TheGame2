@@ -23,8 +23,10 @@ public class MovementController {
     private UserGUI gui;
     //Add buttons for item here
     @FXML private Button itemWheel, itemTrashbag, itemBottle, itemBox, itemBattery, itemCan, itemStraw, itemChipsbag;
+    @FXML private Button itemBeachBall, itemJuiceCarton, itemGumpaper, itemBike, itemToiletPaper, itemLighter, itemDoor, itemBrick, itemPipe;  
     //Add matching sprites to button here
     @FXML private ImageView imageWheel, imageTrashbag, imageBottle, imageBox, imageBattery, imageCan, imageStraw, imageChipsbag;
+    @FXML private ImageView imageBeachBall, imageJuiceCarton, imageGumpaper, imageBike, imageToiletPaper, imageLighter, imageDoor, imageBrick, imagePipe;
     @FXML private Button checkItem;
     //Add movement buttons here
     @FXML private Button goRoad, goTownHallBtn, goBeach;
