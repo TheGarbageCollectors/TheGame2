@@ -24,7 +24,7 @@ public class MovementController {
     //Add buttons for item here
     @FXML private Button itemWheel, itemTrashbag, itemBottle, itemBox, itemBattery, itemCan, itemStraw, itemChipsbag;
     //Add matching sprites to button here
-    @FXML private ImageView imageBottle;
+    @FXML private ImageView imageWheel, imageTrashbag, imageBottle, imageBox, imageBattery, imageCan, imageStraw, imageChipsbag;
     @FXML private Button checkItem;
     //Add movement buttons here
     @FXML private Button goRoad, goTownHallBtn;
@@ -75,7 +75,7 @@ public class MovementController {
     @FXML
     private void pickUpItems(ActionEvent event) throws IOException {
         String accesText = ((Button)event.getSource()).getAccessibleText();
-        gui.game.pickupItems(accesText);
+        gui.pickUpItems(accesText);
         ((Button)event.getSource()).setVisible(false);
         for(ImageView iV : this.imageList) {
             if (accesText != null) {

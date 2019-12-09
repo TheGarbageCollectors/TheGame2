@@ -123,7 +123,7 @@ public class UserGUI
         System.out.println(game.goRoom(room));
     }
 
-    private void pickupItems(String itemName)
+    public void pickUpItems(String itemName)
     {
         System.out.println(game.pickupItems(itemName));
     }
