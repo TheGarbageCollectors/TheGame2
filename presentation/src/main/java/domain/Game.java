@@ -64,25 +64,16 @@ public class Game
     }
 
 
-    public String recycleItems(Command command)
+    public String recycleItems(String name, String buttonText)
     {
         var tempString = "";
-        if (currentRoom instanceof Recycler)
-        {
-            if (!command.hasSecondWord())
+        
             {
-                tempString = ("Recycle what?");
-
-            } else
-            {
-                ((Recycler) currentRoom).reycleItems(command, player1);
-                tempString = ("Recycled " + command.getSecondWord());
+                ((Recycler) currentRoom).reycleItems(name, player1, buttonText);
+                tempString = ("Recycled " + name);
             }
 
-        } else
-        {
-            tempString = ("You are not at the recycler room");
-        }
+      
         return tempString;
     }
 
@@ -157,11 +148,9 @@ public class Game
     }
 
 
-    public String pickupItems(Command command)
+    public String pickupItems(String itemName)
     {
         var tempString = "";
-        if (command.hasSecondWord())
-        {
             //checking if the player is in fact in a room that can be looted by using the lootable class and instanceof 
             if (currentRoom instanceof Lootable)
             {
@@ -169,7 +158,7 @@ public class Game
                 for (int i = 0; i < this.itemsInRoom.size(); i++)
                 {
                     //Checking that the item the player wants to pickup is in the room. 
-                    if (this.itemsInRoom.get(i).getName().equalsIgnoreCase(command.getSecondWord()))
+                    if (this.itemsInRoom.get(i).getName().equalsIgnoreCase(itemName))
                     {
                         //Adds the item obj to the backpack
                         
@@ -178,13 +167,10 @@ public class Game
                     } else if (i == (this.itemsInRoom.size()) - 1)
                     {
                         //If there is no macthing item on the last run of the loop, then say there is no match
-                        tempString = ("There is no " + command.getSecondWord() + " in this room");
+                        tempString = ("There is no " + itemName + " in this room");
                     }
                 }
-            } else
-            {
-                tempString = ("You are not in a room where you can pick anything up");
-            }
+             
 
         } else
         {
@@ -203,7 +189,7 @@ public class Game
         return itemNames;
     }
 
-    public String getInventory(Command command)
+    public String getInventory()
     {
         var tempString = "";
         var tempString1 = "";
@@ -225,7 +211,7 @@ public class Game
                     tempString += (", ");
                 }
             }
-            return tempString;
+            return tempString1 + ".\n" + tempString;
         }
 
     }

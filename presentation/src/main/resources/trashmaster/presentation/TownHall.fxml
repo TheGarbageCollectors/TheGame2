@@ -20,6 +20,8 @@
                </image>
             </ImageView>
             <Button fx:id="road" layoutX="62.0" layoutY="653.0" mnemonicParsing="false" onAction="#goToRoad" text="Road" />
+            <Button fx:id="checkInventory" layoutX="632.0" layoutY="456.0" mnemonicParsing="false" onAction="#getInvetory" text="Inventory" />
+            <Button layoutX="1820.0" layoutY="654.0" mnemonicParsing="false" onAction="#goToRecycler" text="Recycler" />
          </children>
       </AnchorPane>
    </children>

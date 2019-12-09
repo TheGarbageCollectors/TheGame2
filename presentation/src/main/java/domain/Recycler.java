@@ -75,17 +75,16 @@ public class Recycler extends Room implements Upgradeable
         materialValues.put("plastic", 40);
     }
 
-    public void reycleItems(Command command, Player player1)
+    public void reycleItems(String name, Player player1, String buttonText)
     {
 
-        Scanner reader = new Scanner(System.in);
-        String itemToBeRecycled = command.getSecondWord().toLowerCase();
+        String itemToBeRecycled = name;
         System.out.print("How do you wish to recycle your item? ");
 
         //prints out the containers that the user can recycle with. 
         printOutMaterials((level - 1), materialesSortLevels);
 
-        String input = reader.nextLine().toLowerCase();
+        String input = buttonText;
         String[] itemMaterial;
 
         var itemsInBag = player1.getBackpackObj().getItemsInBackpack();

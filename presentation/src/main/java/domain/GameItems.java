@@ -26,23 +26,23 @@ public class GameItems
         //Using clear to remove everything from the arraylist if there is anything. 
 
         //initializes/makes a lot of Items
-        Item plasticBottle = new Item("bottle", new String[]
+        Item plasticBottle = new Item("Plastikflaske", new String[]
         {
             "plastic"
         });
-        Item cardBoard = new Item("box", new String[]
+        Item cardBoard = new Item("Papkasse", new String[]
         {
             "paper"
         });
-        Item battery = new Item("battery", new String[]
+        Item battery = new Item("Batteri", new String[]
         {
             "metal"
         });
-        Item can = new Item("can", new String[]
+        Item can = new Item("Dåse", new String[]
         {
             "metal"
         });
-        Item staw = new Item("straw", new String[]
+        Item staw = new Item("Sugerør", new String[]
         {
             "plastic"
         });
@@ -58,15 +58,15 @@ public class GameItems
         {
             case "road":
                 //makes Items specific for this class
-                Item wheel = new Item("wheel", new String[]
+                Item wheel = new Item("Hjul", new String[]
                 {
                     "metal", "plastic"
                 });
-                Item trashbag = new Item("trash", new String[]
+                Item trashbag = new Item("Skraldepose", new String[]
                 {
                     "paper", "plastic", "metal"
                 });
-                Item Chipsbag = new Item("bag", new String[]
+                Item Chipsbag = new Item("Chipspose", new String[]
                 {
                     "plastic"
                 });

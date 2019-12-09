@@ -44,6 +44,7 @@ public class UserGUI
         System.out.println(game.getCurrentRoom().getLongDescription());
     }
 
+    /*
     private boolean processCommand(Command command)
     {
         boolean wantToQuit = false;
@@ -87,7 +88,7 @@ public class UserGUI
         }
 
         return wantToQuit;
-    }
+    } */
 
     private void printHelp()
     {
@@ -112,9 +113,9 @@ public class UserGUI
     }
 
     
-    private void getInventory(Command command)
+    public void getInventory()
     {
-        System.out.println(game.getInventory(command));
+        System.out.println(game.getInventory());
     }
 
     public void goRoom(String room)
@@ -122,9 +123,9 @@ public class UserGUI
         System.out.println(game.goRoom(room));
     }
 
-    private void pickupItems(Command command)
+    private void pickupItems(String itemName)
     {
-        System.out.println(game.pickupItems(command));
+        System.out.println(game.pickupItems(itemName));
     }
 
     private void upgradeItems(Command command)
@@ -132,9 +133,9 @@ public class UserGUI
         System.out.println(game.upgradeItems(command));
     }
 
-    private void recycleItems(Command command)
+    public void recycleItems(String name, String buttonText)
     {
-        System.out.println(game.recycleItems(command));
+        System.out.println(game.recycleItems(name, buttonText));
     }
 
 }
