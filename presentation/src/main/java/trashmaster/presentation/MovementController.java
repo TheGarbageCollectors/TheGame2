@@ -21,11 +21,16 @@ import javafx.scene.layout.VBox;
  */
 public class MovementController {
     private UserGUI gui;
+    //Add buttons for item here
     @FXML private Button itemWheel, itemTrashbag, itemBottle, itemBox, itemBattery, itemCan, itemStraw, itemChipsbag;
+    //Add matching sprites to button here
     @FXML private ImageView imageBottle;
     @FXML private Button checkItem;
-    @FXML private Button road, goTownHallBtn;
+    //Add movement buttons here
+    @FXML private Button goRoad, goTownHallBtn;
     @FXML private Button checkInventory;
+    
+    @FXML private ArrayList<ImageView> imageList = new ArrayList<>();
     
     @FXML private Button recyclePlastic;
     @FXML private Button recycleMetal;
@@ -69,8 +74,20 @@ public class MovementController {
     
     @FXML
     private void pickUpItems(ActionEvent event) throws IOException {
-        gui.game.pickupItems(((Button)event.getSource()).getAccessibleText());
+        String accesText = ((Button)event.getSource()).getAccessibleText();
+        gui.game.pickupItems(accesText);
         ((Button)event.getSource()).setVisible(false);
+        for(ImageView iV : this.imageList) {
+            if (accesText != null) {
+                if(accesText.equals(iV.getAccessibleText())) {
+                    iV.setVisible(false);
+                } else {
+                    System.out.println("No matching imageview");
+                }
+            } else {
+                System.out.println("Botton does not have accessible text");
+            }
+        }
     }
     
     @FXML
@@ -78,6 +95,7 @@ public class MovementController {
         checkItem.setVisible(false);
         this.gui = PrimaryController.getGUI();
         ArrayList<String> nameListForBtn = gui.game.getItemNamesInRoom();
+        makeImageList();
         for(String itemNames : nameListForBtn)
         {
             switch(itemNames)
@@ -111,6 +129,11 @@ public class MovementController {
         }
         
     
+    }
+    
+    @FXML
+    public void makeImageList()throws IOException {
+        this.imageList.add(imageBottle);
     }
     
     @FXML
