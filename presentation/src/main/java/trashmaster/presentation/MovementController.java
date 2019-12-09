@@ -106,24 +106,31 @@ public class MovementController {
                     break;
                 case "Papkasse":
                     itemBox.setVisible(true);
+                    imageBox.setVisible(true);
                     break;
                 case "Batteri":
                     itemBattery.setVisible(true);
+                    imageBattery.setVisible(true);
                     break;
                 case "Dåse":
                     itemCan.setVisible(true);
+                    imageCan.setVisible(true);
                     break;
                 case "Sugerør":
                     itemStraw.setVisible(true);
+                    imageStraw.setVisible(true);
                     break;
                 case "Hjul": //Item from here and down are road-only items
                     itemWheel.setVisible(true);
+                    imageWheel.setVisible(true);
                     break;
                 case "Skraldepose":
                     itemTrashbag.setVisible(true);
+                    imageTrashbag.setVisible(true);
                     break;
                 case "Chipspose":
                     itemChipsbag.setVisible(true);
+                    imageChipsbag.setVisible(true);
                     break;
             }
         }
@@ -133,7 +140,14 @@ public class MovementController {
     
     @FXML
     public void makeImageList()throws IOException {
+        this.imageList.add(imageWheel);
+        this.imageList.add(imageTrashbag);
         this.imageList.add(imageBottle);
+        this.imageList.add(imageBox);
+        this.imageList.add(imageBattery);
+        this.imageList.add(imageCan);
+        this.imageList.add(imageStraw);
+        this.imageList.add(imageChipsbag);
     }
     
     @FXML
