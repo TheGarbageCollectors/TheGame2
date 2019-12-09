@@ -188,6 +188,14 @@ public class Game
         }
         return itemNames;
     }
+    
+    public boolean getIsBackpackFull() {
+        if (player1.getBackpackObj().isBackpackFull()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public String getInventory()
     {

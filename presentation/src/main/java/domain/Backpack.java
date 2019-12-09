@@ -36,9 +36,17 @@ class Backpack implements Upgradeable
         this.maxSize *= 2;
     }
     
-        public int getMaxSize(){
+     public int getMaxSize(){
         return this.maxSize;
     }
+        
+    public boolean isBackpackFull() {
+        if (this.inventoryList.size() == this.maxSize) {
+            return true;
+        } else {
+            return false;
+        }
+    }  
     
     public void addItem(Item item) {
         if (this.inventoryList.size() < this.maxSize) {

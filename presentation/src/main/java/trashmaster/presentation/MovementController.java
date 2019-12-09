@@ -75,18 +75,22 @@ public class MovementController {
     @FXML
     private void pickUpItems(ActionEvent event) throws IOException {
         String accesText = ((Button)event.getSource()).getAccessibleText();
-        gui.pickUpItems(accesText);
-        ((Button)event.getSource()).setVisible(false);
-        for(ImageView iV : this.imageList) {
-            if (accesText != null) {
-                if(accesText.equals(iV.getAccessibleText())) {
-                    iV.setVisible(false);
+        if (!gui.game.getIsBackpackFull()) {
+            gui.pickUpItems(accesText);
+            ((Button)event.getSource()).setVisible(false);
+            for(ImageView iV : this.imageList) {
+                if (accesText != null) {
+                    if(accesText.equals(iV.getAccessibleText())) {
+                        iV.setVisible(false);
+                    } else {
+                        System.out.println("No matching imageview");
+                    }
                 } else {
-                    System.out.println("No matching imageview");
+                    System.out.println("Botton does not have accessible text");
                 }
-            } else {
-                System.out.println("Botton does not have accessible text");
             }
+        } else {
+            gui.pickUpItems(accesText);
         }
     }
     
