@@ -148,6 +148,42 @@ public class MovementController {
                     itemChipsbag.setVisible(true);
                     imageChipsbag.setVisible(true);
                     break;
+                case "Badebold":
+                    itemChipsbag.setVisible(true);
+                    imageChipsbag.setVisible(true);
+                    break;
+                case "Juicekarton":
+                    itemChipsbag.setVisible(true);
+                    imageChipsbag.setVisible(true);
+                    break;
+                case "Tyggegummipapir":
+                    itemChipsbag.setVisible(true);
+                    imageChipsbag.setVisible(true);
+                    break;
+                case "Cykel":
+                    itemChipsbag.setVisible(true);
+                    imageChipsbag.setVisible(true);
+                    break;
+                case "Toiletpapir":
+                    itemChipsbag.setVisible(true);
+                    imageChipsbag.setVisible(true);
+                    break;
+                case "Lighter":
+                    itemChipsbag.setVisible(true);
+                    imageChipsbag.setVisible(true);
+                    break;
+                case "Dør":
+                    itemChipsbag.setVisible(true);
+                    imageChipsbag.setVisible(true);
+                    break;
+                case "Mursten":
+                    itemChipsbag.setVisible(true);
+                    imageChipsbag.setVisible(true);
+                    break;
+                case "Rør":
+                    itemChipsbag.setVisible(true);
+                    imageChipsbag.setVisible(true);
+                    break;
             }
         }
         

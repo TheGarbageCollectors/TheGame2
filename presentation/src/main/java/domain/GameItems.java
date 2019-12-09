@@ -98,15 +98,15 @@ public class GameItems
                 break;
             case "forrest":
                 //makes Items specific for this class
-                Item bicycle = new Item("bicycle", new String[]
+                Item bicycle = new Item("Cykel", new String[]
                 {
                     "metal", "plastic"
                 });
-                Item toiletpaper = new Item("toiletpaper", new String[]
+                Item toiletpaper = new Item("Toiletpapir", new String[]
                 {
                     "paper"
                 });
-                Item lighter = new Item("lighter", new String[]
+                Item lighter = new Item("Lighter", new String[]
                 {
                     "metal", "plastic"
                 });
@@ -118,15 +118,15 @@ public class GameItems
                 break;
             case "Abandoned Village":
                 //makes Items specific for this class
-                Item doorFrame = new Item("door", new String[]
+                Item doorFrame = new Item("Dør", new String[]
                 {
                     "metal", "beton"
                 });
-                Item bricks = new Item("bricks", new String[]
+                Item bricks = new Item("Mursten", new String[]
                 {
                     "concrete"
                 });
-                Item pipes = new Item("pipes", new String[]
+                Item pipes = new Item("Rør", new String[]
                 {
                     "metal"
                 });
