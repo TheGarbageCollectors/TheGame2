@@ -18,7 +18,7 @@ public class PrimaryController {
     @FXML private Label confirmName;
     @FXML private Label confirmNameText;
     @FXML private Label nameQuestion;
-    @FXML private UserGUI gui;
+    private static UserGUI gui = new UserGUI();
     
     
     /*public PrimaryController(UserGUI gui) {
@@ -64,9 +64,15 @@ public class PrimaryController {
     
     @FXML 
     private void nameConfirmYes() throws IOException {
-        //gui.play(name);
         switchToSecondary();
+        gui = new UserGUI();
+        gui.play(name);
+        gui.goRoom("town_hall");
+        
     }
     
+    public static UserGUI getGUI() {
+        return gui;
+    }
     
 }

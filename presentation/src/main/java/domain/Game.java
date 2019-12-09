@@ -113,18 +113,13 @@ public class Game
     }
 
 
-    public String goRoom(Command command)
+    public String goRoom(String room)
     {
         var tempString = "";
-        if (!command.hasSecondWord())
-        {
-            tempString = ("Go where?");
-            return tempString;
-        }
+       
+        
 
-        String direction = command.getSecondWord();
-
-        Room nextRoom = currentRoom.getExit(direction);
+        Room nextRoom = currentRoom.getExit(room);
 
         if (nextRoom == null)
         {
@@ -198,6 +193,10 @@ public class Game
         return tempString;
     }
 
+    public ArrayList<Item> getItemsInRoom()
+    {
+        return this.itemsInRoom;
+    }
 
     public String getInventory(Command command)
     {

@@ -6,31 +6,18 @@ import java.util.StringTokenizer;
 public class Parser 
 {
     private CommandWords commands;
-    private Scanner reader;
+    
 
     public Parser() 
     {
         commands = new CommandWords();
-        reader = new Scanner(System.in);
+        
     }
 
-    public Command getCommand() 
+    public Command getCommand(String firstWord, String secondWord) 
     {
-        String inputLine;
-        String word1 = null;
-        String word2 = null;
-
-        System.out.print("> "); 
-
-        inputLine = reader.nextLine();
-
-        Scanner tokenizer = new Scanner(inputLine);
-        if(tokenizer.hasNext()) {
-            word1 = tokenizer.next();
-            if(tokenizer.hasNext()) {
-                word2 = tokenizer.next(); 
-            }
-        }
+        String word1 = firstWord;
+        String word2 = secondWord;
 
         return new Command(commands.getCommandWord(word1), word2);
     }

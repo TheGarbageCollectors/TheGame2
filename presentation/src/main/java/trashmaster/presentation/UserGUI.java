@@ -14,7 +14,7 @@ import domain.Game;
 public class UserGUI
 {
 
-    private Game game;
+    public Game game;
     //private Parser parser;
 
     public void play(String playerName)
@@ -22,15 +22,13 @@ public class UserGUI
         
         //parser = new Parser();
         game = new Game(playerName);
-        printWelcome();
-        boolean finished = false;
-        /*while (!finished)
-        {
-            
-            //Command command = parser.getCommand();
-            //finished = processCommand(command);
-        }*/
-        System.out.println("Thank you for playing.  Good bye.");
+        //printWelcome();
+        //boolean finished = false;
+        
+        //Command command = parser.getCommand("go", "town_hall");
+        //finished = processCommand(command);
+        
+        //System.out.println("Thank you for playing.  Good bye.");
     }
 
     private void printWelcome()
@@ -65,9 +63,9 @@ public class UserGUI
                 case HELP:
                     printHelp();
                     break;
-                case GO:
-                    goRoom(command);
-                    break;
+                //case GO:
+                //    goRoom(command);
+                //    break;
                 case QUIT:
                     wantToQuit = quit(command);
                     break;
@@ -113,14 +111,15 @@ public class UserGUI
         }
     }
 
+    
     private void getInventory(Command command)
     {
         System.out.println(game.getInventory(command));
     }
 
-    private void goRoom(Command command)
+    public void goRoom(String room)
     {
-        System.out.println(game.goRoom(command));
+        System.out.println(game.goRoom(room));
     }
 
     private void pickupItems(Command command)
