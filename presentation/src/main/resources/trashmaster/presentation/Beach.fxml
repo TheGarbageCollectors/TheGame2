@@ -15,7 +15,6 @@
                   <Image url="@../../Beach%20Room.png" />
                </image>
             </ImageView>
-            <Button fx:id="goRoad" layoutX="923.0" layoutY="1019.0" mnemonicParsing="false" onAction="#goToRoad" text="Road" />
             <ImageView fx:id="imageBottle" accessibleText="Plastikflaske" fitHeight="44.0" fitWidth="150.0" layoutX="576.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../Bottle%20item.png" />
@@ -46,24 +45,25 @@
                </image>
             </ImageView>
             <Button fx:id="itemStraw" accessibleText="Sugerør" layoutX="901.0" layoutY="555.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="54.0" prefWidth="85.0" rotate="90.0" text="Sugerør" visible="false" />
-            <ImageView fx:id="imageWheel" accessibleText="Hjul" fitHeight="127.0" fitWidth="122.0" layoutX="80.0" layoutY="829.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="imageBeachBall" accessibleText="Badebold" fitHeight="127.0" fitWidth="122.0" layoutX="80.0" layoutY="829.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../Beach%20Ball%20Item.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemBeachball" accessibleText="Hjul" layoutX="89.0" layoutY="839.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="104.0" prefWidth="113.0" text="Badebold" visible="false" />
-            <ImageView fx:id="imageTrashbag" accessibleText="Skraldepose" fitHeight="191.0" fitWidth="185.0" layoutX="1456.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Button fx:id="itemBeachBall" accessibleText="BadeBold" layoutX="89.0" layoutY="839.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="104.0" prefWidth="113.0" text="Badebold" visible="false" />
+            <ImageView fx:id="imageJuiceCarton" accessibleText="Juicekarton" fitHeight="191.0" fitWidth="185.0" layoutX="1456.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@../../trash.png" />
+                  <Image url="@../../Juice%20Item.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemTrashbag" accessibleText="Skraldepose" layoutX="1488.0" layoutY="263.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="92.0" prefWidth="104.0" text="Skraldepose" visible="false" />
-            <ImageView fx:id="imageChipsbag" accessibleText="Chipspose" fitHeight="85.0" fitWidth="85.0" layoutX="193.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Button fx:id="itemJuiceCarton" accessibleText="Juicekarton" layoutX="1488.0" layoutY="263.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="92.0" prefWidth="104.0" text="Juicekarton" visible="false" />
+            <ImageView fx:id="imageGumpaper" accessibleText="Tyggegummipapir" fitHeight="85.0" fitWidth="85.0" layoutX="193.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@../../Bag%20Of%20Chips.png" />
+                  <Image url="@../../Gum%20Foil.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemChipsbag" accessibleText="Chipspose" layoutX="204.0" layoutY="187.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="34.0" prefWidth="64.0" rotate="90.0" text="Chipspose" visible="false" />
+            <Button fx:id="itemGumpaper" accessibleText="Tyggegummipapir" layoutX="204.0" layoutY="187.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="34.0" prefWidth="64.0" rotate="90.0" text="Tyggegummipapir" visible="false" />
+            <Button fx:id="goRoad" alignment="CENTER" layoutX="1803.0" layoutY="634.0" mnemonicParsing="false" onAction="#goToRoad" prefHeight="17.0" prefWidth="34.0" text="Vej" />
             <Button fx:id="checkItem" layoutX="1158.0" layoutY="76.0" mnemonicParsing="false" onAction="#setVisibleForRoadItems" text="Kig efter skrald" />
          </children>
       </AnchorPane>

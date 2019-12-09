@@ -96,6 +96,7 @@ public class MovementController {
                 if (accesText != null) {
                     if(accesText.equals(iV.getAccessibleText())) {
                         iV.setVisible(false);
+                        System.out.println("???");
                     } else {
                         System.out.println("No matching imageview");
                     }
@@ -151,40 +152,40 @@ public class MovementController {
                     imageChipsbag.setVisible(true);
                     break;
                 case "Badebold":
-                    itemChipsbag.setVisible(true);
-                    imageChipsbag.setVisible(true);
+                    itemBeachBall.setVisible(true);
+                    imageBeachBall.setVisible(true);
                     break;
                 case "Juicekarton":
-                    itemChipsbag.setVisible(true);
-                    imageChipsbag.setVisible(true);
+                    itemJuiceCarton.setVisible(true);
+                    imageJuiceCarton.setVisible(true);
                     break;
                 case "Tyggegummipapir":
-                    itemChipsbag.setVisible(true);
-                    imageChipsbag.setVisible(true);
+                    itemGumpaper.setVisible(true);
+                    imageGumpaper.setVisible(true);
                     break;
                 case "Cykel":
-                    itemChipsbag.setVisible(true);
-                    imageChipsbag.setVisible(true);
+                    itemBike.setVisible(true);
+                    imageBike.setVisible(true);
                     break;
                 case "Toiletpapir":
-                    itemChipsbag.setVisible(true);
-                    imageChipsbag.setVisible(true);
+                    itemToiletPaper.setVisible(true);
+                    imageToiletPaper.setVisible(true);
                     break;
                 case "Lighter":
-                    itemChipsbag.setVisible(true);
-                    imageChipsbag.setVisible(true);
+                    itemLighter.setVisible(true);
+                    imageLighter.setVisible(true);
                     break;
                 case "Dør":
-                    itemChipsbag.setVisible(true);
-                    imageChipsbag.setVisible(true);
+                    itemDoor.setVisible(true);
+                    imageDoor.setVisible(true);
                     break;
                 case "Mursten":
-                    itemChipsbag.setVisible(true);
-                    imageChipsbag.setVisible(true);
+                    itemBrick.setVisible(true);
+                    imageBrick.setVisible(true);
                     break;
                 case "Rør":
-                    itemChipsbag.setVisible(true);
-                    imageChipsbag.setVisible(true);
+                    itemPipe.setVisible(true);
+                    imagePipe.setVisible(true);
                     break;
             }
         }
@@ -202,6 +203,15 @@ public class MovementController {
         this.imageList.add(imageCan);
         this.imageList.add(imageStraw);
         this.imageList.add(imageChipsbag);
+        this.imageList.add(imageBeachBall);
+        this.imageList.add(imageJuiceCarton);
+        this.imageList.add(imageGumpaper);
+        this.imageList.add(imageBike);
+        this.imageList.add(imageToiletPaper);
+        this.imageList.add(imageLighter);
+        this.imageList.add(imageDoor);
+        this.imageList.add(imageBrick);
+        this.imageList.add(imagePipe);
     }
     
     @FXML
