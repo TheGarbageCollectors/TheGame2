@@ -27,7 +27,7 @@ public class MovementController {
     @FXML private ImageView imageWheel, imageTrashbag, imageBottle, imageBox, imageBattery, imageCan, imageStraw, imageChipsbag;
     @FXML private Button checkItem;
     //Add movement buttons here
-    @FXML private Button goRoad, goTownHallBtn;
+    @FXML private Button goRoad, goTownHallBtn, goBeach;
     @FXML private Button checkInventory;
     
     @FXML private ArrayList<ImageView> imageList = new ArrayList<>();
@@ -49,6 +49,19 @@ public class MovementController {
     }
     
     @FXML
+    private void goToBeach () throws IOException {
+        this.gui = PrimaryController.getGUI();
+        gui.goRoom("beach");
+        App.setRoot("Beach");
+    }
+    
+    @FXML
+    private void goToForrest () throws IOException {
+        this.gui = PrimaryController.getGUI();
+        gui.goRoom("forrest");
+        App.setRoot("Forrest");
+    }
+    @FXML
     private void goToRecycler() throws IOException {
         this.gui = PrimaryController.getGUI();
         gui.goRoom("recycler");
@@ -62,8 +75,7 @@ public class MovementController {
         App.setRoot("Road");
         /*if (App.getRoot() == itemBottle.getScene()) {
             setVisibleForRoadItems();
-        }*/
-            
+        }*/  
     }
     
     @FXML 

@@ -78,15 +78,15 @@ public class GameItems
                 break;
             case "beach":
                 //makes Items specific for this class
-                Item beachball = new Item("beachball", new String[]
+                Item beachball = new Item("Badebold", new String[]
                 {
                     "plastic"
                 });
-                Item juicecarton = new Item("carton", new String[]
+                Item juicecarton = new Item("Juicekarton", new String[]
                 {
                     "paper"
                 });
-                Item Gumpaper = new Item("gumpaper", new String[]
+                Item Gumpaper = new Item("Tyggegummipapir", new String[]
                 {
                     "plastic"
                 });
