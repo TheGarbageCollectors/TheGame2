@@ -56,7 +56,7 @@ public class GameItems
 
         switch (name)
         {
-            case "Road":
+            case "road":
                 //makes Items specific for this class
                 Item wheel = new Item("wheel", new String[]
                 {
@@ -76,7 +76,7 @@ public class GameItems
                 items.add(trashbag);
                 items.add(Chipsbag);
                 break;
-            case "Beach":
+            case "beach":
                 //makes Items specific for this class
                 Item beachball = new Item("beachball", new String[]
                 {
@@ -96,7 +96,7 @@ public class GameItems
                 items.add(juicecarton);
                 items.add(Gumpaper);
                 break;
-            case "Forrest":
+            case "forrest":
                 //makes Items specific for this class
                 Item bicycle = new Item("bicycle", new String[]
                 {

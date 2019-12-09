@@ -4,6 +4,7 @@ domain\Lootable.class
 domain\Upgradeable.class
 domain\Game.class
 domain\Room.class
+trashmaster\presentation\MovementController.class
 domain\Backpack.class
 trashmaster\presentation\Main.class
 module-info.class
@@ -17,7 +18,5 @@ trashmaster\presentation\PrimaryController.class
 trashmaster\presentation\UserGUI$1.class
 trashmaster\presentation\CommandWord.class
 trashmaster\presentation\CommandWords.class
-trashmaster\presentation\RoadController.class
 domain\GameItems.class
-trashmaster\presentation\SecondaryController.class
 trashmaster\presentation\Parser.class

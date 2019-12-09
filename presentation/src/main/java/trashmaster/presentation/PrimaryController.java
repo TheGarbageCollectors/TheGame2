@@ -18,7 +18,7 @@ public class PrimaryController {
     @FXML private Label confirmName;
     @FXML private Label confirmNameText;
     @FXML private Label nameQuestion;
-    private static UserGUI gui = new UserGUI();
+    private static UserGUI gui = null;
     
     
     /*public PrimaryController(UserGUI gui) {

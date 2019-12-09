@@ -193,9 +193,14 @@ public class Game
         return tempString;
     }
 
-    public ArrayList<Item> getItemsInRoom()
+    public ArrayList<String> getItemNamesInRoom() //Used by GUI to enable bottoms
     {
-        return this.itemsInRoom;
+        ArrayList<String> itemNames = new ArrayList();
+        for(Item item : itemsInRoom)
+        {
+            itemNames.add(item.getName());
+        }
+        return itemNames;
     }
 
     public String getInventory(Command command)
