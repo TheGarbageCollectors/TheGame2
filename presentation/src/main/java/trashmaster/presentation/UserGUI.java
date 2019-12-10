@@ -137,9 +137,9 @@ public class UserGUI
         System.out.println(game.upgradeItems(command));
     }
 
-    public void recycleItems(String name, String buttonText)
+    public void recycleItems(String name, String buttonText, int inventoryIndex)
     {
-        System.out.println(game.recycleItems(name, buttonText));
+        System.out.println(game.recycleItems(name, buttonText, inventoryIndex));
     }
 
 }

@@ -6,6 +6,7 @@ trashmaster\presentation\LootableController.class
 trashmaster\presentation\App.class
 domain\Player.class
 trashmaster\presentation\Command.class
+trashmaster\presentation\RecyclerController$1.class
 trashmaster\presentation\TownController.class
 trashmaster\presentation\UserGUI.class
 domain\UpgradeStation.class

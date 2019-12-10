@@ -5,11 +5,19 @@
  */
 package trashmaster.presentation;
 
+import domain.Item;
 import java.io.IOException;
+import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -17,13 +25,18 @@ import javafx.scene.image.ImageView;
  */
 public class RecyclerController {
     private UserGUI gui;
-    @FXML private Button recyclePlastic;
-    @FXML private Button recycleMetal;
+    @FXML private Button recyclePlastic, recycleMetal, recycleGarbage, recycleConcrete, recyclePaper, recycleBattery, recycleHazardous;
     @FXML private ImageView recycle1, recycle2, recycle3;
     @FXML private Button goTownHall;
+    @FXML private String buttonText;
+    @FXML private String itemName;
+    @FXML private VBox recycleItem;
+    @FXML private TextArea myTA;
+    @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
+    @FXML private ObservableList<Button> buttonList = FXCollections.observableArrayList();
     
     @FXML
-    private void goToTownHall() throws IOException {
+    private void goToTownHall() throws IOException  {
         this.gui = PrimaryController.getGUI();
         gui.goRoom("town_hall");
         App.setRoot("TownHall");
@@ -40,9 +53,15 @@ public class RecyclerController {
                 break;
             case 2:
                 recycle2.setVisible(true);
+                recycleConcrete.setVisible(true);
+                recyclePaper.setVisible(true);
                 break;
             case 3:
                 recycle3.setVisible(true);
+                recycleConcrete.setVisible(true);
+                recyclePaper.setVisible(true);
+                recycleBattery.setVisible(true);
+                recycleHazardous.setVisible(true);
                 break;
         }
                 
@@ -50,23 +69,45 @@ public class RecyclerController {
     
     @FXML
     private void recycleItemChoice(ActionEvent event) throws IOException {
-        String buttonText;
-        String itemName;
+        this.buttonText = ((Button)event.getSource()).getText();
+        this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        recycleItem.setVisible(true);
+        String buttonID = "btn";
+        int j = 0;
+        if (buttonList.isEmpty()) { 
+        for (Item i : inventoryList) {
+            buttonList.add(new Button(i.getName()));
+            recycleItem.getChildren().add(buttonList.get(j));
+            buttonList.get(j).setOnAction(recycleEvent);
+            j++;
+        }
+        } else {
+            
+        }
         
-        buttonText = ((Button)event.getSource()).getText();
-       
-        System.out.println(buttonText);
+        
         //recycleItems();
     }
     
-    
     @FXML
-    private void recycleItems() throws IOException {
-        String buttonText;
-        String itemName;
-        
-        buttonText = this.recyclePlastic.getText();
-        
-        //gui.recycleItems();
-    }
+    EventHandler<ActionEvent> recycleEvent = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event)  {
+                itemName = ((Button)event.getSource()).getText();
+                System.out.println(itemName + buttonText);
+                int inventoryIndex = buttonList.indexOf((Button)event.getSource());
+                //System.out.println(itemName);
+                gui.recycleItems(itemName, buttonText, inventoryIndex);
+                recycleItem.setVisible(false);
+                buttonList.clear();
+                recycleItem.getChildren().clear();
+                System.out.println("Hello mah dude");
+                int hp = gui.game.getHP();
+                if (hp <= 0) { 
+                   
+                }
+            }
+    };
+    
+    
 }

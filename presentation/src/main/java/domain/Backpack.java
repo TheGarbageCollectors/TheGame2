@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * @author GamerQuvang
  */
-class Backpack implements Upgradeable
+public class Backpack implements Upgradeable
 {
     private String name = "Backpack";
     private int level;
@@ -64,7 +64,7 @@ class Backpack implements Upgradeable
         //Write code here
     }
 
-    public ArrayList<Item> getItemsInBackpack (){
+    public ArrayList<Item> getItemsInBackpack(){
         return this.inventoryList;
     }
 }

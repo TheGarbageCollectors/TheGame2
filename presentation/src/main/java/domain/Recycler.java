@@ -22,9 +22,18 @@ public class Recycler extends Room implements Upgradeable
     private int level;
     private HashMap<String, Integer> materialValues = new HashMap<>();
     private ArrayList<ArrayList<String>> materialesSortLevels = new ArrayList<>();
-    private ArrayList<String> a1 = new ArrayList<>(Arrays.asList("metal", "plastic", "trash"));
-    private ArrayList<String> a2 = new ArrayList<>(Arrays.asList("metal", "plastic", "trash", "paper", "concrete"));
-    private ArrayList<String> a3 = new ArrayList<>(Arrays.asList("metal", "plastic", "trash", "paper", "concrete", "battery", "hazardous"));
+    private ArrayList<String> restaffaldArray = new ArrayList<>(Arrays.asList
+        (
+                "Plastikflaske", "Papkasse", "Batteri", "Dåse", "Sugerør", "Hjul", "Skraldepose", "Chipspose", "Badebold", "Juicekarton", "Tyggegummipapir", "Cykel"
+                , "Toiletpapir", "Lighter", "Dør", "Mursten", "Rør"
+        ));
+    private ArrayList<String> plastikArray = new ArrayList<>(Arrays.asList("Plastikflaske", "Sugerør", "Chipspose", "Badebold"));
+    private ArrayList<String> metalArray = new ArrayList<>(Arrays.asList("Hjul", "Cykel", "Rør", "Dåse", "Dør"));
+    private ArrayList<String> betonArray = new ArrayList<>(Arrays.asList("Mursten"));
+    private ArrayList<String> papirArray = new ArrayList<>(Arrays.asList("Papkasse", "Juicekarton", "Tyggegummipapir", "Toiletpapir"));
+    private ArrayList<String> batteriArray = new ArrayList<>(Arrays.asList("Batteri"));
+    private ArrayList<String> farligtaffaldArray = new ArrayList<>(Arrays.asList("Lighter"));
+    
     private double[] recyclingProcent =
     {
         0.1, 0.3, 0.6, 1.0
@@ -40,10 +49,6 @@ public class Recycler extends Room implements Upgradeable
         this.name = name;
         this.level = 1;
 
-        //Makeing an arraylist with arraylists that stores all the containers we can put stuff in
-        materialesSortLevels.add(a1);
-        materialesSortLevels.add(a2);
-        materialesSortLevels.add(a3);
     }
 
     //getting the level is used in the upgradestation class to know what level the recycler already is
@@ -64,6 +69,10 @@ public class Recycler extends Room implements Upgradeable
     {
         this.level++;
     }
+    
+    public int getHP() {
+        return this.hp;
+    }
 
     //Setting the level is used in the upgradestation class to change the level of the recycler
     private void makeMaterialeMap()
@@ -75,10 +84,108 @@ public class Recycler extends Room implements Upgradeable
         materialValues.put("plastic", 40);
     }
 
-    public void reycleItems(String name, Player player1, String buttonText)
-    {
+    public void recycleItems(String itemName, Player player1, String containerText, int inventoryIndex) {
+        if (player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex).getName().contains(itemName)) {
+            switch (containerText) {
+                case "Restaffald":
+                    if(restaffaldArray.contains(itemName)) {
+                        removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        System.out.println("Removed: " + itemName);
+                    }
+                    
+                    break;
+                case "Metal": 
+                    if(metalArray.contains(itemName)) {
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        System.out.println("Removed: " + itemName);
+                    } else {
+                        removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        loseHP();
+                    }
 
-        String itemToBeRecycled = name;
+                    break;
+                case "Plastik":
+                    if(plastikArray.contains(itemName)) {
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        System.out.println("Removed: " + itemName);
+                    }
+
+                    break;
+                case "Beton": 
+                    if(betonArray.contains(itemName)) {
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        System.out.println("Removed: " + itemName);
+                    }
+
+                    break;
+                case "Papir":
+                    if(papirArray.contains(itemName)) {
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        System.out.println("Removed: " + itemName);
+                    }
+
+                    break;
+                case "Batterier":
+                    if(batteriArray.contains(itemName)) {
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        System.out.println("Removed: " + itemName);
+                    }
+
+                    break;
+                case "Farligt affald":
+                    if(farligtaffaldArray.contains(itemName)) {
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        System.out.println("Removed: " + itemName);
+                    }
+
+                    break;
+                        }
+        }
+        
+    }
+
+    private void recycleItem(Item item, Player player1)
+    {
+        player1.addMoney(valueCalculator());
+        System.out.println("Money added");
+        removeItemWhenRecycled(item, player1);
+        System.out.println("Item removed");
+    }
+
+    /*
+    private void recycleItem(String container, Item item, Player player1)
+    {
+        valueCalculator(container);
+        removeItemWhenRecycled(item, player1);
+    }*/
+
+    private int valueCalculator()
+    {
+        int tempTotalValue;
+        tempTotalValue = 3;
+        return tempTotalValue;
+    }
+
+    private void removeItemWhenRecycled(Item item, Player player1)
+    {
+        player1.getBackpackObj().removeItem(item);
+    }
+
+    private void printOutMaterials(int level, ArrayList<ArrayList<String>> materialsThatCanSortes)
+    {
+        System.out.println("");
+        for (String i : materialsThatCanSortes.get(level))
+        {
+            System.out.print(i + " ");
+        }
+    }
+    
+    private void loseHP() {
+        this.hp -= 10;
+    }
+    
+    /*
+    String itemToBeRecycled = name;
         System.out.print("How do you wish to recycle your item? ");
 
         //prints out the containers that the user can recycle with. 
@@ -90,13 +197,16 @@ public class Recycler extends Room implements Upgradeable
         var itemsInBag = player1.getBackpackObj().getItemsInBackpack();
         for (int i = 0; i < itemsInBag.size(); i++)
         {
-            if (itemsInBag.get(i).getName().equalsIgnoreCase(itemToBeRecycled))
+            System.out.println(itemsInBag.get(i).getName());
+            System.out.println(itemToBeRecycled);
+            if (itemsInBag.get(i).getName().equals(itemToBeRecycled))
             {
                 //Looper igennem backpack for at finde det item object som skal recycles
                 itemMaterial = itemsInBag.get(i).getMaterialList();
                 for (int j = 0; j < itemMaterial.length; j++)
                 {
-                    if (!materialesSortLevels.get(level).contains(itemMaterial[j]))
+                    System.out.println(this.level);
+                    if (materialesSortLevels.get(level).contains(itemMaterial[j]))
                     {
                         //looper igennem materiallisten på det object som skal recycles.
                         if (input.equalsIgnoreCase(itemMaterial[j]) && materialesSortLevels.get(level).contains(input))
@@ -116,48 +226,12 @@ public class Recycler extends Room implements Upgradeable
                     {
                         //if its the last run of the loop and it hasnt matched anything else then we check if the user wrote trash. 
                         recycleItem("trash", itemsInBag.get(i), player1);
+                    } else { 
                     }
                 }
             } else
             {
                 System.out.println("This item is not in your backpack");
             }
-        }
-    }
-
-    private void recycleItem(Item item, Player player1)
-    {
-        player1.addMoney(valueCalculator(item.getName()));
-        System.out.println("Money added");
-        removeItemWhenRecycled(item, player1);
-        System.out.println("Item removed");
-    }
-
-    private void recycleItem(String container, Item item, Player player1)
-    {
-        valueCalculator(container);
-        removeItemWhenRecycled(item, player1);
-    }
-
-    private int valueCalculator(String itemName)
-    {
-        int tempTotalValue;
-        tempTotalValue = materialValues.get(itemName);
-        tempTotalValue = (int) (tempTotalValue * this.recyclingProcent[this.level]);
-        return tempTotalValue;
-    }
-
-    private void removeItemWhenRecycled(Item item, Player player1)
-    {
-        player1.getBackpackObj().removeItem(item);
-    }
-
-    private void printOutMaterials(int level, ArrayList<ArrayList<String>> materialsThatCanSortes)
-    {
-        System.out.println("");
-        for (String i : materialsThatCanSortes.get(level))
-        {
-            System.out.print(i + " ");
-        }
-    }
+ }*/
 }

@@ -57,6 +57,15 @@ public class Game
     public int getRecyclerLevel() {
         return ((Recycler)this.recycler).getLevel();
     }
+    
+    public Player getPlayer() {
+        return this.player1;
+    }
+    
+    public int getHP() {
+        int hp = ((Recycler)this.recycler).getHP();
+        return hp; 
+    }
 
     private void createRooms()
     {
@@ -93,12 +102,12 @@ public class Game
     }
 
 
-    public String recycleItems(String name, String buttonText)
+    public String recycleItems(String name, String buttonText, int inventoryIndex)
     {
         var tempString = "";
         
             {
-                ((Recycler) currentRoom).reycleItems(name, player1, buttonText);
+                ((Recycler)recycler).recycleItems(name, this.player1, buttonText, inventoryIndex);
                 tempString = ("Recycled " + name);
             }
 
