@@ -116,7 +116,7 @@ public class GameItems
                 items.add(toiletpaper);
                 items.add(lighter);
                 break;
-            case "Abandoned Village":
+            case "abandoned_village":
                 //makes Items specific for this class
                 Item doorFrame = new Item("Dør", new String[]
                 {

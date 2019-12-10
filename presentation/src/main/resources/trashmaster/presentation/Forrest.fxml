@@ -5,21 +5,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trashmaster.presentation.MovementController">
    <children>
       <AnchorPane prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <ImageView onDragDetected="#goToRoad" pickOnBounds="true" preserveRatio="true">
+            <ImageView pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Forrest.png" />
                </image>
             </ImageView>
-            <Button fx:id="goTownHallBtn" layoutX="1788.0" layoutY="563.0" mnemonicParsing="false" onAction="#goToTownHall" text="Road">
-               <font>
-                  <Font size="26.0" />
-               </font></Button>
             <ImageView fx:id="imageBottle" accessibleText="Plastikflaske" fitHeight="44.0" fitWidth="150.0" layoutX="576.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../Bottle%20item.png" />
@@ -50,25 +45,26 @@
                </image>
             </ImageView>
             <Button fx:id="itemStraw" accessibleText="Sugerør" layoutX="901.0" layoutY="555.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="54.0" prefWidth="85.0" rotate="90.0" text="Sugerør" visible="false" />
-            <ImageView fx:id="imageWheel" accessibleText="Hjul" fitHeight="127.0" fitWidth="122.0" layoutX="80.0" layoutY="829.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="imageBike" accessibleText="Cykel" fitHeight="127.0" fitWidth="122.0" layoutX="80.0" layoutY="829.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@../../Cycle%20Wheel.png" />
+                  <Image url="@../../snoop-dogg.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemWheel" accessibleText="Hjul" layoutX="89.0" layoutY="839.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="104.0" prefWidth="113.0" text="Hjul" visible="false" />
-            <ImageView fx:id="imageTrashbag" accessibleText="Skraldepose" fitHeight="191.0" fitWidth="185.0" layoutX="1456.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Button fx:id="itemBike" accessibleText="Cykel" layoutX="89.0" layoutY="839.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="104.0" prefWidth="113.0" text="Cykel" visible="false" />
+            <ImageView fx:id="imageToiletPaper" accessibleText="Toiletpapir" fitHeight="191.0" fitWidth="185.0" layoutX="1456.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@../../trash.png" />
+                  <Image url="@../../Toilet%20role.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemTrashbag" accessibleText="Skraldepose" layoutX="1488.0" layoutY="263.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="92.0" prefWidth="104.0" text="Skraldepose" visible="false" />
-            <ImageView fx:id="imageChipsbag" accessibleText="Chipspose" fitHeight="85.0" fitWidth="85.0" layoutX="193.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Button fx:id="itemToiletPaper" accessibleText="Toiletpapir" layoutX="1488.0" layoutY="263.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="92.0" prefWidth="104.0" text="Toiletpapir" visible="false" />
+            <ImageView fx:id="imageLighter" accessibleText="Lighter" fitHeight="85.0" fitWidth="85.0" layoutX="193.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@../../Bag%20Of%20Chips.png" />
+                  <Image url="@../../Lighter.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemChipsbag" accessibleText="Chipspose" layoutX="204.0" layoutY="187.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="34.0" prefWidth="64.0" rotate="90.0" text="Chipspose" visible="false" />
-            <Button fx:id="checkItem" layoutX="1705.0" layoutY="77.0" mnemonicParsing="false" onAction="#setVisibleForRoadItems" text="Kig efter skrald" />
+            <Button fx:id="itemLighter" accessibleText="Lighter" layoutX="204.0" layoutY="187.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="34.0" prefWidth="64.0" rotate="90.0" text="Lighter" visible="false" />
+            <Button fx:id="goRoad" alignment="CENTER" layoutX="901.0" layoutY="956.0" mnemonicParsing="false" onAction="#goToRoad" prefHeight="17.0" prefWidth="34.0" text="Vej" />
+            <Button fx:id="checkItem" layoutX="1158.0" layoutY="76.0" mnemonicParsing="false" onAction="#setVisibleForItems" text="Kig efter skrald" />
          </children>
       </AnchorPane>
    </children>

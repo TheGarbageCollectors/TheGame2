@@ -154,4 +154,8 @@ public class UpgradeStation extends Room
         
        
     }
+    
+    public String getName() {
+        return this.name;
+    }
 }

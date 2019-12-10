@@ -29,7 +29,7 @@ public class MovementController {
     @FXML private ImageView imageBeachBall, imageJuiceCarton, imageGumpaper, imageBike, imageToiletPaper, imageLighter, imageDoor, imageBrick, imagePipe;
     @FXML private Button checkItem;
     //Add movement buttons here
-    @FXML private Button goRoad, goTownHallBtn, goBeach;
+    @FXML private Button goRoad, goTownHall, goBeach, goForrest;
     @FXML private Button checkInventory;
     
     @FXML private ArrayList<ImageView> imageList = new ArrayList<>();
@@ -68,6 +68,13 @@ public class MovementController {
         this.gui = PrimaryController.getGUI();
         gui.goRoom("recycler");
         App.setRoot("recycler");
+    }
+    
+    @FXML
+    private void goToVillage() throws IOException {
+        this.gui = PrimaryController.getGUI();
+        gui.goRoom("abandoned_village");
+        App.setRoot("Village");
     }
     
     @FXML
@@ -110,7 +117,7 @@ public class MovementController {
     }
     
     @FXML
-    public void setVisibleForRoadItems() throws IOException {
+    public void setVisibleForItems() throws IOException {
         checkItem.setVisible(false);
         this.gui = PrimaryController.getGUI();
         ArrayList<String> nameListForBtn = gui.game.getItemNamesInRoom();
@@ -195,23 +202,35 @@ public class MovementController {
     
     @FXML
     public void makeImageList()throws IOException {
-        this.imageList.add(imageWheel);
-        this.imageList.add(imageTrashbag);
         this.imageList.add(imageBottle);
         this.imageList.add(imageBox);
         this.imageList.add(imageBattery);
         this.imageList.add(imageCan);
         this.imageList.add(imageStraw);
-        this.imageList.add(imageChipsbag);
-        this.imageList.add(imageBeachBall);
-        this.imageList.add(imageJuiceCarton);
-        this.imageList.add(imageGumpaper);
-        this.imageList.add(imageBike);
-        this.imageList.add(imageToiletPaper);
-        this.imageList.add(imageLighter);
-        this.imageList.add(imageDoor);
-        this.imageList.add(imageBrick);
-        this.imageList.add(imagePipe);
+        
+        String currentRoom = gui.game.getCurrentRoomName();
+        switch(currentRoom) {
+            case "road":
+                this.imageList.add(imageWheel);
+                this.imageList.add(imageTrashbag);
+                this.imageList.add(imageChipsbag);
+                break;
+            case "beach":
+                this.imageList.add(imageBeachBall);
+                this.imageList.add(imageJuiceCarton);
+                this.imageList.add(imageGumpaper);
+                break;
+            case "forrest":
+                this.imageList.add(imageBike);
+                this.imageList.add(imageToiletPaper);
+                this.imageList.add(imageLighter);
+                break;
+            case "abandoned_village":
+                this.imageList.add(imageDoor);
+                this.imageList.add(imageBrick);
+                this.imageList.add(imagePipe);
+                break;
+        }
     }
     
     @FXML

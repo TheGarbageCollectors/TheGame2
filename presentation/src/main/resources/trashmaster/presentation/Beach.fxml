@@ -64,7 +64,7 @@
             </ImageView>
             <Button fx:id="itemGumpaper" accessibleText="Tyggegummipapir" layoutX="204.0" layoutY="187.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="34.0" prefWidth="64.0" rotate="90.0" text="Tyggegummipapir" visible="false" />
             <Button fx:id="goRoad" alignment="CENTER" layoutX="1803.0" layoutY="634.0" mnemonicParsing="false" onAction="#goToRoad" prefHeight="17.0" prefWidth="34.0" text="Vej" />
-            <Button fx:id="checkItem" layoutX="1158.0" layoutY="76.0" mnemonicParsing="false" onAction="#setVisibleForRoadItems" text="Kig efter skrald" />
+            <Button fx:id="checkItem" layoutX="1158.0" layoutY="76.0" mnemonicParsing="false" onAction="#setVisibleForItems" text="Kig efter skrald" />
          </children>
       </AnchorPane>
    </children>

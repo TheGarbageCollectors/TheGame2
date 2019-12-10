@@ -28,10 +28,31 @@ public class Game
     {
         return currentRoom;
     }
+    
+    public String getCurrentRoomName() {
+        String tempName = ""; 
+        if (this.currentRoom instanceof Lootable)
+            {
+               tempName = ((Lootable)currentRoom).getName();
+            }
+        else if (this.currentRoom instanceof Town)
+            {
+               tempName = ((Town)currentRoom).getName();        
+            }
+        else if (this.currentRoom instanceof UpgradeStation)
+            {
+               tempName = ((UpgradeStation)currentRoom).getName();        
+            }
+        else if (this.currentRoom instanceof Recycler)
+            {
+               tempName = ((Recycler)currentRoom).getName();        
+            }
+        return tempName;
+    }
 
     private void createRooms()
     {
-        Room abandonedVillage = new Lootable("in an abandoned villiage", "abandoned village");
+        Room abandonedVillage = new Lootable("in an abandoned villiage", "abandoned_village");
         Room road = new Lootable("on a long road", "road");
         Room beach = new Lootable("on a beach", "beach");
         Room forrest = new Lootable("in a forrest", "forrest");
