@@ -7,20 +7,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trashmaster.presentation.MovementController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trashmaster.presentation.RecyclerController">
    <children>
       <AnchorPane prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <ImageView fitHeight="1080.0" fitWidth="1920.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="recycle1" fitHeight="1080.0" fitWidth="1920.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../Resycle%20lv.1.png" />
                </image></ImageView>
-            <Button fx:id="recyclePlastic" layoutX="937.0" layoutY="547.0" mnemonicParsing="false" onAction="#recycleItemChoice" prefHeight="56.0" prefWidth="91.0" text="Plastik">
+            <ImageView fx:id="recycle2" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../Resycle%20lv.2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="recycle3" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resycle%20lv.3.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="goTownHall" layoutX="28.0" layoutY="458.0" mnemonicParsing="false" onAction="#goToTownHall" text="Townhall" />
+            <Button fx:id="recyclePlastic" layoutX="937.0" layoutY="547.0" mnemonicParsing="false" onAction="#recycleItemChoice" opacity="0.0" prefHeight="56.0" prefWidth="91.0" text="Plastik">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="recycleMetal" layoutX="1210.0" layoutY="544.0" mnemonicParsing="false" onAction="#recycleItemChoice" prefHeight="57.0" prefWidth="94.0" text="Metal">
+            <Button fx:id="recycleMetal" layoutX="1210.0" layoutY="544.0" mnemonicParsing="false" onAction="#recycleItemChoice" opacity="0.0" prefHeight="57.0" prefWidth="94.0" text="Metal">
                <font>
                   <Font size="20.0" />
                </font>

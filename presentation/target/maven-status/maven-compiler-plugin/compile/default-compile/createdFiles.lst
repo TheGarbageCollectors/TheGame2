@@ -2,9 +2,11 @@ domain\Recycler.class
 domain\Town.class
 domain\Lootable.class
 domain\Room.class
+trashmaster\presentation\LootableController.class
 trashmaster\presentation\App.class
 domain\Player.class
 trashmaster\presentation\Command.class
+trashmaster\presentation\TownController.class
 trashmaster\presentation\UserGUI.class
 domain\UpgradeStation.class
 trashmaster\presentation\PrimaryController.class
@@ -13,9 +15,10 @@ trashmaster\presentation\CommandWords.class
 domain\GameItems.class
 domain\Upgradeable.class
 domain\Game.class
-trashmaster\presentation\MovementController.class
 domain\Backpack.class
 trashmaster\presentation\Main.class
 module-info.class
 domain\Item.class
+trashmaster\presentation\UpgradeController.class
 trashmaster\presentation\Parser.class
+trashmaster\presentation\RecyclerController.class

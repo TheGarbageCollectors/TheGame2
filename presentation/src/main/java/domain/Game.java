@@ -49,6 +49,14 @@ public class Game
             }
         return tempName;
     }
+    
+    public int getTownLevel() {
+        return this.town.getLevel();
+    }
+    
+    public int getRecyclerLevel() {
+        return ((Recycler)this.recycler).getLevel();
+    }
 
     private void createRooms()
     {
@@ -59,7 +67,7 @@ public class Game
 
         recycler = new Recycler("at the recycler", "recycler");
         town = new Town("by the Town Hall", "town_hall");
-        upgradeStation = new UpgradeStation("in the upgradestation", "upgrade station");
+        upgradeStation = new UpgradeStation("in the upgradestation", "upgradestation");
 
         town.setExit("road", road);
         town.setExit("recycler", recycler);

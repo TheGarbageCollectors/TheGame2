@@ -26,7 +26,8 @@ public class PrimaryController {
     }*/
     
     @FXML
-    private void switchToSecondary() throws IOException {
+    private void goToTown() throws IOException {
+        gui.goRoom("town_hall");
         App.setRoot("Townhall");
     }
     
@@ -64,10 +65,9 @@ public class PrimaryController {
     
     @FXML 
     private void nameConfirmYes() throws IOException {
-        switchToSecondary();
         gui = new UserGUI();
         gui.play(name);
-        gui.goRoom("town_hall");
+        goToTown();
         
     }
     

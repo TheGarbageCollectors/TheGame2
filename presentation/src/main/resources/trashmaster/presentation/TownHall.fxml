@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trashmaster.presentation.MovementController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trashmaster.presentation.TownController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -19,9 +19,35 @@
                   <Image url="@../../Townhall%20background.png" />
                </image>
             </ImageView>
-            <Button fx:id="goRoad" layoutX="62.0" layoutY="653.0" mnemonicParsing="false" onAction="#goToRoad" text="Road" />
+            <ImageView fx:id="town1" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../Town%20hall.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="town2" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../Town%20hall%20stage%202.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="town3" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../Town%20hall%20stage%203.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="town4" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../Town%20hall%20stage%204.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="town5" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../Town%20hall%20stage%205.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="goRoad" layoutX="938.0" layoutY="934.0" mnemonicParsing="false" onAction="#goToRoad" text="Road" />
             <Button fx:id="checkInventory" layoutX="632.0" layoutY="456.0" mnemonicParsing="false" onAction="#getInvetory" text="Inventory" />
-            <Button layoutX="1820.0" layoutY="654.0" mnemonicParsing="false" onAction="#goToRecycler" text="Recycler" />
+            <Button fx:id="goToRecycler" layoutX="1820.0" layoutY="654.0" mnemonicParsing="false" onAction="#goToRecycler" text="Recycler" />
+            <Button fx:id="goUpgradeStation" layoutX="48.0" layoutY="527.0" mnemonicParsing="false" onAction="#goToUpgradeStation" text="UpgradeStation" />
          </children>
       </AnchorPane>
    </children>

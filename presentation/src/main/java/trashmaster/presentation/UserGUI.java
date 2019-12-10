@@ -111,6 +111,10 @@ public class UserGUI
             return true;
         }
     }
+    
+    public int getTownLvl() {
+        return game.getTownLevel();
+    }
 
     
     public void getInventory()

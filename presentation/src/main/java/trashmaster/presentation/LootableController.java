@@ -19,7 +19,7 @@ import javafx.scene.layout.VBox;
  *
  * @author Daniel Tran
  */
-public class MovementController {
+public class LootableController {
     private UserGUI gui;
     //Add buttons for item here
     @FXML private Button itemWheel, itemTrashbag, itemBottle, itemBox, itemBattery, itemCan, itemStraw, itemChipsbag;
@@ -36,6 +36,11 @@ public class MovementController {
     
     @FXML private Button recyclePlastic;
     @FXML private Button recycleMetal;
+    
+    
+    public void initialize() throws IOException {
+        setVisibleForItems();
+    }
     
     @FXML
     private void switchToPrimary() throws IOException {
@@ -118,7 +123,7 @@ public class MovementController {
     
     @FXML
     public void setVisibleForItems() throws IOException {
-        checkItem.setVisible(false);
+        //checkItem.setVisible(false);
         this.gui = PrimaryController.getGUI();
         ArrayList<String> nameListForBtn = gui.game.getItemNamesInRoom();
         makeImageList();
