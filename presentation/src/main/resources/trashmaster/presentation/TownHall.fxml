@@ -45,8 +45,8 @@
                </image>
             </ImageView>
             <Button fx:id="goRoad" layoutX="938.0" layoutY="934.0" mnemonicParsing="false" onAction="#goToRoad" text="Road" />
-            <Button fx:id="checkInventory" layoutX="632.0" layoutY="456.0" mnemonicParsing="false" onAction="#getInvetory" text="Inventory" />
-            <Button fx:id="goToRecycler" layoutX="1820.0" layoutY="654.0" mnemonicParsing="false" onAction="#goToRecycler" text="Recycler" />
+            <Button fx:id="checkInventory" layoutX="85.0" layoutY="119.0" mnemonicParsing="false" onAction="#getInvetory" text="Inventory" />
+            <Button fx:id="goToRecycler" layoutX="1816.0" layoutY="527.0" mnemonicParsing="false" onAction="#goToRecycler" text="Recycler" />
             <Button fx:id="goUpgradeStation" layoutX="48.0" layoutY="527.0" mnemonicParsing="false" onAction="#goToUpgradeStation" text="UpgradeStation" />
          </children>
       </AnchorPane>
