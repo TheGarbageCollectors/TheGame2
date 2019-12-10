@@ -30,7 +30,7 @@ public class UpgradeStation extends Room
     };
     private int[] townUpgradePriceArray =
     {
-        150, 300, 500, 750, 1000, 1500, 2000, 2500, 5000, 1000000
+        150, 300, 500, 750, 1000, 1500, 2000, 2500, 5000, 10000
     };
 
     public UpgradeStation(String dir, String name)
@@ -100,7 +100,7 @@ public class UpgradeStation extends Room
                         }
                     }
                     break;
-                case "Backpack":
+                case "backpack":
                     if (((Upgradeable) obj).getLevel() < backpackUpgradePriceArray.length)
                     {
                         upgradePrice = backpackUpgradePriceArray[(((Upgradeable) obj).getLevel() - 1)];
@@ -124,12 +124,11 @@ public class UpgradeStation extends Room
 
     }
     
-    public void upgradeObject(Command command, Room upgradeStation, Town town, Room recycler, Player player1) {
-    String thingToUpgrade = command.getSecondWord();
+    public void upgradeObject(String thingToBeUpgraded, Room upgradeStation, Town town, Room recycler, Player player1) {
             //Using a switch statement to figure out what the user wants to upgrade. 
-            switch (thingToUpgrade)
+            switch (thingToBeUpgraded)
             {
-                case "town_hall":
+                case "townhall":
                     ((UpgradeStation) upgradeStation).buyUpgrade(town, player1);
                     System.out.println("Town Hall level is now: " + ((Upgradeable) town).getLevel());
                     town.increaseHappiness((town.getLevel() * 10) - town.getHappiness());
@@ -154,8 +153,25 @@ public class UpgradeStation extends Room
         
        
     }
+
+    public int getUpgradePrices(String thingToUpgrade, Town town, Room recycler, Player player1) {
+        int tempPrice = 0;
+        switch(thingToUpgrade) {
+            case "townhall":
+                System.out.println("Upgrade");
+                tempPrice = this.townUpgradePriceArray[((Upgradeable) town).getLevel()-1];
+                break;
+            case "recycler":
+                tempPrice = this.recyclerUpgradeArray[((Upgradeable) recycler).getLevel()-1];
+                break;
+            case "backpack":
+                tempPrice = this.backpackUpgradePriceArray[((Upgradeable) player1.getBackpackObj()).getLevel()-1];
+                break;
+        }
+        return tempPrice;
+    } 
     
-    public String getName() {
+    public String getName() { 
         return this.name;
     }
 }

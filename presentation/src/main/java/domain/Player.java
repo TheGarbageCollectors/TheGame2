@@ -58,7 +58,7 @@ public class Player
     public boolean enoughMoney(int amount)
     {
         int moneyLeft = this.money - amount;
-        if (moneyLeft > 0)
+        if (moneyLeft >= 0)
         {
             return true;
         } else

@@ -116,6 +116,10 @@ public class UserGUI
         return game.getTownLevel();
     }
 
+    /*public int getUpgradePrices(String thingToUpgrade) {
+        int price = game.getUpgradePrice(thingToUpgrade);
+        return price;
+    }*/
     
     public void getInventory()
     {
@@ -132,9 +136,9 @@ public class UserGUI
         System.out.println(game.pickupItems(itemName));
     }
 
-    private void upgradeItems(Command command)
+    private void upgradeItems(String thingToUpgrade)
     {
-        System.out.println(game.upgradeItems(command));
+        System.out.println(game.upgradeItems(thingToUpgrade));
     }
 
     public void recycleItems(String name, String buttonText)
