@@ -38,7 +38,7 @@ public class App extends Application {
     }
 
     public static void load(String[] args) {
-        UserGUI gui = new UserGUI();
+        //UserGUI gui = new UserGUI();
         //PrimaryController ctl = new PrimaryController(gui);
        
         launch();
