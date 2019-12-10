@@ -109,14 +109,7 @@ public class Game
 
     public String recycleItems(String name, String buttonText, int inventoryIndex)
     {
-        var tempString = "";
-        
-            {
-                ((Recycler)recycler).recycleItems(name, this.player1, buttonText, inventoryIndex);
-                tempString = ("Recycled " + name);
-            }
-
-      
+        String tempString = ((Recycler)recycler).recycleItems(name, this.player1, buttonText, inventoryIndex);
         return tempString;
     }
 

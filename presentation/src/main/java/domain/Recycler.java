@@ -84,72 +84,92 @@ public class Recycler extends Room implements Upgradeable
         materialValues.put("plastic", 40);
     }
 
-    public void recycleItems(String itemName, Player player1, String containerText, int inventoryIndex) {
+    public String recycleItems(String itemName, Player player1, String containerText, int inventoryIndex) {
+        String tempString = "";
         if (player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex).getName().contains(itemName)) {
             switch (containerText) {
                 case "Restaffald":
                     if(restaffaldArray.contains(itemName)) {
                         removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        System.out.println("Removed: " + itemName);
+                        tempString = "Removed: " + itemName;
                     }
                     
                     break;
                 case "Metal": 
                     if(metalArray.contains(itemName)) {
-                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        System.out.println("Removed: " + itemName);
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
+                        tempString = "Removed: " + itemName;
                     } else {
                         removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        tempString = "Item wasted: " + itemName;
                         loseHP();
                     }
 
                     break;
                 case "Plastik":
                     if(plastikArray.contains(itemName)) {
-                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        System.out.println("Removed: " + itemName);
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
+                        tempString = "Removed: " + itemName;
+                    } else {
+                        removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        tempString = "Item wasted: " + itemName;
+                        loseHP();
                     }
 
                     break;
                 case "Beton": 
                     if(betonArray.contains(itemName)) {
-                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        System.out.println("Removed: " + itemName);
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
+                        tempString = "Removed: " + itemName;
+                    } else {
+                        removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        tempString = "Item wasted: " + itemName;
+                        loseHP();
                     }
 
                     break;
                 case "Papir":
                     if(papirArray.contains(itemName)) {
-                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        System.out.println("Removed: " + itemName);
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
+                        tempString = "Removed: " + itemName;
+                    } else {
+                        removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        tempString = "Item wasted: " + itemName;
+                        loseHP();
                     }
 
                     break;
                 case "Batterier":
                     if(batteriArray.contains(itemName)) {
-                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        System.out.println("Removed: " + itemName);
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
+                        tempString = "Removed: " + itemName;
+                    } else {
+                        removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        tempString = "Item wasted: " + itemName;
+                        loseHP();
                     }
 
                     break;
                 case "Farligt affald":
                     if(farligtaffaldArray.contains(itemName)) {
-                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        System.out.println("Removed: " + itemName);
+                        recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
+                        tempString = "Removed: " + itemName;
+                    } else {
+                        removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
+                        tempString = "Item wasted: " + itemName;
+                        loseHP();
                     }
 
                     break;
                         }
         }
-        
+       return tempString; 
     }
 
-    private void recycleItem(Item item, Player player1)
+    private void recycleItem(Item item, Player player1, String containerText)
     {
-        player1.addMoney(valueCalculator());
-        System.out.println("Money added");
+        player1.addMoney(valueCalculator(containerText));
         removeItemWhenRecycled(item, player1);
-        System.out.println("Item removed");
     }
 
     /*
@@ -159,10 +179,33 @@ public class Recycler extends Room implements Upgradeable
         removeItemWhenRecycled(item, player1);
     }*/
 
-    private int valueCalculator()
+    private int valueCalculator(String containerText)
     {
-        int tempTotalValue;
-        tempTotalValue = 3;
+        int tempTotalValue = 0;
+        switch (containerText) {
+            case "Restaffald":
+                tempTotalValue = 0;
+                break;
+            case "Metal":
+                tempTotalValue = 30;
+                break;
+            case "Plastik":
+                tempTotalValue = 20; 
+                break;
+            case "Beton":
+                tempTotalValue = 15;
+                break;
+            case "Papir":
+                tempTotalValue = 10;
+                break;
+            case "Batterier":
+                tempTotalValue = 30;
+                break;
+            case "Farligt affald":
+                tempTotalValue = 20;
+                break;
+        }
+        System.out.println("Money Add: " + tempTotalValue);
         return tempTotalValue;
     }
 

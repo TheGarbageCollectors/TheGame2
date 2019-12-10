@@ -94,14 +94,12 @@ public class RecyclerController {
             @Override
             public void handle(ActionEvent event)  {
                 itemName = ((Button)event.getSource()).getText();
-                System.out.println(itemName + buttonText);
                 int inventoryIndex = buttonList.indexOf((Button)event.getSource());
                 //System.out.println(itemName);
                 gui.recycleItems(itemName, buttonText, inventoryIndex);
                 recycleItem.setVisible(false);
                 buttonList.clear();
                 recycleItem.getChildren().clear();
-                System.out.println("Hello mah dude");
                 int hp = gui.game.getHP();
                 if (hp <= 0) { 
                    
