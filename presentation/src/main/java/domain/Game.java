@@ -58,6 +58,7 @@ public class Game
         return ((Recycler)this.recycler).getLevel();
     }
     
+
     public Player getPlayer() {
         return this.player1;
     }
@@ -65,6 +66,10 @@ public class Game
     public int getHP() {
         int hp = ((Recycler)this.recycler).getHP();
         return hp; 
+    }
+    
+    public int getBackpackLevel() {
+        return player1.getBackpackObj().getLevel();
     }
 
     private void createRooms()
@@ -116,27 +121,10 @@ public class Game
     }
 
 
-    public String upgradeItems(Command command)
-    {
-        var tempString = "";
-        if (currentRoom instanceof UpgradeStation)
-        {
-            if (!command.hasSecondWord())
-            {
-                tempString = ("Upgrade what?");
-
-            } else
-            {
-                ((UpgradeStation) currentRoom).upgradeObject(command, currentRoom, town, recycler, player1);
-                tempString = ("Upgaded " + command.getSecondWord());
-
-            }
-
-        } else
-        {
-            tempString = ("You are not at the upgrade station");
-
-        }
+    public String upgradeItems(String thingToUpgrade)
+    { 
+       ((UpgradeStation) currentRoom).upgradeObject(thingToUpgrade, currentRoom, town, recycler, player1);
+               String tempString = ("Upgaded " + thingToUpgrade);
         return tempString;
 
     }
@@ -233,6 +221,12 @@ public class Game
         } else {
             return false;
         }
+    }
+    
+    public int getUpgradePrice(String thingToUpgrade) {
+        System.out.println("Game");
+        int price = ((UpgradeStation)upgradeStation).getUpgradePrices(thingToUpgrade, town, recycler, player1);
+        return price;
     }
 
     public String getInventory()

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Backpack implements Upgradeable
 {
-    private String name = "Backpack";
+    private String name = "backpack";
     private int level;
     private ArrayList<Item> inventoryList = new ArrayList<>();
     private int maxSize;
