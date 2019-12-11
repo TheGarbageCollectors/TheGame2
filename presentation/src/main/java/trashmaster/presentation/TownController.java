@@ -28,7 +28,6 @@ import javafx.scene.text.Text;
 public class TownController {
     private UserGUI gui;
     @FXML private Button goRoad, goToRecycler, goUpgradeStation;
-    @FXML private Button checkInventory;
     @FXML private ImageView town1, town2, town3, town4, town5;
     @FXML private VBox inventory;
     @FXML private ArrayList<Item> inventoryList = new ArrayList<>();

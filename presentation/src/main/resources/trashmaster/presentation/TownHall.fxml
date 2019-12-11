@@ -52,7 +52,6 @@
                </image>
             </ImageView>
             <Button fx:id="goRoad" layoutX="960.0" layoutY="990.0" mnemonicParsing="false" onAction="#goToRoad" opacity="0.0" prefHeight="79.0" prefWidth="87.0" text="Road" />
-            <Button fx:id="checkInventory" layoutX="48.0" layoutY="954.0" mnemonicParsing="false" onAction="#getInvetory" text="Inventory" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1704.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Red%20Arrow.png" />
