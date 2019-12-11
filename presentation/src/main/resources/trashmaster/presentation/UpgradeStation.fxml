@@ -16,8 +16,13 @@
             <Image url="@../../upgrade%20station%20med%20handi%20danni.png" />
          </image>
       </ImageView>
-      <Button fx:id="goTownHall" layoutX="1777.0" layoutY="529.0" mnemonicParsing="false" onAction="#goToTownHall" text="Townhall" />
-      <ImageView fx:id="bubbleOption" fitHeight="618.0" fitWidth="637.0" layoutX="663.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1684.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Red%20Arrow.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="goTownHall" layoutX="1776.0" layoutY="504.0" mnemonicParsing="false" onAction="#goToTownHall" opacity="0.0" prefHeight="78.0" prefWidth="83.0" text="Townhall" />
+      <ImageView fx:id="bubbleOption" fitHeight="618.0" fitWidth="637.0" layoutX="669.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../speach%20bobble%20spejlvendt.png" />
          </image>

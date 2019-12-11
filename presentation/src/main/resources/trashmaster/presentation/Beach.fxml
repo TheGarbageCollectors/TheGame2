@@ -10,29 +10,29 @@
    <children>
       <AnchorPane prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <ImageView pickOnBounds="true" preserveRatio="true">
+            <ImageView pickOnBounds="true" preserveRatio="true" rotate="180.0">
                <image>
                   <Image url="@../../Beach%20Room.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imageBottle" accessibleText="Plastikflaske" fitHeight="44.0" fitWidth="150.0" layoutX="576.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="imageBottle" accessibleText="Plastikflaske" fitHeight="44.0" fitWidth="150.0" layoutX="1562.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true" rotate="35.5" visible="false">
                <image>
                   <Image url="@../../Bottle%20item.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemBottle" accessibleText="Plastikflaske" layoutX="558.0" layoutY="312.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="44.0" prefWidth="80.0" rotate="90.0" text="Plastikflaske" visible="false" />
-            <ImageView fx:id="imageBox" accessibleText="Papkasse" fitHeight="150.0" fitWidth="200.0" layoutX="494.0" layoutY="682.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Button fx:id="itemBottle" accessibleText="Plastikflaske" layoutX="1552.0" layoutY="450.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="34.0" prefWidth="64.0" rotate="90.0" text="Plastikflaske" visible="false" />
+            <ImageView fx:id="imageBox" accessibleText="Papkasse" fitHeight="150.0" fitWidth="200.0" layoutX="463.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../Cardboard%20Item.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemBox" accessibleText="Papkasse" layoutX="513.0" layoutY="716.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="88.0" prefWidth="101.0" text="Papkasse" visible="false" />
-            <ImageView fx:id="imageBattery" accessibleText="Batteri" fitHeight="60.0" fitWidth="61.0" layoutX="1069.0" layoutY="746.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Button fx:id="itemBox" accessibleText="Papkasse" layoutX="484.0" layoutY="578.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="88.0" prefWidth="101.0" text="Papkasse" visible="false" />
+            <ImageView fx:id="imageBattery" accessibleText="Batteri" fitHeight="60.0" fitWidth="61.0" layoutX="1340.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../Batteri.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemBattery" accessibleText="Batteri" layoutX="1049.0" layoutY="748.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="53.0" prefWidth="85.0" rotate="90.0" text="Batteri" visible="false" AnchorPane.bottomAnchor="279.0" AnchorPane.leftAnchor="1049.0" AnchorPane.rightAnchor="786.0" AnchorPane.topAnchor="748.0" />
+            <Button fx:id="itemBattery" accessibleText="Batteri" layoutX="1333.0" layoutY="99.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="34.0" prefWidth="64.0" rotate="90.0" text="Batteri" visible="false" AnchorPane.bottomAnchor="947.0" AnchorPane.leftAnchor="1333.0" AnchorPane.rightAnchor="523.0" AnchorPane.topAnchor="99.0" />
             <ImageView fx:id="imageCan" accessibleText="Dåse" fitHeight="45.0" fitWidth="61.0" layoutX="1051.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../Can%20Item.png" />
@@ -45,26 +45,30 @@
                </image>
             </ImageView>
             <Button fx:id="itemStraw" accessibleText="Sugerør" layoutX="901.0" layoutY="555.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="54.0" prefWidth="85.0" rotate="90.0" text="Sugerør" visible="false" />
-            <ImageView fx:id="imageBeachBall" accessibleText="Badebold" fitHeight="127.0" fitWidth="122.0" layoutX="80.0" layoutY="829.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="imageBeachBall" accessibleText="Badebold" fitHeight="127.0" fitWidth="122.0" layoutX="87.0" layoutY="677.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../Beach%20Ball%20Item.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemBeachBall" accessibleText="BadeBold" layoutX="89.0" layoutY="839.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="104.0" prefWidth="113.0" text="Badebold" visible="false" />
-            <ImageView fx:id="imageJuiceCarton" accessibleText="Juicekarton" fitHeight="191.0" fitWidth="185.0" layoutX="1456.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Button fx:id="itemBeachBall" accessibleText="BadeBold" layoutX="81.0" layoutY="670.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="69.0" prefWidth="78.0" text="Badebold" visible="false" />
+            <ImageView fx:id="imageJuiceCarton" accessibleText="Juicekarton" fitHeight="112.0" fitWidth="113.0" layoutX="1784.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" rotate="55.0" visible="false">
                <image>
                   <Image url="@../../Juice%20Item.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemJuiceCarton" accessibleText="Juicekarton" layoutX="1488.0" layoutY="263.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="92.0" prefWidth="104.0" text="Juicekarton" visible="false" />
-            <ImageView fx:id="imageGumpaper" accessibleText="Tyggegummipapir" fitHeight="85.0" fitWidth="85.0" layoutX="193.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Button fx:id="itemJuiceCarton" accessibleText="Juicekarton" layoutX="1807.0" layoutY="243.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="72.0" prefWidth="64.0" text="Juicekarton" visible="false" />
+            <ImageView fx:id="imageGumpaper" accessibleText="Tyggegummipapir" fitHeight="66.0" fitWidth="64.0" layoutX="78.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../Gum%20Foil.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemGumpaper" accessibleText="Tyggegummipapir" layoutX="204.0" layoutY="187.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="34.0" prefWidth="64.0" rotate="90.0" text="Tyggegummipapir" visible="false" />
-            <Button fx:id="goRoad" alignment="CENTER" layoutX="1803.0" layoutY="634.0" mnemonicParsing="false" onAction="#goToRoad" prefHeight="17.0" prefWidth="34.0" text="Vej" />
-            <Button fx:id="checkItem" layoutX="1158.0" layoutY="76.0" mnemonicParsing="false" onAction="#setVisibleForItems" text="Kig efter skrald" />
+            <Button fx:id="itemGumpaper" accessibleText="Tyggegummipapir" layoutX="78.0" layoutY="261.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="34.0" prefWidth="48.0" rotate="90.0" text="Tyggegummipapir" visible="false" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="872.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
+               <image>
+                  <Image url="@../../Red%20Arrow.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="goRoad" alignment="CENTER" layoutX="929.0" layoutY="44.0" mnemonicParsing="false" onAction="#goToRoad" opacity="0.0" prefHeight="78.0" prefWidth="85.0" text="Vej" />
          </children>
       </AnchorPane>
    </children>

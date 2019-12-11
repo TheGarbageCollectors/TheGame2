@@ -44,10 +44,25 @@
                   <Image url="@../../Town%20hall%20stage%205.png" />
                </image>
             </ImageView>
-            <Button fx:id="goRoad" layoutX="938.0" layoutY="934.0" mnemonicParsing="false" onAction="#goToRoad" text="Road" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="857.0" layoutY="852.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+               <image>
+                  <Image url="@../../Red%20Arrow.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="goRoad" layoutX="912.0" layoutY="914.0" mnemonicParsing="false" onAction="#goToRoad" opacity="0.0" prefHeight="79.0" prefWidth="87.0" text="Road" />
             <Button fx:id="checkInventory" layoutX="85.0" layoutY="119.0" mnemonicParsing="false" onAction="#getInvetory" text="Inventory" />
-            <Button fx:id="goToRecycler" layoutX="1816.0" layoutY="527.0" mnemonicParsing="false" onAction="#goToRecycler" text="Recycler" />
-            <Button fx:id="goUpgradeStation" layoutX="48.0" layoutY="527.0" mnemonicParsing="false" onAction="#goToUpgradeStation" text="UpgradeStation" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1704.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Red%20Arrow.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="goToRecycler" layoutX="1796.0" layoutY="494.0" mnemonicParsing="false" onAction="#goToRecycler" opacity="0.0" prefHeight="80.0" prefWidth="82.0" text="Recycler" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="18.0" layoutY="472.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@../../Red%20Arrow.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="goUpgradeStation" layoutX="44.0" layoutY="498.0" mnemonicParsing="false" onAction="#goToUpgradeStation" opacity="0.0" prefHeight="78.0" prefWidth="79.0" text="UpgradeStation" />
          </children>
       </AnchorPane>
    </children>
