@@ -18,6 +18,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -32,8 +35,12 @@ public class RecyclerController {
     @FXML private String itemName;
     @FXML private VBox recycleItem;
     @FXML private TextArea myTA;
-    @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
+    @FXML private ArrayList<Item> inventoryListForRecycling = new ArrayList<>();
     @FXML private ObservableList<Button> buttonList = FXCollections.observableArrayList();
+    
+    @FXML private VBox inventory;
+    @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
+    @FXML private ObservableList<Text> textList = FXCollections.observableArrayList();
     
     @FXML
     private void goToTownHall() throws IOException  {
@@ -64,18 +71,18 @@ public class RecyclerController {
                 recycleHazardous.setVisible(true);
                 break;
         }
+        showInventory();
                 
     }
     
     @FXML
     private void recycleItemChoice(ActionEvent event) throws IOException {
         this.buttonText = ((Button)event.getSource()).getText();
-        this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        this.inventoryListForRecycling = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
         recycleItem.setVisible(true);
-        String buttonID = "btn";
         int j = 0;
         if (buttonList.isEmpty()) { 
-        for (Item i : inventoryList) {
+        for (Item i : inventoryListForRecycling) {
             buttonList.add(new Button(i.getName()));
             recycleItem.getChildren().add(buttonList.get(j));
             buttonList.get(j).setOnAction(recycleEvent);
@@ -106,6 +113,30 @@ public class RecyclerController {
                 }
             }
     };
+    
+    @FXML
+    private void showInventory() throws IOException {
+        this.gui = PrimaryController.getGUI();
+        this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        inventory.setVisible(true);
+        int j = 0;
+        if (textList.isEmpty()) { 
+        for (Item i : inventoryList) {
+            textList.add(new Text(i.getName()));
+            textList.get(j).setFont(Font.font("SansSerif", 20));
+            textList.get(j).setFill(Color.WHITE);
+            inventory.getChildren().add(textList.get(j));
+            
+            //textList.get(j).setOnAction(recycleEvent);
+            j++;
+        }
+        } else {
+            
+        }
+        
+        
+        //recycleItems();
+    }
     
     
 }

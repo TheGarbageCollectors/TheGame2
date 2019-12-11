@@ -5,13 +5,20 @@
  */
 package trashmaster.presentation;
 
+import domain.Item;
 import java.io.IOException;
+import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -24,6 +31,14 @@ public class UpgradeController {
     @FXML private Label upgradeOptiontekst;
     @FXML private Button goTownHall;
     @FXML private VBox optionVBox;
+    
+    @FXML private VBox inventory;
+    @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
+    @FXML private ObservableList<Text> textList = FXCollections.observableArrayList();
+    
+    public void initialize() throws IOException {
+        showInventory();
+    }
     
     @FXML
     private void goToTownHall() throws IOException {
@@ -77,6 +92,30 @@ public class UpgradeController {
         int backpackLevel = (gui.game.getBackpackLevel())+1; //gets the number for the next level
         backpackUpgrade.setText("Rygsæk lv." + backpackLevel + ".\n" + "[" + backpackPrice + "]"); //sets the text on the backpackUpgrade buttom
     
+    }
+    
+    @FXML
+    private void showInventory() throws IOException {
+        this.gui = PrimaryController.getGUI();
+        this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        inventory.setVisible(true);
+        int j = 0;
+        if (textList.isEmpty()) { 
+        for (Item i : inventoryList) {
+            textList.add(new Text(i.getName()));
+            textList.get(j).setFont(Font.font("SansSerif", 20));
+            textList.get(j).setFill(Color.WHITE);
+            inventory.getChildren().add(textList.get(j));
+            
+            //textList.get(j).setOnAction(recycleEvent);
+            j++;
+        }
+        } else {
+            
+        }
+        
+        
+        //recycleItems();
     }
     
 }

@@ -5,10 +5,21 @@
  */
 package trashmaster.presentation;
 
+import domain.Item;
 import java.io.IOException;
+import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -19,6 +30,9 @@ public class TownController {
     @FXML private Button goRoad, goToRecycler, goUpgradeStation;
     @FXML private Button checkInventory;
     @FXML private ImageView town1, town2, town3, town4, town5;
+    @FXML private VBox inventory;
+    @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
+    @FXML private ObservableList<Text> textList = FXCollections.observableArrayList();
     
     public void initialize() throws IOException {
         this.gui = PrimaryController.getGUI();
@@ -46,7 +60,30 @@ public class TownController {
                 town5.setVisible(true);
                 break;
         }
-                
+                showInventory();
+    }
+    
+   @FXML
+    private void showInventory() throws IOException {
+        this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        inventory.setVisible(true);
+        int j = 0;
+        if (textList.isEmpty()) { 
+        for (Item i : inventoryList) {
+            textList.add(new Text(i.getName()));
+            textList.get(j).setFont(Font.font("SansSerif", 20));
+            textList.get(j).setFill(Color.WHITE);
+            inventory.getChildren().add(textList.get(j));
+            
+            //textList.get(j).setOnAction(recycleEvent);
+            j++;
+        }
+        } else {
+            
+        }
+        
+        
+        //recycleItems();
     }
     
     @FXML

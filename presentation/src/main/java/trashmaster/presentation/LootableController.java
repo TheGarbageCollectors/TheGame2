@@ -5,8 +5,11 @@
  */
 package trashmaster.presentation;
 
+import domain.Item;
 import java.io.IOException;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -14,6 +17,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -37,9 +43,14 @@ public class LootableController {
     @FXML private Button recyclePlastic;
     @FXML private Button recycleMetal;
     
+    @FXML private VBox inventory;
+    @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
+    @FXML private ObservableList<Text> textList = FXCollections.observableArrayList();
+    
     
     public void initialize() throws IOException {
         setVisibleForItems();
+        showInventory();
     }
     
     @FXML
@@ -103,6 +114,9 @@ public class LootableController {
         String accesText = ((Button)event.getSource()).getAccessibleText();
         if (!gui.game.getIsBackpackFull()) {
             gui.pickUpItems(accesText);
+            textList.clear();
+            inventory.getChildren().clear();
+            showInventory();
             ((Button)event.getSource()).setVisible(false);
             for(ImageView iV : this.imageList) {
                 if (accesText != null) {
@@ -119,6 +133,29 @@ public class LootableController {
         } else {
             gui.pickUpItems(accesText);
         }
+    }
+    
+    @FXML
+    private void showInventory() throws IOException {
+        this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        inventory.setVisible(true);
+        int j = 0;
+        if (textList.isEmpty()) { 
+        for (Item i : inventoryList) {
+            textList.add(new Text(i.getName()));
+            textList.get(j).setFont(Font.font("SansSerif", 20));
+            textList.get(j).setFill(Color.WHITE);
+            inventory.getChildren().add(textList.get(j));
+            
+            //textList.get(j).setOnAction(recycleEvent);
+            j++;
+        }
+        } else {
+            
+        }
+        
+        
+        //recycleItems();
     }
     
     @FXML

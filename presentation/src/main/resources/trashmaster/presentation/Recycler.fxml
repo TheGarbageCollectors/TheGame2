@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trashmaster.presentation.RecyclerController">
    <children>
@@ -20,7 +21,7 @@
                   <Image url="@../../Resycle%20lv.2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="recycle3" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="recycle3" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../../Resycle%20lv.3.png" />
                </image>
@@ -63,6 +64,16 @@
                </font>
             </Button>
             <VBox fx:id="recycleItem" layoutX="816.0" layoutY="100.0" prefHeight="254.0" prefWidth="331.0" />
+            <VBox layoutX="117.0" layoutY="119.0" prefHeight="200.0" prefWidth="154.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Rygsæk:" wrappingWidth="98.13671875">
+                     <font>
+                        <Font name="SansSerif Regular" size="24.0" />
+                     </font>
+                  </Text>
+                  <VBox fx:id="inventory" prefHeight="200.0" prefWidth="100.0" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </children>
