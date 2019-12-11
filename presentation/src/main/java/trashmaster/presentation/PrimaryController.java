@@ -32,11 +32,6 @@ public class PrimaryController {
     }
     
     @FXML
-    private void systemPrint() {
-        System.out.println("Hello Bitches");
-    }
-    
-    @FXML
     private void namePlayer() throws IOException {
         this.name = input.getText();
         System.out.println(name);

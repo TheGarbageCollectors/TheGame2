@@ -1,6 +1,7 @@
 domain\Recycler.class
 domain\Town.class
 domain\Lootable.class
+trashmaster\presentation\GameOverController.class
 domain\Room.class
 trashmaster\presentation\LootableController.class
 trashmaster\presentation\App.class

@@ -224,7 +224,7 @@ public class Recycler extends Room implements Upgradeable
     }
     
     private void loseHP() {
-        this.hp -= 10;
+        this.hp -= 100;
     }
     
     /*

@@ -110,6 +110,12 @@ public class RecyclerController {
                 int hp = gui.game.getHP();
                 if (hp <= 0) { 
                     System.out.println("Gamer Over");
+                    try {
+                    App.setRoot("GameOver");
+                    }
+                    catch(Exception e) {
+                        System.out.println("Error");
+                    }
                 }
             }
     };
