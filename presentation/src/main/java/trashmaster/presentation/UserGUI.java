@@ -121,6 +121,11 @@ public class UserGUI
         return price;
     }*/
     
+    public int iGetTownHappiness() {
+        int happiness = game.getHappiness();
+        return happiness;
+    }
+    
     public void getInventory()
     {
         System.out.println(game.getInventory());

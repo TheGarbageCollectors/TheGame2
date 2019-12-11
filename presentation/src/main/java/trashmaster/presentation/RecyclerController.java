@@ -109,7 +109,7 @@ public class RecyclerController {
                 recycleItem.getChildren().clear();
                 int hp = gui.game.getHP();
                 if (hp <= 0) { 
-                   
+                    System.out.println("Gamer Over");
                 }
             }
     };

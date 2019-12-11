@@ -17,39 +17,39 @@
             <Image url="@../../upgrade%20station%20med%20handi%20danni.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1684.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1713.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Red%20Arrow.png" />
          </image>
       </ImageView>
-      <Button fx:id="goTownHall" layoutX="1776.0" layoutY="504.0" mnemonicParsing="false" onAction="#goToTownHall" opacity="0.0" prefHeight="78.0" prefWidth="83.0" text="Townhall" />
+      <Button fx:id="goTownHall" layoutX="1800.0" layoutY="540.0" mnemonicParsing="false" onAction="#goToTownHall" opacity="0.0" prefHeight="78.0" prefWidth="83.0" text="Townhall" />
       <ImageView fx:id="bubbleOption" fitHeight="618.0" fitWidth="637.0" layoutX="669.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../speach%20bobble%20spejlvendt.png" />
          </image>
       </ImageView>
       <Button fx:id="upgradeOption" layoutX="1196.0" layoutY="551.0" mnemonicParsing="false" onAction="#upgradeOptions" opacity="0.0" prefHeight="209.0" prefWidth="128.0" text="upgradeOption" />
-      <Label fx:id="upgradeOptiontekst" layoutX="845.0" layoutY="484.0" prefHeight="45.0" prefWidth="391.0" text="Jeg kan opgradere dine ting!">
+      <Label fx:id="upgradeOptiontekst" layoutX="847.0" layoutY="471.0" prefHeight="34.0" prefWidth="360.0" text="Jeg kan opgradere dine ting" wrapText="true">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <VBox fx:id="optionVBox" layoutX="933.0" layoutY="412.0" prefHeight="209.0" prefWidth="150.0" visible="false">
+      <VBox fx:id="optionVBox" alignment="TOP_CENTER" layoutX="926.0" layoutY="412.0" prefHeight="209.0" prefWidth="183.0" visible="false">
          <children>
-            <Button fx:id="townHallUpgrade" accessibleText="townhall" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#upgradeObject" prefHeight="45.0" prefWidth="140.0" text="Rådhus">
+            <Button fx:id="townHallUpgrade" accessibleText="townhall" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#upgradeObject" prefHeight="45.0" prefWidth="160.0" text="Rådhus">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="recyclerUpgrade" accessibleText="recycler" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#upgradeObject" prefHeight="45.0" prefWidth="140.0" text="Genbrugsstation lv 1">
+            <Button fx:id="recyclerUpgrade" accessibleText="recycler" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#upgradeObject" prefHeight="45.0" prefWidth="160.0" text="Genbrugsstation lv.max">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="backpackUpgrade" accessibleText="backpack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#upgradeObject" prefHeight="45.0" prefWidth="140.0" text="Rygsæk" />
+            <Button fx:id="backpackUpgrade" accessibleText="backpack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#upgradeObject" prefHeight="45.0" prefWidth="160.0" text="Rygsæk" />
          </children>
       </VBox>
-      <VBox layoutX="117.0" layoutY="119.0" prefHeight="200.0" prefWidth="154.0">
+      <VBox layoutX="30.0" layoutY="30.0" prefHeight="200.0" prefWidth="154.0">
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Rygsæk:" wrappingWidth="98.13671875">
                <font>
@@ -59,5 +59,25 @@
             <VBox fx:id="inventory" prefHeight="200.0" prefWidth="100.0" />
          </children>
       </VBox>
+      <Label fx:id="boughtUpgradeLabel" layoutX="904.0" layoutY="423.0" text="Upgradering  købt!" visible="false">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="upgradeResultLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="863.0" layoutY="460.0" prefHeight="133.0" prefWidth="327.0" visible="false" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="notEnoughMoney" alignment="CENTER" contentDisplay="CENTER" layoutX="853.0" layoutY="449.0" prefHeight="116.0" prefWidth="327.0" text="Du har ikke nok penge!" visible="false" wrapText="true">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="clickOnMe" layoutX="947.0" layoutY="509.0" text="Klik på mig!">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

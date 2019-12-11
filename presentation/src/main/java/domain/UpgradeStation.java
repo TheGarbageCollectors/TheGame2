@@ -158,7 +158,6 @@ public class UpgradeStation extends Room
         int tempPrice = 0;
         switch(thingToUpgrade) {
             case "townhall":
-                System.out.println("Upgrade");
                 tempPrice = this.townUpgradePriceArray[((Upgradeable) town).getLevel()-1];
                 break;
             case "recycler":

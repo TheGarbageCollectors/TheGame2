@@ -65,13 +65,13 @@
                </image>
             </ImageView>
             <Button fx:id="itemLighter" accessibleText="Lighter" layoutX="264.0" layoutY="322.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="34.0" prefWidth="64.0" rotate="90.0" text="Lighter" visible="false" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1706.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1706.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Red%20Arrow.png" />
                </image>
             </ImageView>
-            <Button fx:id="goRoad" alignment="CENTER" layoutX="1796.0" layoutY="547.0" mnemonicParsing="false" onAction="#goToRoad" opacity="0.0" prefHeight="78.0" prefWidth="85.0" text="Vej" />
-            <VBox layoutX="117.0" layoutY="119.0" prefHeight="200.0" prefWidth="154.0">
+            <Button fx:id="goRoad" alignment="CENTER" layoutX="1796.0" layoutY="540.0" mnemonicParsing="false" onAction="#goToRoad" opacity="0.0" prefHeight="78.0" prefWidth="85.0" text="Vej" />
+            <VBox layoutX="30.0" layoutY="30.0" prefHeight="200.0" prefWidth="154.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Rygsæk:" wrappingWidth="98.13671875">
                      <font>

@@ -208,6 +208,11 @@ public class Game
         return itemNames;
     }
     
+    public int getMaxBackpackSize() {
+        int size = player1.getBackpackObj().getMaxSize();
+            return size;
+    }
+    
     public boolean getIsBackpackFull() {
         if (player1.getBackpackObj().isBackpackFull()) {
             return true;
@@ -217,11 +222,21 @@ public class Game
     }
     
     public int getUpgradePrice(String thingToUpgrade) {
-        System.out.println("Game");
         int price = ((UpgradeStation)upgradeStation).getUpgradePrices(thingToUpgrade, town, recycler, player1);
         return price;
     }
+    
+    public int getHappiness()
+    {
+        int happiness = ((Town)town).getHappiness();
+        return happiness;
+    }
 
+    public int getPlayerMoney() {
+        int money = player1.getMoney();
+        return money;
+    }
+    
     public String getInventory()
     {
         var tempString = "";
