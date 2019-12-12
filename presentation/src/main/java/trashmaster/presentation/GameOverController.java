@@ -19,6 +19,7 @@ public class GameOverController implements Initializable {
     @FXML private AnchorPane AnchorPane;
     @FXML private ImageView recycle1, recycle2, recycle3;
     
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.gui = PrimaryController.getGUI();
@@ -56,5 +57,5 @@ public class GameOverController implements Initializable {
         fadeTransition.setToValue(1);
         fadeTransition.play();
     }
-    
+
 }

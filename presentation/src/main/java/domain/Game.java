@@ -267,6 +267,10 @@ public class Game
         }
 
     }
+    public String getPlayerName() {
+        String playername = player1.getName();
+        return playername;
+    }
 
 
 }

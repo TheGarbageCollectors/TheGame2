@@ -1,17 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain;
 
-
-import java.util.Scanner;
-
-/**
- *
- * @author magnu
- */
 public class Player
 {
 
@@ -87,5 +75,8 @@ public class Player
         System.out.println(amount + " coins have been added to your balance" );
         System.out.println("Total coins: " + (money + amount));
         this.money += amount;
+    }
+    public String getName() {
+        return this.name;
     }
 }
