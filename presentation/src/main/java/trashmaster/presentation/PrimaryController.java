@@ -6,18 +6,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 public class PrimaryController {
     
     @FXML private String name;
+    @FXML private AnchorPane introPane, namePane;
     @FXML private TextField input;
-    @FXML private Button confirmBtn;
-    @FXML private Button yes;
-    @FXML private Button no;
-    @FXML private Label confirmName;
-    @FXML private Label confirmNameText;
-    @FXML private Label nameQuestion;
+    @FXML private Button confirmBtn, yes, no;
+    @FXML private Label confirmName, confirmNameText, nameQuestion;
     @FXML private static UserGUI gui = null;
     
     
@@ -62,8 +60,14 @@ public class PrimaryController {
     private void nameConfirmYes() throws IOException {
         gui = new UserGUI();
         gui.play(name);
-        goToTown();
+        namePane.setVisible(false);
+        introPane.setVisible(true);
         
+    }
+    
+    @FXML 
+    private void startGame() throws IOException {
+        goToTown();
     }
     
     public static UserGUI getGUI() {
