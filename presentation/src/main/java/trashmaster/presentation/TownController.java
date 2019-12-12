@@ -34,6 +34,7 @@ public class TownController {
     @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
     @FXML private ObservableList<Text> textList = FXCollections.observableArrayList();
     @FXML private HBox coins;
+    @FXML private HBox happiness;
     
     public void initialize() throws IOException {
         this.gui = PrimaryController.getGUI();
@@ -63,6 +64,7 @@ public class TownController {
         }
                 showInventory();
                 showCoins();
+                showHappiness();
     }
     
    @FXML
@@ -86,6 +88,16 @@ public class TownController {
         
         
         //recycleItems();
+    }
+    
+    @FXML
+    private void showHappiness() throws IOException {
+        this.gui = PrimaryController.getGUI();
+        String happy = "" + gui.game.getHappiness();
+        Text happyText = new Text(happy);
+        happyText.setFont(Font.font("SansSerif", 20));
+        happyText.setFill(Color.WHITE);
+        this.happiness.getChildren().add(happyText);
     }
     
     @FXML

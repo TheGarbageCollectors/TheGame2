@@ -50,6 +50,7 @@ public class LootableController {
     @FXML private HBox coins; 
     
     
+    
     public void initialize() throws IOException {
         setVisibleForItems();
         showInventory();

@@ -53,7 +53,7 @@
                   <Image url="@../../Beach%20Ball%20Item.png" />
                </image>
             </ImageView>
-            <Button fx:id="itemBeachBall" accessibleText="BadeBold" layoutX="81.0" layoutY="670.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="69.0" prefWidth="78.0" text="Badebold" visible="false" />
+            <Button fx:id="itemBeachBall" accessibleText="Badebold" layoutX="81.0" layoutY="670.0" mnemonicParsing="false" onAction="#pickUpItems" opacity="0.0" prefHeight="69.0" prefWidth="78.0" text="Badebold" visible="false" />
             <ImageView fx:id="imageJuiceCarton" accessibleText="Juicekarton" fitHeight="112.0" fitWidth="113.0" layoutX="1784.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" rotate="55.0" visible="false">
                <image>
                   <Image url="@../../Juice%20Item.png" />
