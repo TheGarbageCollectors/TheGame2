@@ -66,8 +66,14 @@ public class UpgradeController {
                 } else {
                     gui.game.upgradeItems(accesText); //upgrades a item depending on the buttom that used this method
                     purchasedUpgradeBubble(accesText);
+                        if (gui.game.getHappiness() == 100) {
+                            App.setRoot("VictoryScene");
+                            System.out.println("Et eller andet");
+                    }
                 }
+
                 break;
+               
             case "recycler":  
                 int recyclerPrice = gui.game.getUpgradePrice("recycler"); //gets the price of recycler upgrade from the array in UpgradeStation class
                 int recycleLevel = (gui.game.getRecyclerLevel())+1; //gets the number for the next level

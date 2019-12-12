@@ -88,4 +88,7 @@ public class Player
         System.out.println("Total coins: " + (money + amount));
         this.money += amount;
     }
+    public String getName() {
+        return this.name;
+    }
 }

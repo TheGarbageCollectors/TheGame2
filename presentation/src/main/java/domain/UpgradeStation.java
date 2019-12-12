@@ -133,7 +133,7 @@ public class UpgradeStation extends Room
                     town.increaseHappiness((town.getLevel() * 10) - town.getHappiness());
                     if ( town.getHappiness() >= 100 ){
                         System.out.println("You have won the game");
-                        System.exit(0);
+                        
                     } else {
                     System.out.println("Your town's happiness is now: " + town.getHappiness());
                     break;
