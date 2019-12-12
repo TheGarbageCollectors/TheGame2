@@ -5,12 +5,6 @@
  */
 package domain;
 
-import trashmaster.presentation.Command;
-
-/**
- *
- * @author GamerQuvang
- */
 public class UpgradeStation extends Room
 {
 
@@ -18,19 +12,15 @@ public class UpgradeStation extends Room
 
     private int[] backpackUpgradePriceArray =
     {
-        50, 300, 500
+        50, 500, 1000000
     };
     private int[] recyclerUpgradeArray =
     {
-        100, 200, 300
-    };
-    private int[] recyclerSortingUpgradeArray =
-    {
-        0, 30, 300
+        200, 750, 1000000
     };
     private int[] townUpgradePriceArray =
     {
-        15, 30, 50, 75, 100, 150, 200, 250, 500, 1000000
+        100, 200, 300, 400, 500, 750, 1000, 1500, 2000, 1000000
     };
 
     public UpgradeStation(String dir, String name)
@@ -38,15 +28,6 @@ public class UpgradeStation extends Room
         super(dir);
         this.name = name;
 
-    }
-    public void welcomeMessage(Object backpack, Object town, Object recycler){
-                int backpackLevel = ((Upgradeable) backpack).getLevel();
-                int townLevel = ((Upgradeable) town).getLevel();
-                int recyclerLevel = ((Upgradeable) recycler).getLevel();
-                System.out.println("You can buy upgrades for Backpack, Town and Recycler");
-                System.out.println("Next upgrade for Backpack is: " + (backpackLevel + 1) + ". level that costs: " + backpackUpgradePriceArray[backpackLevel - 1]);
-                System.out.println("Next upgrade for Town_Hall is: " + (townLevel + 1) + ". level that costs: " + townUpgradePriceArray[townLevel - 1]);
-                System.out.println("Next upgrade for Recycler is: " + (recyclerLevel + 1)  + ". level that costs: " + recyclerUpgradeArray[recyclerLevel - 1]);
     }
 
     public void buyUpgrade(Object obj, Player playerObj)
@@ -73,9 +54,6 @@ public class UpgradeStation extends Room
                             playerObj.removeMoney(upgradePrice);
                             if (((Town) obj).getHappiness()>= 100 )
                             {
-                                System.out.println("Congratulations!");
-                                System.out.println("Your town has reached maximum happiness.");
-                                System.out.println("There is no more trash in the town to collect");
                                 System.out.println("You have won the game (:");
                             }
                         } else
@@ -118,9 +96,6 @@ public class UpgradeStation extends Room
                     break;
             }
         }
-        //playerObj.removeMoney(upgradePrice);
-        //Remove money from the player account here 
-
     }
     
     public void upgradeObject(String thingToBeUpgraded, Room upgradeStation, Town town, Room recycler, Player player1) {

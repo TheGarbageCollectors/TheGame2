@@ -10,7 +10,6 @@ package domain;
  * @author GamerQuvang
  */
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class GameItems
 {
@@ -26,26 +25,11 @@ public class GameItems
         //Using clear to remove everything from the arraylist if there is anything. 
 
         //initializes/makes a lot of Items
-        Item plasticBottle = new Item("Plastikflaske", new String[]
-        {
-            "plastic"
-        });
-        Item cardBoard = new Item("Papkasse", new String[]
-        {
-            "paper"
-        });
-        Item battery = new Item("Batteri", new String[]
-        {
-            "metal"
-        });
-        Item can = new Item("Dåse", new String[]
-        {
-            "metal"
-        });
-        Item staw = new Item("Sugerør", new String[]
-        {
-            "plastic"
-        });
+        Item plasticBottle = new Item("Plastikflaske");
+        Item cardBoard = new Item("Papkasse");
+        Item battery = new Item("Batteri");
+        Item can = new Item("Dåse");
+        Item staw = new Item("Sugerør");
 
         //adds the Items to the commonList Array
         items.add(plasticBottle);
@@ -58,18 +42,9 @@ public class GameItems
         {
             case "road":
                 //makes Items specific for this class
-                Item wheel = new Item("Hjul", new String[]
-                {
-                    "metal", "plastic"
-                });
-                Item trashbag = new Item("Skraldepose", new String[]
-                {
-                    "paper", "plastic", "metal"
-                });
-                Item Chipsbag = new Item("Chipspose", new String[]
-                {
-                    "plastic"
-                });
+                Item wheel = new Item("Hjul");
+                Item trashbag = new Item("Skraldepose");
+                Item Chipsbag = new Item("Chipspose");
 
                 //adds the Items to the List
                 items.add(wheel);
@@ -78,18 +53,9 @@ public class GameItems
                 break;
             case "beach":
                 //makes Items specific for this class
-                Item beachball = new Item("Badebold", new String[]
-                {
-                    "plastic"
-                });
-                Item juicecarton = new Item("Juicekarton", new String[]
-                {
-                    "paper"
-                });
-                Item Gumpaper = new Item("Tyggegummipapir", new String[]
-                {
-                    "plastic"
-                });
+                Item beachball = new Item("Badebold");
+                Item juicecarton = new Item("Juicekarton");
+                Item Gumpaper = new Item("Tyggegummipapir");
 
                 //adds the Items to the List
                 items.add(beachball);
@@ -98,18 +64,9 @@ public class GameItems
                 break;
             case "forrest":
                 //makes Items specific for this class
-                Item bicycle = new Item("Cykel", new String[]
-                {
-                    "metal", "plastic"
-                });
-                Item toiletpaper = new Item("Toiletpapir", new String[]
-                {
-                    "paper"
-                });
-                Item lighter = new Item("Lighter", new String[]
-                {
-                    "metal", "plastic"
-                });
+                Item bicycle = new Item("Cykel");
+                Item toiletpaper = new Item("Toiletpapir");
+                Item lighter = new Item("Lighter");
 
                 //adds the Items to the List
                 items.add(bicycle);
@@ -118,18 +75,9 @@ public class GameItems
                 break;
             case "abandoned_village":
                 //makes Items specific for this class
-                Item doorFrame = new Item("Dør", new String[]
-                {
-                    "metal", "beton"
-                });
-                Item bricks = new Item("Mursten", new String[]
-                {
-                    "concrete"
-                });
-                Item pipes = new Item("Rør", new String[]
-                {
-                    "metal"
-                });
+                Item doorFrame = new Item("Dør");
+                Item bricks = new Item("Mursten");
+                Item pipes = new Item("Rør");
 
                 //adds the Items to the List
                 items.add(doorFrame);

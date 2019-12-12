@@ -1,12 +1,6 @@
 package domain;
 
-import trashmaster.presentation.Command;
-import trashmaster.presentation.Parser;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-//import java.util.Scanner;
-import javafx.scene.control.Button;
 
 public class Game
 {
@@ -105,16 +99,15 @@ public class Game
         forrest.setExit("road", road);
 
         abandonedVillage.setExit("road", road);
-        //road.setExit("road", road);
-
+        
         currentRoom = town;
     }
 
 
-    public String recycleItems(String name, String buttonText, int inventoryIndex)
+    public boolean recycleItems(String name, String buttonText, int inventoryIndex)
     {
-        String tempString = ((Recycler)recycler).recycleItems(name, this.player1, buttonText, inventoryIndex);
-        return tempString;
+        boolean recycled = ((Recycler)recycler).recycleItems(name, this.player1, buttonText, inventoryIndex);
+        return recycled;
     }
 
 
@@ -141,7 +134,6 @@ public class Game
         } else
         {
             currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
             if (nextRoom instanceof Lootable)
             {
                 tempString += ("You see ");
@@ -154,20 +146,9 @@ public class Game
                         tempString += (", ");
                     }
                 }
-
-            } else if (nextRoom instanceof Town)
-            {
-                tempString += ("The Town's happiness level: " + ((Town) nextRoom).getHappiness());
-            } else if (nextRoom instanceof UpgradeStation)
-            {
-                ((UpgradeStation) upgradeStation).welcomeMessage(player1.getBackpackObj(), town, recycler);
-            } else if (nextRoom instanceof Recycler)
-            {
-                tempString += ("You can recycle your trash here");
             }
-
         }
-        return tempString;
+         return tempString;
     }
 
 

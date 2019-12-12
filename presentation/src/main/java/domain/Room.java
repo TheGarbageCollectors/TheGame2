@@ -2,8 +2,6 @@ package domain;
 
 import java.util.Set;
 import java.util.HashMap;
-import java.util.Iterator;
-
 
 public class Room
 {
@@ -19,26 +17,6 @@ public class Room
     public void setExit(String direction, Room neighbor) 
     {
         exits.put(direction, neighbor);
-    }
-
-    public String getShortDescription()
-    {
-        return description;
-    }
-
-    public String getLongDescription()
-    {
-        return "You are " + description + ".\n" + getExitString();
-    }
-
-    private String getExitString()
-    {
-        String returnString = "Exits:";
-        Set<String> keys = exits.keySet();
-        for(String exit : keys) {
-            returnString += "\n" + "- " + exit;
-        }
-        return returnString;
     }
 
     public Room getExit(String direction) 

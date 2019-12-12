@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 
 
 public class VictorySceneController {
-        private UserGUI gui;
+          private UserGUI gui;
     @FXML private Label playerlabel;
         
     @FXML    

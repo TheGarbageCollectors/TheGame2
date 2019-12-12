@@ -46,7 +46,7 @@
                   <Font name="Calibri" size="36.0" />
                </font>
             </Label>
-            <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="432.0" layoutY="776.0" prefHeight="101.0" prefWidth="1032.0" text="Genbrugsstationen var nødt til at lukke ned og byen kunne derfor ikke sortere skrald mere. Global opvarmning skete og byen døde." textFill="RED" wrapText="true">
+            <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="432.0" layoutY="776.0" prefHeight="101.0" prefWidth="1032.0" text="Staten lukkede genbrugstationen ned, da der blev sendt for meget forkert sorteret affald videre. Du måtte forlade din borgmesterpost." textFill="RED" wrapText="true">
                <font>
                   <Font name="Calibri" size="36.0" />
                </font>

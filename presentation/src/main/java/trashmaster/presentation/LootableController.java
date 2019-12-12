@@ -12,8 +12,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -40,10 +38,7 @@ public class LootableController {
     @FXML private Button checkInventory;
     
     @FXML private ArrayList<ImageView> imageList = new ArrayList<>();
-    
-    @FXML private Button recyclePlastic;
-    @FXML private Button recycleMetal;
-    
+   
     @FXML private VBox inventory;
     @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
     @FXML private ObservableList<Text> textList = FXCollections.observableArrayList();
@@ -55,16 +50,11 @@ public class LootableController {
         setVisibleForItems();
         showInventory();
         showCoins();
-    }
-    
-    @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
+        this.gui = PrimaryController.getGUI();
     }
     
     @FXML
     private void goToTownHall() throws IOException {
-        this.gui = PrimaryController.getGUI();
         gui.goRoom("town_hall");
         App.setRoot("TownHall");
     
@@ -72,45 +62,26 @@ public class LootableController {
     
     @FXML
     private void goToBeach () throws IOException {
-        this.gui = PrimaryController.getGUI();
         gui.goRoom("beach");
         App.setRoot("Beach");
     }
     
     @FXML
     private void goToForrest () throws IOException {
-        this.gui = PrimaryController.getGUI();
         gui.goRoom("forrest");
         App.setRoot("Forrest");
-    }
-    @FXML
-    private void goToRecycler() throws IOException {
-        this.gui = PrimaryController.getGUI();
-        gui.goRoom("recycler");
-        App.setRoot("recycler");
     }
     
     @FXML
     private void goToVillage() throws IOException {
-        this.gui = PrimaryController.getGUI();
         gui.goRoom("abandoned_village");
         App.setRoot("Village");
     }
     
     @FXML
     private void goToRoad () throws IOException {
-        this.gui = PrimaryController.getGUI();
         gui.goRoom("road");
         App.setRoot("Road");
-        /*if (App.getRoot() == itemBottle.getScene()) {
-            setVisibleForRoadItems();
-        }*/  
-    }
-    
-    @FXML 
-    private void getInvetory() throws IOException {
-        this.gui = PrimaryController.getGUI();
-        gui.getInventory();
     }
     
     @FXML
@@ -141,7 +112,6 @@ public class LootableController {
     
     @FXML 
     private void showCoins() throws IOException {
-        this.gui = PrimaryController.getGUI();
         String coins = "" + gui.game.getCoins();
         Text coinText = new Text(coins);
         coinText.setFont(Font.font("SansSerif", 20));
@@ -160,22 +130,13 @@ public class LootableController {
             textList.get(j).setFont(Font.font("SansSerif", 20));
             textList.get(j).setFill(Color.WHITE);
             inventory.getChildren().add(textList.get(j));
-            
-            //textList.get(j).setOnAction(recycleEvent);
             j++;
         }
-        } else {
-            
         }
-        
-        
-        //recycleItems();
     }
     
     @FXML
     public void setVisibleForItems() throws IOException {
-        //checkItem.setVisible(false);
-        this.gui = PrimaryController.getGUI();
         ArrayList<String> nameListForBtn = gui.game.getItemNamesInRoom();
         makeImageList();
         for(String itemNames : nameListForBtn)
@@ -202,7 +163,7 @@ public class LootableController {
                     itemStraw.setVisible(true);
                     imageStraw.setVisible(true);
                     break;
-                case "Hjul": //Item from here and down are road-only items
+                case "Hjul":
                     itemWheel.setVisible(true);
                     imageWheel.setVisible(true);
                     break;
@@ -252,8 +213,6 @@ public class LootableController {
                     break;
             }
         }
-        
-    
     }
     
     @FXML
@@ -288,28 +247,4 @@ public class LootableController {
                 break;
         }
     }
-    
-    @FXML
-    private void recycleItemChoice(ActionEvent event) throws IOException {
-        String buttonText;
-        String itemName;
-        
-        buttonText = ((Button)event.getSource()).getText();
-       
-        System.out.println(buttonText);
-        //recycleItems();
-    }
-    
-    
-    @FXML
-    private void recycleItems() throws IOException {
-        String buttonText;
-        String itemName;
-        
-        buttonText = this.recyclePlastic.getText();
-        
-        //gui.recycleItems();
-    }
-    
-    
 }

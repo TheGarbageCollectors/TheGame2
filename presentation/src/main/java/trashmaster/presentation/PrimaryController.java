@@ -16,12 +16,7 @@ public class PrimaryController {
     @FXML private TextField input;
     @FXML private Button confirmBtn, yes, no;
     @FXML private Label confirmName, confirmNameText, nameQuestion;
-    @FXML private static UserGUI gui = null;
-    
-    
-    /*public PrimaryController(UserGUI gui) {
-        this.gui = gui;
-    }*/
+    @FXML private static UserGUI gui;
     
     @FXML
     private void goToTown() throws IOException {
@@ -46,9 +41,6 @@ public class PrimaryController {
         
         yes.setDisable(false);
         no.setDisable(false);
-        
-        
-        //System.out.println(input2);
     }
     
     @FXML

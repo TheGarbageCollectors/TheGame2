@@ -13,36 +13,6 @@ public class Player
         this.name = playerName;
     }
 
-    /*private void namePlayer(String playerName)
-    {
-        String inputName;
-        String checkName;
-        Scanner scan = new Scanner(System.in);
-        
-        do
-        {
-            System.out.println("What is your name?");
-            
-            System.out.print("> ");
-            //input name
-            inputName = playerName;
-
-            //output
-            System.out.println("So your name is: " + inputName + "? yes or no");
-            
-            System.out.print("> ");
-            //confirmeing name
-            checkName = scan.nextLine();
-
-            if (checkName.equals("yes"))
-            {
-                System.out.println("Okay nice to meet you " + inputName);
-                this.name = inputName;
-                return;
-            }
-        } while (name == null); 
-    }*/
-
     public boolean enoughMoney(int amount)
     {
         int moneyLeft = this.money - amount;

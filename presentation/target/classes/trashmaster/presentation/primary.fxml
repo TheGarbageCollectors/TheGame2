@@ -18,23 +18,26 @@
       </ImageView>
       <AnchorPane fx:id="namePane" prefHeight="1080.0" prefWidth="1920.0">
          <children>
-            <Label fx:id="nameQuestion" alignment="CENTER" layoutX="397.0" layoutY="400.0" prefHeight="38.0" prefWidth="254.0" text="What is your name?">
+            <Label fx:id="nameQuestion" alignment="CENTER" layoutX="397.0" layoutY="400.0" prefHeight="38.0" prefWidth="254.0" text="Hvad er dit navn?">
                <font>
                   <Font size="26.0" />
                </font>
             </Label>
-            <TextField fx:id="input" alignment="CENTER" layoutX="381.0" layoutY="463.0" onAction="#namePlayer" prefHeight="50.0" prefWidth="286.0" />
-            <Button fx:id="confirmBtn" alignment="CENTER" layoutX="453.0" layoutY="547.0" mnemonicParsing="false" onAction="#namePlayer" prefHeight="51.0" prefWidth="143.0" text="Confirm">
+            <TextField fx:id="input" alignment="CENTER" layoutX="381.0" layoutY="463.0" onAction="#namePlayer" prefHeight="50.0" prefWidth="286.0" promptText="Indtast dit navn her">
+               <font>
+                  <Font size="20.0" />
+               </font></TextField>
+            <Button fx:id="confirmBtn" alignment="CENTER" layoutX="453.0" layoutY="547.0" mnemonicParsing="false" onAction="#namePlayer" prefHeight="51.0" prefWidth="143.0" text="Bekræft">
                <font>
                   <Font size="26.0" />
                </font>
             </Button>
-            <Button fx:id="yes" disable="true" layoutX="405.0" layoutY="545.0" mnemonicParsing="false" onAction="#nameConfirmYes" text="Yes" visible="false">
+            <Button fx:id="yes" disable="true" layoutX="405.0" layoutY="545.0" mnemonicParsing="false" onAction="#nameConfirmYes" text="Ja" visible="false">
                <font>
                   <Font size="26.0" />
                </font>
             </Button>
-            <Label fx:id="confirmNameText" alignment="CENTER" contentDisplay="CENTER" layoutX="444.0" layoutY="400.0" text="Is your name?" visible="false">
+            <Label fx:id="confirmNameText" alignment="CENTER" contentDisplay="CENTER" layoutX="444.0" layoutY="400.0" text="Er dit navn?" visible="false">
                <font>
                   <Font size="26.0" />
                </font>
@@ -44,7 +47,7 @@
                   <Font size="26.0" />
                </font>
             </Label>
-            <Button fx:id="no" disable="true" layoutX="569.0" layoutY="545.0" mnemonicParsing="false" onAction="#nameConfirmNo" text="No" visible="false">
+            <Button fx:id="no" disable="true" layoutX="569.0" layoutY="545.0" mnemonicParsing="false" onAction="#nameConfirmNo" text="Nej" visible="false">
                <font>
                   <Font size="26.0" />
                </font>
@@ -63,7 +66,7 @@
                   <Font size="34.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" layoutX="100.0" layoutY="365.0" prefHeight="553.0" prefWidth="722.0" text="Du er bormesteren af en by, som er oversvømmet af skrald. Det er dit job som bormester at sørger for at gaderne er rene ved at samle skrald op og sortere dem korret. Hvis det ikke bliver sorteret korrekt, så skal der graves efter flere ressourcer, som betyder at der kommer mere udledelse af CO2." wrapText="true">
+            <Label alignment="TOP_LEFT" layoutX="100.0" layoutY="365.0" prefHeight="553.0" prefWidth="722.0" text="Du er borgmesteren af en by, som er oversvømmet af skrald. Det er dit job som borgmester at sørger for at gaderne er rene ved at samle skrald op og sortere dem korrekt. Hvis det ikke bliver sorteret korrekt, så skal der graves efter flere ressourcer, som betyder at der kommer mere udledelse af CO2." wrapText="true">
                <font>
                   <Font size="34.0" />
                </font>

@@ -10,11 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -78,21 +75,13 @@ public class TownController {
             textList.get(j).setFont(Font.font("SansSerif", 20));
             textList.get(j).setFill(Color.WHITE);
             inventory.getChildren().add(textList.get(j));
-            
-            //textList.get(j).setOnAction(recycleEvent);
             j++;
         }
-        } else {
-            
         }
-        
-        
-        //recycleItems();
     }
     
     @FXML
     private void showHappiness() throws IOException {
-        this.gui = PrimaryController.getGUI();
         String happy = "" + gui.game.getHappiness();
         Text happyText = new Text(happy);
         happyText.setFont(Font.font("SansSerif", 20));
@@ -102,40 +91,24 @@ public class TownController {
     
     @FXML
     private void goToRoad () throws IOException {
-        this.gui = PrimaryController.getGUI();
         gui.goRoom("road");
         App.setRoot("Road");
-        /*if (App.getRoot() == itemBottle.getScene()) {
-            setVisibleForRoadItems();
-        }*/  
     }
     
-    @FXML 
-    private void getInvetory() throws IOException {
-        this.gui = PrimaryController.getGUI();
-        gui.getInventory();
-    }
-    
-     @FXML
+    @FXML
     private void goToRecycler() throws IOException {
-        this.gui = PrimaryController.getGUI();
         gui.goRoom("recycler");
         App.setRoot("recycler");
     }
     
-     @FXML
+    @FXML
     private void goToUpgradeStation () throws IOException {
-        this.gui = PrimaryController.getGUI();
         gui.goRoom("upgradestation");
-        App.setRoot("UpgradeStation");
-        /*if (App.getRoot() == itemBottle.getScene()) {
-            setVisibleForRoadItems();
-        }*/  
+        App.setRoot("UpgradeStation");  
     }
     
-     @FXML 
+    @FXML 
     private void showCoins() throws IOException {
-        this.gui = PrimaryController.getGUI();
         String coins = "" + gui.game.getCoins();
         Text coinText = new Text(coins);
         coinText.setFont(Font.font("SansSerif", 20));

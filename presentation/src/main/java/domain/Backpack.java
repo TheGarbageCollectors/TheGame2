@@ -60,9 +60,6 @@ public class Backpack implements Upgradeable
     public void removeItem(Item item){
         this.inventoryList.remove(item);
     }
-    public void useItem(){
-        //Write code here
-    }
 
     public ArrayList<Item> getItemsInBackpack(){
         return this.inventoryList;

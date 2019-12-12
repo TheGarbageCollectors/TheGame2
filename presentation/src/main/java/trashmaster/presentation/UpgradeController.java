@@ -39,13 +39,13 @@ public class UpgradeController {
     @FXML private HBox coins; 
     
     public void initialize() throws IOException {
+        this.gui = PrimaryController.getGUI();
         showInventory();
         showCoins();
     }
     
     @FXML
     private void goToTownHall() throws IOException {
-        this.gui = PrimaryController.getGUI();
         gui.goRoom("town_hall");
         App.setRoot("TownHall");
     
@@ -53,7 +53,6 @@ public class UpgradeController {
     
     @FXML
     private void upgradeObject(ActionEvent event) throws IOException {
-        this.gui = PrimaryController.getGUI();
         String accesText = ((Button)event.getSource()).getAccessibleText(); //takes the accessible text from the buttom that uses this method
         switch(accesText) {
             case "townhall":
@@ -103,8 +102,7 @@ public class UpgradeController {
     }
     
     @FXML
-    private void upgradeOptions() throws IOException {
-        this.gui = PrimaryController.getGUI();
+    private void upgradeOptions() throws IOException {;
         upgradeOptiontekst.setVisible(false);
         boughtUpgradeLabel.setVisible(false);
         upgradeResultLabel.setVisible(false);
@@ -143,13 +141,11 @@ public class UpgradeController {
     }
     
     private void notEnoughMoneyBubble() { //method for enabling the "ikke nok penge" label
-        this.gui = PrimaryController.getGUI();
         optionVBox.setVisible(false);
         notEnoughMoney.setVisible(true);  
     }
     
     private void purchasedUpgradeBubble(String upgradeTekst) throws IOException { //method for setting label text after a upgrade has been purchased
-        this.gui = PrimaryController.getGUI();
         optionVBox.setVisible(false);
         boughtUpgradeLabel.setVisible(true);
         switch(upgradeTekst) {
@@ -171,7 +167,6 @@ public class UpgradeController {
     
     @FXML
     private void showInventory() throws IOException {
-        this.gui = PrimaryController.getGUI();
         this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
         inventory.setVisible(true);
         int j = 0;
@@ -181,19 +176,13 @@ public class UpgradeController {
             textList.get(j).setFont(Font.font("SansSerif", 20));
             textList.get(j).setFill(Color.WHITE);
             inventory.getChildren().add(textList.get(j));
-            
-            //textList.get(j).setOnAction(recycleEvent);
             j++;
         }
-        } else {
-            
         }
-
     }
     
     @FXML 
     private void showCoins() throws IOException {
-        this.gui = PrimaryController.getGUI();
         String coins = "" + gui.game.getCoins();
         Text coinText = new Text(coins);
         coinText.setFont(Font.font("SansSerif", 20));
