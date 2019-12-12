@@ -2,7 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 
-public class Game
+public class Game implements IGame
 {
 
     private Room currentRoom, recycler, upgradeStation;
@@ -23,6 +23,7 @@ public class Game
         return currentRoom;
     }
     
+    @Override
     public String getCurrentRoomName() {
         String tempName = ""; 
         if (this.currentRoom instanceof Lootable)
@@ -44,28 +45,33 @@ public class Game
         return tempName;
     }
     
+    @Override
     public int getTownLevel() {
         return this.town.getLevel();
     }
     
+    @Override
     public int getRecyclerLevel() {
         return ((Recycler)this.recycler).getLevel();
     }
     
-
+    @Override
     public Player getPlayer() {
         return this.player1;
     }
     
+    @Override
     public int getHP() {
         int hp = ((Recycler)this.recycler).getHP();
         return hp; 
     }
     
+    @Override
     public int getBackpackLevel() {
         return player1.getBackpackObj().getLevel();
     }
     
+    @Override
     public int getCoins() {
         return player1.getMoney();
     }
@@ -103,14 +109,14 @@ public class Game
         currentRoom = town;
     }
 
-
+    @Override
     public boolean recycleItems(String name, String buttonText, int inventoryIndex)
     {
         boolean recycled = ((Recycler)recycler).recycleItems(name, this.player1, buttonText, inventoryIndex);
         return recycled;
     }
-
-
+    
+    @Override
     public String upgradeItems(String thingToUpgrade)
     { 
        ((UpgradeStation) currentRoom).upgradeObject(thingToUpgrade, currentRoom, town, recycler, player1);
@@ -118,8 +124,8 @@ public class Game
         return tempString;
 
     }
-
-
+    
+    @Override
     public String goRoom(String room)
     {
         var tempString = "";
@@ -150,9 +156,9 @@ public class Game
         }
          return tempString;
     }
-
-
-    public String pickupItems(String itemName)
+    
+    @Override
+    public String pickUpItems(String itemName)
     {
         var tempString = "";
             //checking if the player is in fact in a room that can be looted by using the lootable class and instanceof 
@@ -182,7 +188,8 @@ public class Game
         }
         return tempString;
     }
-
+    
+    @Override
     public ArrayList<String> getItemNamesInRoom() //Used by GUI to enable bottoms
     {
         ArrayList<String> itemNames = new ArrayList();
@@ -193,11 +200,13 @@ public class Game
         return itemNames;
     }
     
+    @Override
     public int getMaxBackpackSize() {
         int size = player1.getBackpackObj().getMaxSize();
             return size;
     }
     
+    @Override
     public boolean getIsBackpackFull() {
         if (player1.getBackpackObj().isBackpackFull()) {
             return true;
@@ -206,22 +215,26 @@ public class Game
         }
     }
     
+    @Override
     public int getUpgradePrice(String thingToUpgrade) {
         int price = ((UpgradeStation)upgradeStation).getUpgradePrices(thingToUpgrade, town, recycler, player1);
         return price;
     }
     
+    @Override
     public int getHappiness()
     {
         int happiness = ((Town)town).getHappiness();
         return happiness;
     }
-
+    
+    @Override
     public int getPlayerMoney() {
         int money = player1.getMoney();
         return money;
     }
     
+    @Override
     public String getInventory()
     {
         var tempString = "";
@@ -248,6 +261,8 @@ public class Game
         }
 
     }
+    
+    @Override
     public String getPlayerName() {
         String playername = player1.getName();
         return playername;

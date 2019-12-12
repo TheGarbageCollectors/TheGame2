@@ -1,13 +1,13 @@
 package trashmaster.presentation;
 
+import domain.Game;
+import domain.IGame;
 import java.io.IOException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 
 public class PrimaryController {
     
@@ -16,7 +16,7 @@ public class PrimaryController {
     @FXML private TextField input;
     @FXML private Button confirmBtn, yes, no;
     @FXML private Label confirmName, confirmNameText, nameQuestion;
-    @FXML private static UserGUI gui;
+    @FXML private static IGame gui;
     
     @FXML
     private void goToTown() throws IOException {
@@ -50,11 +50,9 @@ public class PrimaryController {
     
     @FXML 
     private void nameConfirmYes() throws IOException {
-        gui = new UserGUI();
-        gui.play(name);
+        gui = new Game(name);
         namePane.setVisible(false);
         introPane.setVisible(true);
-        
     }
     
     @FXML 
@@ -62,7 +60,7 @@ public class PrimaryController {
         goToTown();
     }
     
-    public static UserGUI getGUI() {
+    public static IGame getGUI() {
         return gui;
     }
     

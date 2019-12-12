@@ -9,7 +9,6 @@ trashmaster\presentation\App.class
 domain\Player.class
 trashmaster\presentation\RecyclerController$1.class
 trashmaster\presentation\TownController.class
-trashmaster\presentation\UserGUI.class
 domain\UpgradeStation.class
 trashmaster\presentation\PrimaryController.class
 domain\GameItems.class
@@ -18,6 +17,7 @@ domain\Game.class
 domain\Backpack.class
 trashmaster\presentation\Main.class
 module-info.class
+domain\IGame.class
 domain\Item.class
 trashmaster\presentation\UpgradeController.class
 trashmaster\presentation\RecyclerController.class

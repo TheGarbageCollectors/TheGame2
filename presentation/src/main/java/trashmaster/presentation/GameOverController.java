@@ -1,5 +1,6 @@
 package trashmaster.presentation;
 
+import domain.IGame;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +15,7 @@ import javafx.util.Duration;
 
 
 public class GameOverController implements Initializable {
-          private UserGUI gui;
+          private IGame gui;
     @FXML private StackPane root;
     @FXML private AnchorPane AnchorPane;
     @FXML private ImageView recycle1, recycle2, recycle3;
@@ -23,7 +24,7 @@ public class GameOverController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.gui = PrimaryController.getGUI();
-        int recyclerLvl = gui.game.getRecyclerLevel();
+        int recyclerLvl = gui.getRecyclerLevel();
         switch(recyclerLvl)
         { 
             case 1:

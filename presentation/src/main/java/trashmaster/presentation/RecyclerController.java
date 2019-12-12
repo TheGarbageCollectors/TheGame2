@@ -5,6 +5,7 @@
  */
 package trashmaster.presentation;
 
+import domain.IGame;
 import domain.Item;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import javafx.scene.text.Text;
  * @author benja
  */
 public class RecyclerController {
-    private UserGUI gui;
+    private IGame gui;
     @FXML private Button recyclePlastic, recycleMetal, recycleGarbage, recycleConcrete, recyclePaper, recycleBattery, recycleHazardous;
     @FXML private ImageView recycle1, recycle2, recycle3;
     @FXML private Button goTownHall;
@@ -60,7 +61,7 @@ public class RecyclerController {
     
     public void initialize() throws IOException {
         this.gui = PrimaryController.getGUI();
-        int recyclerLvl = gui.game.getRecyclerLevel();
+        int recyclerLvl = gui.getRecyclerLevel();
         switch(recyclerLvl)
         { 
             case 1:
@@ -89,7 +90,7 @@ public class RecyclerController {
     @FXML
     private void recycleItemChoice(ActionEvent event) throws IOException {
         this.buttonText = ((Button)event.getSource()).getText();
-        this.inventoryListForRecycling = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        this.inventoryListForRecycling = gui.getPlayer().getBackpackObj().getItemsInBackpack();
         recycleItem.setVisible(true);
         int j = 0;
         if (buttonList.isEmpty()) { 
@@ -108,7 +109,7 @@ public class RecyclerController {
             public void handle(ActionEvent event)  {
                 itemName = ((Button)event.getSource()).getText();
                 int inventoryIndex = buttonList.indexOf((Button)event.getSource());
-                boolean recycledRight = gui.game.recycleItems(itemName, buttonText, inventoryIndex);
+                boolean recycledRight = gui.recycleItems(itemName, buttonText, inventoryIndex);
                 recycleItem.setVisible(false);
                 buttonList.clear();
                 textList.clear();
@@ -130,7 +131,7 @@ public class RecyclerController {
                         System.out.println("Error");
                     }
                 recycleItem.getChildren().clear();
-                int hp = gui.game.getHP();
+                int hp = gui.getHP();
                 heartCheck();
                     if (hp <= 0) {
                     heart1.setVisible(false);
@@ -147,7 +148,7 @@ public class RecyclerController {
     
     @FXML
     private void showInventory() throws IOException {
-        this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        this.inventoryList = gui.getPlayer().getBackpackObj().getItemsInBackpack();
         inventory.setVisible(true);
         int j = 0;
         if (textList.isEmpty()) { 
@@ -163,7 +164,7 @@ public class RecyclerController {
     
     @FXML 
     private void showCoins() throws IOException {
-        String coins = "" + gui.game.getCoins();
+        String coins = "" + gui.getCoins();
         Text coinText = new Text(coins);
         coinText.setFont(Font.font("SansSerif", 20));
         coinText.setFill(Color.WHITE);
@@ -180,7 +181,7 @@ public class RecyclerController {
     
     @FXML
     private void heartCheck() {
-        int hp = gui.game.getHP();
+        int hp = gui.getHP();
         if (hp == 2) {
             heart3.setVisible(false);
         } else if (hp == 1) {
@@ -192,5 +193,5 @@ public class RecyclerController {
             heart1.setVisible(false);
         }
     }
-    
+   
 }

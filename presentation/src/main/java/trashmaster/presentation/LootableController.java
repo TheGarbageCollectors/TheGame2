@@ -5,6 +5,7 @@
  */
 package trashmaster.presentation;
 
+import domain.IGame;
 import domain.Item;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import javafx.scene.text.Text;
  * @author Daniel Tran
  */
 public class LootableController {
-    private UserGUI gui;
+    private IGame gui;
     //Add buttons for item here
     @FXML private Button itemWheel, itemTrashbag, itemBottle, itemBox, itemBattery, itemCan, itemStraw, itemChipsbag;
     @FXML private Button itemBeachBall, itemJuiceCarton, itemGumpaper, itemBike, itemToiletPaper, itemLighter, itemDoor, itemBrick, itemPipe;  
@@ -87,7 +88,7 @@ public class LootableController {
     @FXML
     private void pickUpItems(ActionEvent event) throws IOException {
         String accesText = ((Button)event.getSource()).getAccessibleText();
-        if (!gui.game.getIsBackpackFull()) {
+        if (!gui.getIsBackpackFull()) {
             gui.pickUpItems(accesText);
             textList.clear();
             inventory.getChildren().clear();
@@ -112,7 +113,7 @@ public class LootableController {
     
     @FXML 
     private void showCoins() throws IOException {
-        String coins = "" + gui.game.getCoins();
+        String coins = "" + gui.getCoins();
         Text coinText = new Text(coins);
         coinText.setFont(Font.font("SansSerif", 20));
         coinText.setFill(Color.WHITE);
@@ -121,7 +122,7 @@ public class LootableController {
     
     @FXML
     private void showInventory() throws IOException {
-        this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        this.inventoryList = gui.getPlayer().getBackpackObj().getItemsInBackpack();
         inventory.setVisible(true);
         int j = 0;
         if (textList.isEmpty()) { 
@@ -137,7 +138,7 @@ public class LootableController {
     
     @FXML
     public void setVisibleForItems() throws IOException {
-        ArrayList<String> nameListForBtn = gui.game.getItemNamesInRoom();
+        ArrayList<String> nameListForBtn = gui.getItemNamesInRoom();
         makeImageList();
         for(String itemNames : nameListForBtn)
         {
@@ -223,7 +224,7 @@ public class LootableController {
         this.imageList.add(imageCan);
         this.imageList.add(imageStraw);
         
-        String currentRoom = gui.game.getCurrentRoomName();
+        String currentRoom = gui.getCurrentRoomName();
         switch(currentRoom) {
             case "road":
                 this.imageList.add(imageWheel);

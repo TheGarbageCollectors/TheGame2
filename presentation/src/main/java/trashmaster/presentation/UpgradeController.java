@@ -5,6 +5,7 @@
  */
 package trashmaster.presentation;
 
+import domain.IGame;
 import domain.Item;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import javafx.scene.text.Text;
  * @author benja
  */
 public class UpgradeController {
-    private UserGUI gui;
+    private IGame gui;
     @FXML private Button upgradeOption, townHallUpgrade, recyclerUpgrade, backpackUpgrade;
     @FXML private ImageView bubbleOption;
     @FXML private Label upgradeOptiontekst, boughtUpgradeLabel, upgradeResultLabel, notEnoughMoney, clickOnMe;
@@ -56,16 +57,16 @@ public class UpgradeController {
         String accesText = ((Button)event.getSource()).getAccessibleText(); //takes the accessible text from the buttom that uses this method
         switch(accesText) {
             case "townhall":
-                int townHallPrice = gui.game.getUpgradePrice("townhall"); //gets the price of townhall upgrade from the array in UpgradeStation class
-                int townHallLevel = (gui.game.getTownLevel())+1; //gets the number for the next level
+                int townHallPrice = gui.getUpgradePrice("townhall"); //gets the price of townhall upgrade from the array in UpgradeStation class
+                int townHallLevel = (gui.getTownLevel())+1; //gets the number for the next level
                 townHallUpgrade.setText("Rådhus lv." + townHallLevel + ".\n" + "[" + townHallPrice + "]"); //updates the text on the townHallUpgrade buttom
-                if (townHallPrice > gui.game.getPlayerMoney()) {
-                    System.out.println(townHallPrice + " " + gui.game.getPlayerMoney());
+                if (townHallPrice > gui.getPlayerMoney()) {
+                    System.out.println(townHallPrice + " " + gui.getPlayerMoney());
                     notEnoughMoneyBubble();
                 } else {
-                    gui.game.upgradeItems(accesText); //upgrades a item depending on the buttom that used this method
+                    gui.upgradeItems(accesText); //upgrades a item depending on the buttom that used this method
                     purchasedUpgradeBubble(accesText);
-                        if (gui.game.getHappiness() == 100) {
+                        if (gui.getHappiness() == 100) {
                             App.setRoot("VictoryScene");
                             System.out.println("Et eller andet");
                     }
@@ -74,26 +75,26 @@ public class UpgradeController {
                 break;
                
             case "recycler":  
-                int recyclerPrice = gui.game.getUpgradePrice("recycler"); //gets the price of recycler upgrade from the array in UpgradeStation class
-                int recycleLevel = (gui.game.getRecyclerLevel())+1; //gets the number for the next level
+                int recyclerPrice = gui.getUpgradePrice("recycler"); //gets the price of recycler upgrade from the array in UpgradeStation class
+                int recycleLevel = (gui.getRecyclerLevel())+1; //gets the number for the next level
                 recyclerUpgrade.setText("Genbrugsstation lv." + recycleLevel + ".\n" + "[" + recyclerPrice + "]"); //updates the text on the recyclerUpgrade buttom
-                if (recyclerPrice > gui.game.getPlayerMoney()) {
-                    System.out.println(recyclerPrice + " " + gui.game.getPlayerMoney());
+                if (recyclerPrice > gui.getPlayerMoney()) {
+                    System.out.println(recyclerPrice + " " + gui.getPlayerMoney());
                     notEnoughMoneyBubble();
                 } else {
-                    gui.game.upgradeItems(accesText); //upgrades a item depending on the buttom that used this method
+                    gui.upgradeItems(accesText); //upgrades a item depending on the buttom that used this method
                     purchasedUpgradeBubble(accesText);
                 }
                 break;
             case "backpack":
-                int backpackPrice = gui.game.getUpgradePrice("backpack"); //gets the price of backpack upgrade from the array in UpgradeStation class
-                int backpackLevel = (gui.game.getBackpackLevel())+1; //gets the number for the next level
+                int backpackPrice = gui.getUpgradePrice("backpack"); //gets the price of backpack upgrade from the array in UpgradeStation class
+                int backpackLevel = (gui.getBackpackLevel())+1; //gets the number for the next level
                 backpackUpgrade.setText("Rygsæk lv." + backpackLevel + ".\n" + "[" + backpackPrice + "]"); //updates the text on the backpackUpgrade buttom
-                if (backpackPrice > gui.game.getPlayerMoney()) {
-                    System.out.println(backpackPrice + " " + gui.game.getPlayerMoney());
+                if (backpackPrice > gui.getPlayerMoney()) {
+                    System.out.println(backpackPrice + " " + gui.getPlayerMoney());
                     notEnoughMoneyBubble();
                 } else {
-                    gui.game.upgradeItems(accesText); //upgrades a item depending on the buttom that used this method
+                    gui.upgradeItems(accesText); //upgrades a item depending on the buttom that used this method
                     purchasedUpgradeBubble(accesText); //method for enabling purchase text
                 }
                 break;
@@ -111,8 +112,8 @@ public class UpgradeController {
         
         optionVBox.setVisible(true);
         
-        int townHallPrice = gui.game.getUpgradePrice("townhall"); //gets the price of townhall upgrade from the array in UpgradeStation class
-        int townHallLevel = (gui.game.getTownLevel())+1; //gets the number for the next level
+        int townHallPrice = gui.getUpgradePrice("townhall"); //gets the price of townhall upgrade from the array in UpgradeStation class
+        int townHallLevel = (gui.getTownLevel())+1; //gets the number for the next level
         if(townHallLevel > 10) { //checks whether or not this have hit max level 
             townHallUpgrade.setText("Rådhus lv.max."); //sets the text on the townHallUpgrade buttom
             townHallUpgrade.setDisable(true);
@@ -120,8 +121,8 @@ public class UpgradeController {
         townHallUpgrade.setText("Rådhus lv." + townHallLevel + ".\n" + "[" + townHallPrice + "]"); //sets the text on the townHallUpgrade buttom
         }
         
-        int recyclerPrice = gui.game.getUpgradePrice("recycler"); //gets the price of recycler upgrade from the array in UpgradeStation class
-        int recycleLevel = (gui.game.getRecyclerLevel())+1; //gets the number for the next level
+        int recyclerPrice = gui.getUpgradePrice("recycler"); //gets the price of recycler upgrade from the array in UpgradeStation class
+        int recycleLevel = (gui.getRecyclerLevel())+1; //gets the number for the next level
         if(recycleLevel > 3) { //checks whether or not this have hit max level
             recyclerUpgrade.setText("Genbrugsstation lv.max");
             recyclerUpgrade.setDisable(true);
@@ -129,8 +130,8 @@ public class UpgradeController {
         recyclerUpgrade.setText("Genbrugsstation lv." + recycleLevel + ".\n" + "[" + recyclerPrice + "]"); //sets the text on the recyclerUpgrade buttom
         }
         
-        int backpackPrice = gui.game.getUpgradePrice("backpack"); //gets the price of backpack upgrade from the array in UpgradeStation class
-        int backpackLevel = (gui.game.getBackpackLevel())+1; //gets the number for the next level
+        int backpackPrice = gui.getUpgradePrice("backpack"); //gets the price of backpack upgrade from the array in UpgradeStation class
+        int backpackLevel = (gui.getBackpackLevel())+1; //gets the number for the next level
         if(backpackLevel > 3) { //checks whether or not this have hit max level
             backpackUpgrade.setText("Rygsæk lv.max");
             backpackUpgrade.setDisable(true);
@@ -150,13 +151,13 @@ public class UpgradeController {
         boughtUpgradeLabel.setVisible(true);
         switch(upgradeTekst) {
             case "townhall":
-                upgradeResultLabel.setText("Rådhuset er nu level: " + gui.game.getTownLevel() + "\n Glæde øget med 10 \nByens glæde er nu: " + gui.iGetTownHappiness());
+                upgradeResultLabel.setText("Rådhuset er nu level: " + gui.getTownLevel() + "\n Glæde øget med 10 \nByens glæde er nu: " + gui.getHappiness());
                 break;
             case "recycler":
-                upgradeResultLabel.setText("Genbrugsstation er nu level: " + gui.game.getRecyclerLevel() + "\nDu har nu flere muligheder for affaldssortering!");
+                upgradeResultLabel.setText("Genbrugsstation er nu level: " + gui.getRecyclerLevel() + "\nDu har nu flere muligheder for affaldssortering!");
                 break;
             case "backpack":
-                upgradeResultLabel.setText("Rygsæk er nu level: " + gui.game.getBackpackLevel() + "\nDu kan nu holde " + gui.game.getMaxBackpackSize() + " ting!");
+                upgradeResultLabel.setText("Rygsæk er nu level: " + gui.getBackpackLevel() + "\nDu kan nu holde " + gui.getMaxBackpackSize() + " ting!");
                 break;     
         }
         coins.getChildren().clear();
@@ -167,7 +168,7 @@ public class UpgradeController {
     
     @FXML
     private void showInventory() throws IOException {
-        this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        this.inventoryList = gui.getPlayer().getBackpackObj().getItemsInBackpack();
         inventory.setVisible(true);
         int j = 0;
         if (textList.isEmpty()) { 
@@ -183,7 +184,7 @@ public class UpgradeController {
     
     @FXML 
     private void showCoins() throws IOException {
-        String coins = "" + gui.game.getCoins();
+        String coins = "" + gui.getCoins();
         Text coinText = new Text(coins);
         coinText.setFont(Font.font("SansSerif", 20));
         coinText.setFill(Color.WHITE);

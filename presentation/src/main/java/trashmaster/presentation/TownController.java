@@ -5,6 +5,7 @@
  */
 package trashmaster.presentation;
 
+import domain.IGame;
 import domain.Item;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import javafx.scene.text.Text;
  * @author benja
  */
 public class TownController {
-    private UserGUI gui;
+    private IGame gui;
     @FXML private Button goRoad, goToRecycler, goUpgradeStation;
     @FXML private ImageView town1, town2, town3, town4, town5;
     @FXML private VBox inventory;
@@ -35,7 +36,7 @@ public class TownController {
     
     public void initialize() throws IOException {
         this.gui = PrimaryController.getGUI();
-        int townHall = gui.game.getTownLevel();
+        int townHall = gui.getTownLevel();
         switch(townHall)
         { 
             case 1:
@@ -66,7 +67,7 @@ public class TownController {
     
    @FXML
     private void showInventory() throws IOException {
-        this.inventoryList = gui.game.getPlayer().getBackpackObj().getItemsInBackpack();
+        this.inventoryList = gui.getPlayer().getBackpackObj().getItemsInBackpack();
         inventory.setVisible(true);
         int j = 0;
         if (textList.isEmpty()) { 
@@ -82,7 +83,7 @@ public class TownController {
     
     @FXML
     private void showHappiness() throws IOException {
-        String happy = "" + gui.game.getHappiness();
+        String happy = "" + gui.getHappiness();
         Text happyText = new Text(happy);
         happyText.setFont(Font.font("SansSerif", 20));
         happyText.setFill(Color.WHITE);
@@ -109,7 +110,7 @@ public class TownController {
     
     @FXML 
     private void showCoins() throws IOException {
-        String coins = "" + gui.game.getCoins();
+        String coins = "" + gui.getCoins();
         Text coinText = new Text(coins);
         coinText.setFont(Font.font("SansSerif", 20));
         coinText.setFill(Color.WHITE);
