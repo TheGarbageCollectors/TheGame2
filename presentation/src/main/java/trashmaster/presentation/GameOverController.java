@@ -43,7 +43,7 @@ public class GameOverController implements Initializable {
          App.setRoot("primary");
     }
     
-     @FXML
+    @FXML
     private void quitGame() throws IOException {
         Platform.exit();
     }

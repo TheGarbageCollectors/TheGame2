@@ -187,22 +187,22 @@ public class Recycler extends Room implements Upgradeable
                 tempTotalValue = 0;
                 break;
             case "Metal":
-                tempTotalValue = 30;
+                tempTotalValue = 30 * this.level;
                 break;
             case "Plastik":
-                tempTotalValue = 20; 
+                tempTotalValue = 20 * this.level; 
                 break;
             case "Beton":
-                tempTotalValue = 15;
+                tempTotalValue = 15 * this.level;
                 break;
             case "Papir":
-                tempTotalValue = 10;
+                tempTotalValue = 10 * this.level;
                 break;
             case "Batterier":
-                tempTotalValue = 30;
+                tempTotalValue = 30 * this.level;
                 break;
             case "Farligt affald":
-                tempTotalValue = 20;
+                tempTotalValue = 20 * this.level;
                 break;
         }
         System.out.println("Money Add: " + tempTotalValue);

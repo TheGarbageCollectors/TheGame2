@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -35,9 +36,11 @@ public class UpgradeController {
     @FXML private VBox inventory;
     @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
     @FXML private ObservableList<Text> textList = FXCollections.observableArrayList();
+    @FXML private HBox coins; 
     
     public void initialize() throws IOException {
         showInventory();
+        showCoins();
     }
     
     @FXML
@@ -139,7 +142,7 @@ public class UpgradeController {
         notEnoughMoney.setVisible(true);  
     }
     
-    private void purchasedUpgradeBubble(String upgradeTekst) { //method for setting label text after a upgrade has been purchased
+    private void purchasedUpgradeBubble(String upgradeTekst) throws IOException { //method for setting label text after a upgrade has been purchased
         this.gui = PrimaryController.getGUI();
         optionVBox.setVisible(false);
         boughtUpgradeLabel.setVisible(true);
@@ -154,6 +157,8 @@ public class UpgradeController {
                 upgradeResultLabel.setText("Rygsæk er nu level: " + gui.game.getBackpackLevel() + "\nDu kan nu holde " + gui.game.getMaxBackpackSize() + " ting!");
                 break;     
         }
+        coins.getChildren().clear();
+        showCoins();
         upgradeResultLabel.setVisible(true);
         
     }
@@ -178,6 +183,16 @@ public class UpgradeController {
             
         }
 
+    }
+    
+    @FXML 
+    private void showCoins() throws IOException {
+        this.gui = PrimaryController.getGUI();
+        String coins = "" + gui.game.getCoins();
+        Text coinText = new Text(coins);
+        coinText.setFont(Font.font("SansSerif", 20));
+        coinText.setFill(Color.WHITE);
+        this.coins.getChildren().add(coinText);
     }
    
 }

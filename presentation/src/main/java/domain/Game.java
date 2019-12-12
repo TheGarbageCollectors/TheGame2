@@ -71,6 +71,10 @@ public class Game
     public int getBackpackLevel() {
         return player1.getBackpackObj().getLevel();
     }
+    
+    public int getCoins() {
+        return player1.getMoney();
+    }
 
     private void createRooms()
     {

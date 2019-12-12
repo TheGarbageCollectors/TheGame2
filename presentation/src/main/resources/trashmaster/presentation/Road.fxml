@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -99,6 +100,16 @@
                </image>
             </ImageView>
             <Button fx:id="goVillage" layoutX="1784.0" layoutY="517.0" mnemonicParsing="false" onAction="#goToVillage" opacity="0.0" prefHeight="78.0" prefWidth="78.0" text="Forladt by" />
+            <HBox layoutX="1700.0" layoutY="7.0" prefHeight="33.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Money%20Icon.png" />
+                     </image>
+                  </ImageView>
+                  <HBox fx:id="coins" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="119.0" />
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

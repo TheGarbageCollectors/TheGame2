@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -46,11 +47,13 @@ public class LootableController {
     @FXML private VBox inventory;
     @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
     @FXML private ObservableList<Text> textList = FXCollections.observableArrayList();
+    @FXML private HBox coins; 
     
     
     public void initialize() throws IOException {
         setVisibleForItems();
         showInventory();
+        showCoins();
     }
     
     @FXML
@@ -133,6 +136,16 @@ public class LootableController {
         } else {
             gui.pickUpItems(accesText);
         }
+    }
+    
+    @FXML 
+    private void showCoins() throws IOException {
+        this.gui = PrimaryController.getGUI();
+        String coins = "" + gui.game.getCoins();
+        Text coinText = new Text(coins);
+        coinText.setFont(Font.font("SansSerif", 20));
+        coinText.setFill(Color.WHITE);
+        this.coins.getChildren().add(coinText);
     }
     
     @FXML

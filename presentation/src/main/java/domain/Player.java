@@ -21,7 +21,7 @@ public class Player
 
     Player(String playerName)
     {
-        this.money = 500;
+        this.money = 0;
         this.name = playerName;
     }
 

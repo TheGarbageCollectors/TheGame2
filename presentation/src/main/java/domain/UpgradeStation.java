@@ -30,7 +30,7 @@ public class UpgradeStation extends Room
     };
     private int[] townUpgradePriceArray =
     {
-        150, 300, 500, 750, 1000, 1500, 2000, 2500, 5000, 10000
+        15, 30, 50, 75, 100, 150, 200, 250, 500, 1000000
     };
 
     public UpgradeStation(String dir, String name)
@@ -77,7 +77,6 @@ public class UpgradeStation extends Room
                                 System.out.println("Your town has reached maximum happiness.");
                                 System.out.println("There is no more trash in the town to collect");
                                 System.out.println("You have won the game (:");
-                                System.exit(0);
                             }
                         } else
                         {

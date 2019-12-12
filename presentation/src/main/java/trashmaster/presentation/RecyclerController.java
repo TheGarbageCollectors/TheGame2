@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -41,6 +42,7 @@ public class RecyclerController {
     @FXML private VBox inventory;
     @FXML private ArrayList<Item> inventoryList = new ArrayList<>();
     @FXML private ObservableList<Text> textList = FXCollections.observableArrayList();
+    @FXML private HBox coins; 
     
     @FXML
     private void goToTownHall() throws IOException  {
@@ -72,6 +74,7 @@ public class RecyclerController {
                 break;
         }
         showInventory();
+        showCoins();
                 
     }
     
@@ -106,6 +109,16 @@ public class RecyclerController {
                 gui.recycleItems(itemName, buttonText, inventoryIndex);
                 recycleItem.setVisible(false);
                 buttonList.clear();
+                textList.clear();
+                inventory.getChildren().clear();
+                coins.getChildren().clear();
+                try {
+                    showCoins();
+                    showInventory();
+                    }
+                    catch(IOException e) {
+                        System.out.println("Error");
+                    }
                 recycleItem.getChildren().clear();
                 int hp = gui.game.getHP();
                 if (hp <= 0) { 
@@ -142,6 +155,16 @@ public class RecyclerController {
         
         
         //recycleItems();
+    }
+    
+    @FXML 
+    private void showCoins() throws IOException {
+        this.gui = PrimaryController.getGUI();
+        String coins = "" + gui.game.getCoins();
+        Text coinText = new Text(coins);
+        coinText.setFont(Font.font("SansSerif", 20));
+        coinText.setFill(Color.WHITE);
+        this.coins.getChildren().add(coinText);
     }
     
     
