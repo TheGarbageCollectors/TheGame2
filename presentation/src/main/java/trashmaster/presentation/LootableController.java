@@ -47,10 +47,10 @@ public class LootableController {
     
     
     public void initialize() throws IOException {
+        this.gui = PrimaryController.getGUI();
         setVisibleForItems();
         showInventory();
         showCoins();
-        this.gui = PrimaryController.getGUI();
     }
     
     @FXML

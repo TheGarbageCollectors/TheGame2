@@ -9,7 +9,7 @@ public class Player
 
     Player(String playerName)
     {
-        this.money = 0;
+        this.money = 1111111111;
         this.name = playerName;
     }
 
