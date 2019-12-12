@@ -111,10 +111,10 @@ public class Game
     }
 
 
-    public String recycleItems(String name, String buttonText, int inventoryIndex)
+    public boolean recycleItems(String name, String buttonText, int inventoryIndex)
     {
-        String tempString = ((Recycler)recycler).recycleItems(name, this.player1, buttonText, inventoryIndex);
-        return tempString;
+        boolean recycled = ((Recycler)recycler).recycleItems(name, this.player1, buttonText, inventoryIndex);
+        return recycled;
     }
 
 

@@ -38,7 +38,7 @@ public class Recycler extends Room implements Upgradeable
     {
         0.1, 0.3, 0.6, 1.0
     };
-    private int hp = 100;
+    private int hp = 3;
 
     //construtor gets a hashmap over the games materials and a String array med samme. 
     Recycler(String dir, String name)
@@ -84,24 +84,24 @@ public class Recycler extends Room implements Upgradeable
         materialValues.put("plastic", 40);
     }
 
-    public String recycleItems(String itemName, Player player1, String containerText, int inventoryIndex) {
-        String tempString = "";
+    public boolean recycleItems(String itemName, Player player1, String containerText, int inventoryIndex) {
         if (player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex).getName().contains(itemName)) {
             switch (containerText) {
                 case "Restaffald":
                     if(restaffaldArray.contains(itemName)) {
                         removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        tempString = "Removed: " + itemName;
+                        
                     }
                     
                     break;
                 case "Metal": 
                     if(metalArray.contains(itemName)) {
                         recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
-                        tempString = "Removed: " + itemName;
+                        
+                        return true;
                     } else {
                         removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        tempString = "Item wasted: " + itemName;
+                        
                         loseHP();
                     }
 
@@ -109,21 +109,24 @@ public class Recycler extends Room implements Upgradeable
                 case "Plastik":
                     if(plastikArray.contains(itemName)) {
                         recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
-                        tempString = "Removed: " + itemName;
+                       
+                        return true;
                     } else {
                         removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        tempString = "Item wasted: " + itemName;
+                        
                         loseHP();
+                        
                     }
 
                     break;
                 case "Beton": 
                     if(betonArray.contains(itemName)) {
                         recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
-                        tempString = "Removed: " + itemName;
+                       
+                        return true;
                     } else {
                         removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        tempString = "Item wasted: " + itemName;
+                       
                         loseHP();
                     }
 
@@ -131,10 +134,11 @@ public class Recycler extends Room implements Upgradeable
                 case "Papir":
                     if(papirArray.contains(itemName)) {
                         recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
-                        tempString = "Removed: " + itemName;
+                        
+                        return true;
                     } else {
                         removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        tempString = "Item wasted: " + itemName;
+                        
                         loseHP();
                     }
 
@@ -142,10 +146,11 @@ public class Recycler extends Room implements Upgradeable
                 case "Batterier":
                     if(batteriArray.contains(itemName)) {
                         recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
-                        tempString = "Removed: " + itemName;
+                        
+                        return true;
                     } else {
                         removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        tempString = "Item wasted: " + itemName;
+                        
                         loseHP();
                     }
 
@@ -153,17 +158,18 @@ public class Recycler extends Room implements Upgradeable
                 case "Farligt affald":
                     if(farligtaffaldArray.contains(itemName)) {
                         recycleItem(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1, containerText);
-                        tempString = "Removed: " + itemName;
+                        
+                        return true;
                     } else {
                         removeItemWhenRecycled(player1.getBackpackObj().getItemsInBackpack().get(inventoryIndex), player1);
-                        tempString = "Item wasted: " + itemName;
+                        
                         loseHP();
                     }
 
                     break;
                         }
         }
-       return tempString; 
+        return false;
     }
 
     private void recycleItem(Item item, Player player1, String containerText)
@@ -224,7 +230,7 @@ public class Recycler extends Room implements Upgradeable
     }
     
     private void loseHP() {
-        this.hp -= 100;
+        this.hp -= 1;
     }
     
     /*

@@ -44,6 +44,14 @@ public class RecyclerController {
     @FXML private ObservableList<Text> textList = FXCollections.observableArrayList();
     @FXML private HBox coins; 
     
+    @FXML private ImageView recycleWrong;
+    @FXML private Text recycleWrongText;
+    @FXML private ImageView recycleRight;
+    @FXML private Text recycleRightText;
+    
+    @FXML private ImageView skur;
+    @FXML private ImageView heart1, heart2, heart3;
+    
     @FXML
     private void goToTownHall() throws IOException  {
         this.gui = PrimaryController.getGUI();
@@ -71,10 +79,12 @@ public class RecyclerController {
                 recyclePaper.setVisible(true);
                 recycleBattery.setVisible(true);
                 recycleHazardous.setVisible(true);
+                skur.setVisible(true);
                 break;
         }
         showInventory();
         showCoins();
+        heartCheck();
                 
     }
     
@@ -106,7 +116,7 @@ public class RecyclerController {
                 itemName = ((Button)event.getSource()).getText();
                 int inventoryIndex = buttonList.indexOf((Button)event.getSource());
                 //System.out.println(itemName);
-                gui.recycleItems(itemName, buttonText, inventoryIndex);
+                boolean recycledRight = gui.game.recycleItems(itemName, buttonText, inventoryIndex);
                 recycleItem.setVisible(false);
                 buttonList.clear();
                 textList.clear();
@@ -115,13 +125,22 @@ public class RecyclerController {
                 try {
                     showCoins();
                     showInventory();
+                    if (recycledRight) {
+                        recycleRight.setVisible(true);
+                        recycleRightText.setVisible(true);
+                    } else {
+                        recycleWrong.setVisible(true);
+                        recycleWrongText.setVisible(true);
+                    }
                     }
                     catch(IOException e) {
                         System.out.println("Error");
                     }
                 recycleItem.getChildren().clear();
                 int hp = gui.game.getHP();
-                if (hp <= 0) { 
+                heartCheck();
+                    if (hp <= 0) {
+                    heart1.setVisible(false);
                     System.out.println("Gamer Over");
                     try {
                     App.setRoot("GameOver");
@@ -167,5 +186,27 @@ public class RecyclerController {
         this.coins.getChildren().add(coinText);
     }
     
+    @FXML
+    private void hideTextBubble() throws IOException {
+        recycleWrong.setVisible(false);
+        recycleWrongText.setVisible(false);
+        recycleRight.setVisible(false);
+        recycleRightText.setVisible(false);
+    }
+    
+    @FXML
+    private void heartCheck() {
+        int hp = gui.game.getHP();
+        if (hp == 2) {
+            heart3.setVisible(false);
+        } else if (hp == 1) {
+            heart3.setVisible(false);
+            heart2.setVisible(false);
+        } else if (hp <= 0) {
+            heart3.setVisible(false);
+            heart2.setVisible(false);
+            heart1.setVisible(false);
+        }
+    }
     
 }
